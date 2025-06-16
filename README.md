@@ -11,11 +11,21 @@
 
 为了快速配置项目环境，请按照以下步骤操作：
 
-1. **安装Python**：确保您已经安装了Python 3.8或更高版本。您可以从[Python官网](https://www.python.org/downloads/)下载并安装。
-
-2. **克隆项目**：如果您还没有克隆项目，请使用以下命令克隆项目到本地：
+1. **克隆项目**：如果您还没有克隆项目，请使用以下命令克隆项目到本地：
    ```bash
-   git clone <项目地址>
+   git clone https://github.com/PatienceQi/my_project.git
+   cd my_project
+   ```
+
+2. **设置Python虚拟环境**：
+   - 使用conda创建Python 3.12环境：
+     ```bash
+     conda create -n my_project python=3.12
+     conda activate my_project
+     ```
+   - 如果没有conda，可以从[Python官网](https://www.python.org/downloads/)安装Python 3.12。
+   ```bash
+   git clone https://github.com/PatienceQi/my_project.git
    cd my_project
    ```
 
@@ -24,7 +34,7 @@
    pip install -r requirements.txt
    ```
    这将安装`neo4j`、`dotenv`、`requests`、`flask`和`flask-cors`等必要包。
-
+   
 4. **配置环境变量**：在项目根目录下创建一个`.env`文件，并根据您的实际环境配置以下变量：
    ```bash
    NEO4J_URI=neo4j://localhost:7687
