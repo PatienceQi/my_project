@@ -1,0 +1,5 @@
+﻿neo4j==5.14.1
+dotenv==1.0.0
+requests==2.31.0
+flask==3.0.0
+flask-cors==4.0.0

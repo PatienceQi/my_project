@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>政策法规问答系统</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .chat-box {
+            width: 80%;
+            max-width: 600px;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            border-bottom: 1px solid #eee;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 8px 12px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        .bot-message {
+            background-color: #e9ecef;
+            align-self: flex-start;
+            margin-right: auto;
+        }
+        .input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .status {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        .connected {
+            background-color: #28a745;
+            color: white;
+        }
+        .disconnected {
+            background-color: #dc3545;
+            color: white;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>政策法规问答系统Demo</header>
+    <div class="status disconnected" id="connectionStatus">未连接</div>
+    <div class="container">
+        <div class="chat-box">
+            <div class="messages" id="messages">
+                <!-- 聊天消息将在这里显示 -->
+            </div>
+            <div class="input-area">
+                <input type="text" id="userInput" placeholder="请输入您的问题..." autocomplete="off">
+                <button id="sendButton">发送</button>
+            </div>
+        </div>
+    </div>
+    <footer>© 2023 政策法规问答系统</footer>
+
+    <script>
+        const backendUrl = 'http://127.0.0.1:5000/api/ask';
+        let isConnected = false;
+        const statusElement = document.getElementById('connectionStatus');
+
+        function updateConnectionStatus() {
+            fetch('http://127.0.0.1:5000/api/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ question: 'test' }),
+                mode: 'cors'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        isConnected = true;
+                        statusElement.textContent = '已连接';
+                        statusElement.className = 'status connected';
+                    } else {
+                        isConnected = false;
+                        statusElement.textContent = '未连接';
+                        statusElement.className = 'status disconnected';
+                    }
+                })
+                .catch(() => {
+                    isConnected = false;
+                    statusElement.textContent = '未连接';
+                    statusElement.className = 'status disconnected';
+                });
+        }
+
+        // 每5秒检查一次连接状态
+        setInterval(updateConnectionStatus, 5000);
+        updateConnectionStatus();
+
+        async function sendMessage() {
+            if (!isConnected) {
+                const messages = document.getElementById('messages');
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message bot-message';
+                botMsg.textContent = '后端服务未连接，请稍后再试。';
+                messages.appendChild(botMsg);
+                messages.scrollTop = messages.scrollHeight;
+                return;
+            }
+
+            const input = document.getElementById('userInput');
+            const messages = document.getElementById('messages');
+            const question = input.value.trim();
+
+            if (question === '') return;
+
+            // 显示用户消息
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user-message';
+            userMsg.textContent = question;
+            messages.appendChild(userMsg);
+
+            // 清空输入框
+            input.value = '';
+
+            // 自动滚动到底部
+            messages.scrollTop = messages.scrollHeight;
+
+            try {
+                // 调用后端API获取回答
+                const response = await fetch(backendUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ question }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message bot-message';
+                
+                // 显示回答内容
+                botMsg.innerHTML = `<strong>回答:</strong> ${data.answer.replace(/\n/g, '<br>')}`;
+                
+                // 如果有实体信息，展示实体和关系
+                if (data.entities && data.entities.length > 0) {
+                    botMsg.innerHTML += `<br><strong>相关政策法规:</strong>`;
+                    const entityList = document.createElement('ul');
+                    data.entities.forEach(entity => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `<strong>${entity.policy_title}</strong> - ${entity.section_title} （发布单位: ${entity.agency}）`;
+                        entityList.appendChild(listItem);
+                    });
+                    botMsg.appendChild(entityList);
+                }
+                
+                messages.appendChild(botMsg);
+
+                // 自动滚动到底部
+                messages.scrollTop = messages.scrollHeight;
+            } catch (error) {
+                console.error('Error:', error);
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message bot-message';
+                botMsg.textContent = '抱歉，发生了一个错误，请稍后再试。';
+                messages.appendChild(botMsg);
+
+                // 自动滚动到底部
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+
+        // 监听回车键发送消息
+        document.getElementById('userInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        document.getElementById('sendButton').addEventListener('click', sendMessage);
+    </script>
+</body>
+</html>
