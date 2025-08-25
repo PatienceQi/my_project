@@ -1,203 +1,328 @@
-﻿# 政策法规问答系统Demo
+# 政策法规RAG问答系统
 
 ## 项目概述
-本项目是一个轻量级的政策法规问答系统Demo，结合外部大模型API和Neo4j图数据库，支持多模态查询、实体关系展示和答案溯源功能。
 
-# 项目说明
+政策法规RAG问答系统是一个基于检索增强生成（RAG）架构的智能问答系统，结合Neo4j图数据库、Ollama大语言模型和现代Web技术，为政策法规查询提供智能化解决方案。
 
-这是一个用于政策法规查询和问答的系统，集成了Neo4j图数据库和Ollama大模型服务。
+### 核心特性
 
-## 环境配置步骤
+- 🤖 **智能问答**：基于RAG架构，提供准确的政策法规问答
+- 🕸️ **知识图谱**：使用Neo4j构建政策法规知识图谱，支持复杂关系查询
+- 💬 **多轮对话**：支持会话管理和上下文理解，提供连续对话体验
+- 🔍 **双模式检索**：支持传统RAG和GraphRAG两种检索模式，灵活适应不同查询需求
+- 📊 **可信度评估**：内置幻觉检测和置信度评分，确保答案可靠性
+- 🩺 **实时诊断**：提供连接诊断和健康检查，便于系统维护
+- 📱 **现代界面**：响应式Web界面，支持多种交互模式
 
-为了快速配置项目环境，请按照以下步骤操作：
+### 系统架构
 
-1. **克隆项目**：如果您还没有克隆项目，请使用以下命令克隆项目到本地：
-   ```bash
-   git clone https://github.com/PatienceQi/my_project.git
-   cd my_project
-   ```
+```mermaid
+graph TB
+    subgraph "前端层"
+        UI[主界面]
+        GraphUI[GraphRAG界面] 
+        DiagUI[诊断界面]
+    end
+    
+    subgraph "后端服务层"
+        API[Flask API服务器]
+        Session[会话管理]
+        Health[健康检查]
+    end
+    
+    subgraph "AI引擎层"
+        RAG[传统RAG引擎]
+        GraphRAG[GraphRAG引擎]
+        Entity[实体提取]
+    end
+    
+    subgraph "存储层"
+        Neo4j[(Neo4j图数据库)]
+        Vector[(向量数据库)]
+    end
+    
+    subgraph "外部服务"
+        Ollama[Ollama LLM]
+    end
+    
+    UI --> API
+    GraphUI --> API
+    DiagUI --> API
+    API --> Session
+    API --> Health
+    API --> RAG
+    API --> GraphRAG
+    RAG --> Neo4j
+    GraphRAG --> Entity
+    GraphRAG --> Vector
+    Entity --> Ollama
+    RAG --> Ollama
+```
 
-2. **设置Python虚拟环境**：
-   - 使用conda创建Python 3.12环境：
-     ```bash
-     conda create -n rag python=3.12
-     conda activate rag
-     ```
-   - 如果没有conda，可以从[Python官网](https://www.python.org/downloads/)安装Python 3.12。
-   ```bash
-   git clone https://github.com/PatienceQi/my_project.git
-   cd my_project
-   ```
+## 快速开始
 
-3. **安装依赖**：在项目根目录下，运行以下命令安装所需依赖包：
-   ```bash
-   pip install -r requirements.txt
-   ```
-   这将安装`neo4j`、`dotenv`、`requests`、`flask`和`flask-cors`等必要包。
-   
-4. **配置环境变量**：在项目根目录下创建一个`.env`文件，并根据您的实际环境配置以下变量：
-   ```bash
-   NEO4J_URI=neo4j://localhost:7687
-   NEO4J_USERNAME=neo4j
-   NEO4J_PASSWORD=password
-   LLM_BINDING=ollama
-   LLM_MODEL=llama3.2:latest
-   LLM_BINDING_HOST=http://120.232.79.82:11434
-   ```
-   确保`LLM_BINDING_HOST`指向可用的Ollama服务地址。
+### 系统要求
 
-5. **启动Neo4j数据库**：
+- **Python**: 3.8+ (推荐 3.12)
+- **Neo4j**: 4.x 或 5.x
+- **Node.js**: 16+ (用于前端服务)
+- **内存**: 最低4GB，推荐8GB
+- **存储**: 至少1GB可用空间
 
-   Neo4j是本项目的核心图数据库，支持政策法规的实体关系存储和查询。以下提供两种安装配置方式：
+### 安装步骤
 
-   ### 5.1 Neo4j Desktop版本（推荐新手使用）
+#### 1. 克隆项目
+```bash
+git clone <repository-url>
+cd 政策法规RAG问答系统
+```
 
-   **系统要求**：
-   - 操作系统：Windows 10+、macOS 10.14+、Linux（Ubuntu 18.04+）  
-   - Java版本：JDK 11或JDK 17
-   - 内存：至少4GB RAM（推荐8GB+）
-   - 磁盘空间：至少2GB可用空间
+#### 2. 创建Python环境
+```bash
+# 使用conda（推荐）
+conda create -n rag python=3.12
+conda activate rag
 
-   **安装步骤**：
-   1. **下载Neo4j Desktop**：
-      - 访问 [https://neo4j.com/download/](https://neo4j.com/download/)
-      - 选择"Neo4j Desktop"版本
-      - 填写邮箱获取激活码
-      - 下载并安装桌面应用程序
+# 或使用venv
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# 或
+venv\Scripts\activate     # Windows
+```
 
-   2. **首次配置**：
-      - 启动Neo4j Desktop应用
-      - 输入邮箱收到的激活码
-      - 创建新项目，项目名称：`政策法规RAG系统`
+#### 3. 安装依赖
+```bash
+# 安装Python依赖
+pip install -r requirements.txt
 
-   3. **创建数据库**：
-      - 点击"Add" → "Local DBMS"
-      - 数据库名称：`policy-rag-db`
-      - 密码：设置为`.env`文件中的`NEO4J_PASSWORD`值
-      - 版本：选择5.14.1或最新稳定版
-      - 点击"Create"创建数据库
+# 安装前端依赖
+cd frontend
+npm install
+cd ..
+```
 
-   4. **高级配置**（可选）：
-      ```
-      初始堆大小：512m
-      最大堆大小：2g
-      页面缓存：1g
-      ```
+#### 4. 配置环境变量
+复制`.env.template`为`.env`并根据实际情况修改：
 
-   5. **启动数据库**：
-      - 在项目面板中找到创建的数据库
-      - 点击"Start"按钮启动数据库
-      - 等待状态变为"Active"（绿色圆点）
-      - 连接地址将显示为：`bolt://localhost:7687`
+```env
+# Neo4j数据库配置
+NEO4J_URI=neo4j://localhost:7687
+NEO4J_USERNAME=neo4j
+NEO4J_PASSWORD=your_password
 
-   6. **验证连接**：
-      - 点击"Open"按钮打开Neo4j Browser
-      - 或在浏览器中访问：`http://localhost:7474`
-      - 使用配置的用户名和密码登录
-      - 执行测试查询：`MATCH (n) RETURN count(n)`
+# Ollama LLM服务配置
+LLM_BINDING_HOST=http://120.232.79.82:11434
+LLM_MODEL=llama3.2:latest
+```
 
-   ### 5.2 Neo4j命令行版本（适合服务器部署）
+#### 5. 启动服务
 
-   **下载安装**：
-   ```bash
-   # Linux/macOS
-   curl -O https://dist.neo4j.org/neo4j-community-5.14.1-unix.tar.gz
-   tar -xzf neo4j-community-5.14.1-unix.tar.gz
-   cd neo4j-community-5.14.1
+**启动Neo4j数据库**：
+```bash
+# 使用Neo4j Desktop或命令行
+neo4j start
+```
 
-   # Windows
-   # 下载neo4j-community-5.14.1-windows.zip并解压到指定目录
-   ```
+**验证连接**：
+```bash
+python scripts/test_neo4j_connection.py
+python scripts/test_ollama_connection.py
+```
 
-   **环境变量配置**：
-   ```bash
-   # Linux/macOS
-   export NEO4J_HOME=/path/to/neo4j-community-5.14.1
-   export PATH=$NEO4J_HOME/bin:$PATH
+**导入数据**：
+```bash
+# 传统RAG模式
+python scripts/import_policy_data.py
 
-   # Windows
-   set NEO4J_HOME=C:\neo4j-community-5.14.1
-   set PATH=%NEO4J_HOME%\bin;%PATH%
-   ```
+# 或GraphRAG模式（推荐）
+python scripts/import_graphrag_data.py
+```
 
-   **配置文件调整**：
-   编辑`$NEO4J_HOME/conf/neo4j.conf`文件：
-   ```properties
-   # 网络配置
-   server.default_listen_address=0.0.0.0
-   server.bolt.listen_address=:7687
-   server.http.listen_address=:7474
+**启动后端服务**：
+```bash
+python start_server.py api
+```
 
-   # 内存配置
-   server.memory.heap.initial_size=512m
-   server.memory.heap.max_size=2g
-   server.memory.pagecache.size=1g
+**启动前端服务**：
+```bash
+cd frontend
+npm start
+```
 
-   # 认证配置
-   dbms.security.auth_enabled=true
-   ```
+### 访问系统
 
-   **设置初始密码**：
-   ```bash
-   # 重置密码为环境变量中配置的密码
-   neo4j-admin dbms set-initial-password "password"
-   ```
+- **主界面**: http://localhost:3000
+- **GraphRAG增强版**: http://localhost:3000/index_graphrag.html
+- **系统诊断**: http://localhost:3000/diagnostic.html
+- **API文档**: http://127.0.0.1:5000/health
 
-   **启动命令**：
-   ```bash
-   # 启动数据库
-   neo4j start
+## 使用指南
 
-   # 检查状态
-   neo4j status
+### 基础问答
 
-   # 停止数据库（如需要）
-   neo4j stop
+1. 打开主界面 `http://localhost:3000`
+2. 在输入框中输入政策法规相关问题
+3. 点击发送或按回车键获取答案
+4. 系统将显示答案及相关政策来源
 
-   # 重启数据库
-   neo4j restart
+### GraphRAG增强模式
 
-   # 控制台模式启动（调试用）
-   neo4j console
-   ```
+1. 访问 `http://localhost:3000/index_graphrag.html`
+2. 选择检索模式（GraphRAG或传统RAG）
+3. 享受更准确的答案和置信度评分
+4. 查看详细的数据源追踪信息
 
-   **使用Cypher Shell验证**：
-   ```bash
-   # 连接到数据库
-   cypher-shell -a bolt://localhost:7687 -u neo4j -p password
+### 系统诊断
 
-   # 执行测试查询
-   neo4j> MATCH (n) RETURN count(n);
-   ```
+访问 `http://localhost:3000/diagnostic.html` 进行：
+- 连接状态检查
+- API端点测试
+- CORS配置验证
+- 系统性能监控
 
-   ### 5.3 验证数据库连接
-   
-   运行项目提供的连接测试脚本：
-   ```bash
-   python scripts/test_neo4j_connection.py
-   ```
-   
-   如果连接成功，将显示"✅ Neo4j连接成功"的消息。
+## 主要功能
 
-   ### 5.4 常见问题排除
+### 🔍 智能检索
+- **传统RAG**: 基于Neo4j图查询的结构化检索
+- **GraphRAG**: 结合向量检索和实体关系的混合检索
+- **语义理解**: 自然语言问题理解和实体识别
 
-   | 问题 | 症状 | 解决方案 |
-   |------|------|----------|
-   | 端口冲突 | 启动失败，7687/7474端口被占用 | 修改配置文件中的端口号或停止占用端口的程序 |
-   | 内存不足 | 启动缓慢或崩溃 | 调整heap和pagecache大小配置 |
-   | 权限问题 | 无法创建数据库文件 | 检查数据目录权限，使用管理员权限启动 |
-   | Java版本错误 | 启动报错Java相关异常 | 安装JDK 11或17，设置JAVA_HOME环境变量 |
-   | 连接超时 | Python脚本无法连接 | 检查防火墙设置，确认数据库已启动 |
+### 💬 对话管理
+- **多轮对话**: 维护对话上下文，支持连续提问
+- **会话管理**: 创建、管理和切换不同对话会话
+- **历史记录**: 保存对话历史，便于回溯
 
-   **查看日志**：
-   ```bash
-   # Neo4j Desktop：在图形界面中查看日志选项卡
-   # 命令行版本：
-   tail -f $NEO4J_HOME/logs/neo4j.log
-   ```
+### 📊 可信度保障
+- **答案溯源**: 提供答案来源的政策文档引用
+- **置信度评分**: 基于多维度指标评估答案可信度
+- **幻觉检测**: 识别和警告可能的生成错误
 
-6. **启动Ollama服务**：如果您使用的是本地Ollama服务，确保其已启动并在`LLM_BINDING_HOST`指定的地址上可用。您可以使用以下命令启动Ollama服务：
-   ```bash
+### 🛠️ 系统监控
+- **健康检查**: 实时监控各组件状态
+- **性能指标**: 查询响应时间和系统资源使用
+- **错误处理**: 分层异常处理和友好错误提示
+
+## 技术栈
+
+### 后端技术
+- **框架**: Flask 3.0.0
+- **数据库**: Neo4j 5.14.1 + ChromaDB
+- **AI服务**: Ollama (llama3.2:latest)
+- **语言**: Python 3.8+
+
+### 前端技术
+- **基础**: HTML5/CSS3/JavaScript
+- **样式**: 响应式设计，现代UI组件
+- **交互**: 实时聊天界面，动态状态更新
+
+### 核心依赖
+```
+flask==3.0.0
+neo4j==5.14.1
+chromadb==0.4.15
+sentence-transformers==2.2.2
+ollama==0.5.3
+requests==2.31.0
+flask-cors==4.0.0
+```
+
+## API接口
+
+### 核心端点
+
+**问答接口**
+```http
+POST /api/ask
+Content-Type: application/json
+
+{
+    "question": "用户问题",
+    "session_id": "会话ID（可选）",
+    "mode": "graphrag"  // 或 "traditional"
+}
+```
+
+**会话管理**
+```http
+POST /api/session/create
+GET /api/session/<session_id>/summary
+```
+
+**系统状态**
+```http
+GET /health
+GET /api/status
+```
+
+## 数据管理
+
+### 支持的数据格式
+
+**标准格式**:
+```json
+{
+    "title": "政策标题",
+    "chapters": [
+        {
+            "title": "章节标题",
+            "number": "第一章",
+            "articles": [
+                {
+                    "number": "第一条",
+                    "content": "条款内容"
+                }
+            ]
+        }
+    ]
+}
+```
+
+**OCR格式**:
+```json
+{
+    "title": "政策标题",
+    "main_body": [
+        {
+            "section_title": "章节标题",
+            "content": "章节内容"
+        }
+    ]
+}
+```
+
+### 数据导入
+
+将政策法规JSON文件放入`database/`目录，然后运行：
+
+```bash
+# 传统RAG导入
+python scripts/import_policy_data.py
+
+# GraphRAG导入（推荐）
+python scripts/import_graphrag_data.py
+```
+
+## 测试验证
+
+### 连接测试
+```bash
+python scripts/test_neo4j_connection.py
+python scripts/test_ollama_connection.py
+python scripts/test_backend_response.py
+```
+
+### 功能测试
+```bash
+python scripts/test_enhanced_features.py
+python scripts/test_graphrag_system.py
+```
+
+### 系统诊断
+访问 `http://localhost:3000/diagnostic.html` 进行全面的系统诊断
+
+
+
+**详细文档**: 请查看 `政策法规RAG问答系统完整操作手册.md` 获取完整的安装、配置和使用指南。
    ollama serve
    ```
    如果使用远程服务，请确保网络连接正常。

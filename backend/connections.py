@@ -165,7 +165,7 @@ class Neo4jConnectionManager:
 class OllamaConnectionManager:
     """Ollama连接管理器"""
     
-    def __init__(self, host: str, model: str, timeout: int = 120):
+    def __init__(self, host: str, model: str, timeout: int = 600):
         """
         初始化Ollama连接管理器
         

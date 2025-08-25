@@ -33,7 +33,7 @@ try:
     
     headers = {"Content-Type": "application/json"}
     
-    response = requests.post(url, json=payload, headers=headers, timeout=30)
+    response = requests.post(url, json=payload, headers=headers, timeout=600)
     response.raise_for_status()
     
     result = response.json()

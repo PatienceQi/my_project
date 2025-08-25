@@ -43,6 +43,31 @@ class GraphQueryEngine:
             logging.error(f"Neo4j连接失败: {e}")
             raise
     
+    def _validate_max_hops(self, max_hops: int) -> int:
+        """验证并修正max_hops参数"""
+        if not isinstance(max_hops, int):
+            logging.warning(f"max_hops参数类型错误: {type(max_hops)}, 使用默认值2")
+            return 2
+        
+        if max_hops < 1:
+            logging.warning(f"max_hops过小: {max_hops}, 修正为1")
+            return 1
+        
+        if max_hops > 10:
+            logging.warning(f"max_hops过大: {max_hops}, 修正为10")
+            return 10
+        
+        return max_hops
+    
+    def _empty_relationship_result(self, entity_name: str) -> Dict:
+        """返回空的关系查询结果"""
+        return {
+            'center_entity': entity_name,
+            'paths': [],
+            'related_entities': [],
+            'related_policies': []
+        }
+    
     def query_entities_by_name(self, entity_names: List[str]) -> List[Dict]:
         """根据实体名称查询相关信息"""
         if not entity_names:
@@ -139,31 +164,38 @@ class GraphQueryEngine:
     
     def query_entity_relationships(self, entity_name: str, max_hops: int = 2) -> Dict:
         """查询实体的关系网络"""
-        query = """
+        # 验证并修正max_hops参数
+        max_hops = self._validate_max_hops(max_hops)
+        
+        if not entity_name or not entity_name.strip():
+            logging.error("entity_name参数为空")
+            return self._empty_relationship_result(entity_name)
+        
+        # 构建查询语句 - 使用字符串拼接而不是参数传递max_hops
+        query = f"""
         MATCH (e:Entity) 
         WHERE e.name CONTAINS $entity_name OR e.text CONTAINS $entity_name
-        MATCH path = (e)-[*1..$max_hops]-(related)
+        MATCH path = (e)-[*1..{max_hops}]-(related)
         WHERE related:Entity OR related:Policy OR related:Agency
         RETURN 
             e.name as center_entity,
-            [node in nodes(path) | {
+            [node in nodes(path) | {{
                 id: id(node),
                 labels: labels(node),
                 name: coalesce(node.name, node.title),
                 type: coalesce(node.type, 'unknown')
-            }] as path_nodes,
-            [rel in relationships(path) | {
+            }}] as path_nodes,
+            [rel in relationships(path) | {{
                 type: type(rel),
                 properties: properties(rel)
-            }] as path_relations
+            }}] as path_relations
         LIMIT $limit
         """
         
         try:
             with self.driver.session() as session:
                 result = session.run(query, {
-                    'entity_name': entity_name,
-                    'max_hops': max_hops,
+                    'entity_name': entity_name.strip(),
                     'limit': 20
                 })
                 
@@ -192,12 +224,12 @@ class GraphQueryEngine:
                 relationships['related_entities'] = list(relationships['related_entities'])
                 relationships['related_policies'] = list(relationships['related_policies'])
                 
-                logging.info(f"查询到实体 {entity_name} 的关系网络")
+                logging.info(f"查询到实体 {entity_name} 的关系网络，共 {len(relationships['paths'])} 条路径")
                 return relationships
                 
         except Exception as e:
             logging.error(f"关系查询失败: {e}")
-            return {'center_entity': entity_name, 'paths': [], 'related_entities': [], 'related_policies': []}
+            return self._empty_relationship_result(entity_name)
     
     def search_similar_policies(self, query_text: str) -> List[Dict]:
         """基于文本相似度的政策搜索"""

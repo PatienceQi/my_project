@@ -30,7 +30,7 @@ class OllamaErrorHandler:
         self.fallback_hosts = []  # 不再提供本地回退选项
         self.max_retries = 3
         self.retry_delay = 2  # 秒
-        self.timeout = 30
+        self.timeout = 600
         
         # 错误统计
         self.error_counts = {}
@@ -130,7 +130,7 @@ class OllamaErrorHandler:
     def validate_ollama_connection(self, host: str) -> bool:
         """验证Ollama连接"""
         try:
-            response = requests.get(f"{host}/api/version", timeout=10)
+            response = requests.get(f"{host}/api/version", timeout=600)
             return response.status_code == 200
         except Exception:
             return False
@@ -138,7 +138,7 @@ class OllamaErrorHandler:
     def validate_model_availability(self, host: str, model: str) -> bool:
         """验证模型可用性"""
         try:
-            response = requests.get(f"{host}/api/tags", timeout=10)
+            response = requests.get(f"{host}/api/tags", timeout=600)
             if response.status_code == 200:
                 models = response.json().get('models', [])
                 model_names = [m.get('name', '') for m in models]

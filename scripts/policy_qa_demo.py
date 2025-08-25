@@ -37,7 +37,7 @@ def call_ollama_chat(messages):
     headers = {"Content-Type": "application/json"}
     
     try:
-        response = requests.post(url, json=payload, headers=headers, timeout=60)
+        response = requests.post(url, json=payload, headers=headers, timeout=600)
         response.raise_for_status()
         result = response.json()
         return result['message']['content']

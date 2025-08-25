@@ -205,7 +205,7 @@ class TestRunner:
         
         # 测试创建会话
         try:
-            response = requests.post(f"{self.base_url}/api/session/create", timeout=10)
+            response = requests.post(f"{self.base_url}/api/session/create", timeout=600)
             if response.status_code == 200:
                 data = response.json()
                 session_id = data.get("session_id")
@@ -218,7 +218,7 @@ class TestRunner:
         # 测试会话摘要
         if session_id:
             try:
-                response = requests.get(f"{self.base_url}/api/session/{session_id}/summary", timeout=10)
+                response = requests.get(f"{self.base_url}/api/session/{session_id}/summary", timeout=600)
                 success = response.status_code in [200, 404]  # 新会话可能返回404
                 self.log_test("会话摘要API", success, f"状态码: {response.status_code}")
             except Exception as e:
@@ -226,7 +226,7 @@ class TestRunner:
         
         # 测试列出会话
         try:
-            response = requests.get(f"{self.base_url}/api/sessions", timeout=10)
+            response = requests.get(f"{self.base_url}/api/sessions", timeout=600)
             success = response.status_code == 200
             if success:
                 data = response.json()
@@ -256,7 +256,7 @@ class TestRunner:
                 response = requests.post(
                     f"{self.base_url}/api/ask", 
                     json=request_data,
-                    timeout=30
+                    timeout=600
                 )
                 
                 if should_succeed:

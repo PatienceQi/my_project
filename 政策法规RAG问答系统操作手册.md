@@ -1,130 +1,334 @@
-# 政策法规RAG问答系统操作手册
+# 政策法规RAG问答系统 - 操作手册
 
-## 简介
+## 概述
 
-本操作手册旨在指导用户如何使用政策法规RAG问答系统Demo 1.0。该系统是一个结合大语言模型（LLM）和Neo4j图数据库的智能问答平台，支持政策法规的查询、实体关系展示和答案溯源功能。本手册将详细介绍系统的安装、配置、操作步骤及常见问题解答。
+政策法规RAG问答系统是一个基于检索增强生成（RAG）架构的智能问答系统，结合了Neo4j图数据库、Ollama大语言模型和Web前端，实现对政策法规的语义检索和智能问答功能。
 
-## 系统概述
+### 核心特性
+- **智能问答**：基于RAG架构的政策法规问答
+- **知识图谱**：使用Neo4j构建政策法规知识图谱
+- **多轮对话**：支持会话管理和上下文理解
+- **实时诊断**：内置连接诊断和健康检查
+- **双模式支持**：传统RAG和GraphRAG两种检索模式
 
-- **软件名称**：政策法规RAG问答系统Demo
-- **版本号**：1.0
-- **主要功能**：
-  - 通过自然语言查询政策法规信息。
-  - 展示政策法规中的实体及其关系。
-  - 提供回答的出处，提升可信度。
+## 系统架构
 
-## 安装与配置
+### 整体架构图
 
-### 运行环境要求
+```mermaid
+graph TB
+    subgraph "前端层"
+        UI[主界面 index.html]
+        GraphUI[GraphRAG界面 index_graphrag.html]
+        DiagUI[诊断界面 diagnostic.html]
+    end
+    
+    subgraph "后端服务层"
+        API[API服务器 api_server.py]
+        Session[会话管理器]
+        Validator[输入验证器]
+        Health[健康检查器]
+    end
+    
+    subgraph "核心引擎层"
+        RAG[传统RAG引擎]
+        GraphRAG[GraphRAG引擎]
+        Entity[实体提取器]
+        Query[图查询引擎]
+        Vector[向量检索器]
+    end
+    
+    subgraph "存储层"
+        Neo4j[(Neo4j图数据库)]
+        ChromaDB[(ChromaDB向量数据库)]
+        JSON[政策数据文件]
+    end
+    
+    subgraph "外部服务"
+        Ollama[Ollama大语言模型]
+    end
+    
+    UI --> API
+    GraphUI --> API
+    DiagUI --> API
+    API --> Session
+    API --> Validator
+    API --> Health
+    API --> RAG
+    API --> GraphRAG
+    RAG --> Query
+    GraphRAG --> Entity
+    GraphRAG --> Vector
+    Query --> Neo4j
+    Vector --> ChromaDB
+    Entity --> Ollama
+    RAG --> Ollama
+    GraphRAG --> Ollama
+```
 
-- **硬件环境（推荐）**：
-  - 计算机配置：普通消费级PC或云服务器，建议Intel i5或AMD Ryzen 5处理器。
-  - CPU：双核以上处理器。
-  - 内存：最低4GB，推荐8GB。
-  - 存储：至少500MB可用空间。
+### 核心组件分析
 
-- **软件环境（推荐）**：
-  - 操作系统：Windows 10/11、Linux（如Ubuntu 20.04）或macOS。
-  - 支持软件及其版本：
-    - Python 3.8+（运行后端服务）。
-    - Neo4j 4.x或5.x（图数据库）。
-    - 浏览器：现代浏览器如Chrome、Edge或Firefox。
-    - Ollama（可选，本地部署大模型）。
+#### 前端组件
+- **index.html**：主要用户界面，支持基础问答功能
+- **index_graphrag.html**：增强版界面，支持GraphRAG和传统RAG模式切换
+- **diagnostic.html**：系统诊断界面，用于连接测试和故障排查
 
-### 安装步骤
+#### 后端核心模块
+- **api_server.py**：Flask API服务器，处理HTTP请求
+- **connections.py**：连接管理器，管理数据库和LLM连接
+- **session_manager.py**：会话管理，支持多轮对话
+- **health_checker.py**：健康检查，监控系统状态
+- **validators.py**：输入验证和安全检查
 
-1. **克隆项目代码**：
-   从代码仓库下载或克隆项目到本地，确保目录结构完整。
+#### 检索引擎
+- **graphrag_engine.py**：GraphRAG核心引擎
+- **vector_retrieval.py**：向量检索器
+- **graph_query.py**：图查询引擎
+- **entity_extractor.py**：实体提取器
 
-2. **安装依赖**：
-   打开终端，进入项目根目录，运行以下命令安装所需Python包：
-   ```bash
-   pip install -r requirements.txt
-   ```
+#### 数据处理
+- **import_policy_data.py**：传统数据导入脚本
+- **import_graphrag_data.py**：GraphRAG数据导入脚本
 
-3. **配置环境变量**：
-   在项目根目录下创建一个`.env`文件，配置Neo4j数据库连接信息和大模型API设置。例如：
-   ```plaintext
-   NEO4J_URI=neo4j://localhost:7687
-   NEO4J_USERNAME=neo4j
-   NEO4J_PASSWORD=password
-   OLLAMA_MODEL=llama2
-   ```
 
-4. **启动Neo4j数据库**：
-   确保Neo4j数据库已安装并运行（如通过Neo4j Desktop或命令行启动）。
+## 环境配置
 
-5. **导入政策法规数据**：
-   运行以下脚本，将政策法规数据导入Neo4j数据库：
-   ```bash
-   python scripts/import_policy_data.py
-   ```
+### 系统要求
 
-6. **启动后端服务**：
-   在项目根目录下运行后端API服务：
-   ```bash
-   python backend/api_server.py
-   ```
-   后端服务默认运行在`http://localhost:5000`。
+#### 硬件要求
+- CPU：双核以上处理器
+- 内存：最低4GB，推荐8GB
+- 存储：至少1GB可用空间
 
-7. **访问前端界面**：
-   打开浏览器，访问`frontend/index.html`文件（如通过`file://`协议直接打开，或者通过一个简单的HTTP服务器）。
+#### 软件要求
+- Python 3.8+
+- Neo4j 4.x或5.x
+- Node.js（用于前端服务）
+- 现代浏览器（Chrome、Firefox、Edge）
 
-## 操作指南
+### 依赖安装
 
-### 1. 系统登录与界面概述
+#### 1. Python依赖
+```bash
+pip install -r requirements.txt
+```
 
-- 打开前端页面后，无需登录即可直接使用。
-- 界面主要分为以下区域：
-  - **输入区域**：位于页面底部，用于输入查询问题。
-  - **聊天区域**：显示用户提问和系统回答。
-  - **状态区域**：显示当前系统状态，如是否连接到后端服务。
+#### 2. 前端依赖
+```bash
+cd frontend
+npm install
+```
 
-### 2. 查询政策法规
+### 环境变量配置
 
-- 在输入区域输入您的问题，例如：“华侨经济文化合作试验区的政策有哪些？”
-- 点击“发送”按钮或按回车键提交查询。
-- 系统将返回相关回答，包括政策标题、章节或条款内容，并提供实体关系信息（如发布机构）。
+复制`.env.template`为`.env`并修改配置：
 
-### 3. 查看实体关系
 
-- 在回答中，系统可能会展示与查询相关的实体关系图或列表，例如某个政策的发布机构或相关章节。
-- 您可以点击实体名称，查看更多详细信息（视系统配置而定）。
+## 系统部署
 
-### 4. 答案溯源
+### 部署流程
 
-- 系统会在回答中标注信息来源，例如具体的政策文档标题和章节，确保回答可信。
-- 您可以根据来源信息进一步查阅原始政策文档（需额外访问政策数据库或文件）。
+#### 1. 启动Neo4j数据库
+```bash
+# 使用Neo4j Desktop或命令行启动
+neo4j start
 
-## 常见问题解答
+# 验证连接
+python scripts/test_neo4j_connection.py
+```
 
-1. **系统无法启动后端服务怎么办？**
-   - 检查是否正确安装了所有依赖项，运行`pip install -r requirements.txt`。
-   - 确保Neo4j数据库正在运行，并且`.env`文件中的连接信息正确。
-   - 查看终端输出，查找错误信息，根据提示解决。
+#### 2. 验证Ollama服务
+```bash
+# 测试远程Ollama连接
+python scripts/test_ollama_connection.py
 
-2. **前端页面无法连接到后端服务怎么办？**
-   - 确认后端服务已启动，默认地址为`http://localhost:5000`。
-   - 检查浏览器控制台（F12）是否有连接错误，可能需要调整前端代码中的API地址。
+# 或手动测试
+curl http://120.232.79.82:11434/api/tags
+```
 
-3. **查询时系统没有返回相关回答怎么办？**
-   - 确保政策法规数据已通过`import_policy_data.py`脚本导入Neo4j数据库。
-   - 检查问题表述是否清晰，尝试用不同的方式提问。
+#### 3. 导入政策数据
+```bash
+# 传统RAG数据导入
+python scripts/import_policy_data.py
 
-4. **大模型回答不准确怎么办？**
-   - 如果使用了本地Ollama部署的大模型，可能受限于模型能力，考虑更换更强大的模型或连接到外部API。
-   - 检查回答的溯源信息，核实原始数据。
+# 或GraphRAG数据导入
+python scripts/import_graphrag_data.py
+```
 
-## 注意事项
+#### 4. 启动后端服务
+```bash
+# 推荐方式：使用统一启动脚本
+python start_server.py api
 
-- 本系统为Demo版本，数据和功能可能不完整，仅用于展示和测试目的。
-- 使用时请确保政策法规数据的来源准确性，系统生成的回答仅供参考，不构成法律建议。
-- 如需将系统用于生产环境，建议进一步优化大模型配置、扩展数据覆盖范围，并添加更多的错误处理和用户验证机制。
+# 直接启动（需要配置Python路径）
+python backend/api_server.py
+```
 
-## 联系方式
+#### 5. 启动前端服务
+```bash
+cd frontend
+npm start
+```
 
-如有任何问题或建议，请联系开发团队（联系方式待定）。
+### 服务端点
 
----
+- **主页面**：http://localhost:3000
+- **GraphRAG增强版**：http://localhost:3000/index_graphrag.html
+- **诊断页面**：http://localhost:3000/diagnostic.html
+- **后端API**：http://127.0.0.1:5000
+- **健康检查**：http://127.0.0.1:5000/health
 
-本操作手册为政策法规RAG问答系统软件著作权申请材料的一部分，旨在帮助用户了解系统的安装和使用方法。
+
+## 功能操作指南
+
+### 基础问答功能
+
+#### 1. 访问主界面
+打开浏览器访问 `http://localhost:3000`
+
+#### 2. 开始对话
+1. 在输入框中输入问题
+2. 点击"发送"按钮或按回车键
+3. 系统将返回基于政策法规的答案
+
+#### 3. 多轮对话
+1. 点击"新建会话"创建会话
+2. 在同一会话中提问，系统会维护对话上下文
+3. 点击"清空聊天"清除当前显示的消息
+
+### GraphRAG增强功能
+
+#### 1. 访问增强版界面
+打开 `http://localhost:3000/index_graphrag.html`
+
+#### 2. 模式切换
+- **GraphRAG模式**：使用向量检索和图查询的混合方法
+- **传统RAG模式**：仅使用Neo4j图查询
+
+#### 3. 高级功能
+- **置信度显示**：显示答案的可信度评分
+- **数据源追踪**：显示答案来源的政策文档
+- **幻觉检测**：检测并警告可能的答案幻觉
+
+### 系统诊断功能
+
+#### 1. 访问诊断页面
+打开 `http://localhost:3000/diagnostic.html`
+
+#### 2. 连接测试
+- **基础连接测试**：测试前后端连通性
+- **API端点测试**：测试各API接口
+- **CORS测试**：测试跨域请求配置
+
+#### 3. 故障排查
+- 检查服务状态
+- 查看连接错误详情
+- 获取系统性能信息
+
+## 数据管理
+
+### 数据结构
+
+#### 政策数据格式
+```json
+{
+    "政策": "政策标题",
+    "发布机关": "发布机构",
+    "发布时间": "YYYY-MM-DD",
+    "章节": [
+        {
+            "标题": "章节标题",
+            "内容": "章节内容",
+            "小节": [
+                {
+                    "标题": "小节标题",
+                    "内容": "小节内容"
+                }
+            ]
+        }
+    ]
+}
+```
+
+#### 知识图谱节点类型
+- **Policy**：政策文档节点
+- **Section**：章节节点
+- **SubSection**：小节节点
+- **Agency**：发布机构节点
+- **Entity**：实体节点（GraphRAG模式）
+
+### 数据导入
+
+#### 1. 准备数据文件
+将政策法规JSON文件放入`database/`目录
+
+#### 2. 传统RAG导入
+```bash
+python scripts/import_policy_data.py
+```
+
+#### 3. GraphRAG导入
+```bash
+python scripts/import_graphrag_data.py
+```
+
+#### 4. 数据验证
+```bash
+python scripts/test_graphrag_system.py
+```
+
+## 测试与验证
+
+### 连接测试脚本
+
+#### 1. Neo4j连接测试
+```bash
+python scripts/test_neo4j_connection.py
+```
+
+#### 2. Ollama连接测试
+```bash
+python scripts/test_ollama_connection.py
+```
+
+#### 3. 后端API测试
+```bash
+python scripts/test_backend_response.py
+```
+
+### 功能测试
+
+#### 1. 系统集成测试
+```bash
+python scripts/test_enhanced_features.py
+```
+
+#### 2. GraphRAG系统测试
+```bash
+python scripts/test_graphrag_system.py
+```
+
+
+
+
+### 快速启动命令汇总
+```bash
+# 环境准备
+conda create -n rag python=3.12
+conda activate rag
+pip install -r requirements.txt
+
+# 服务启动
+neo4j start                           # 启动Neo4j
+python start_server.py api            # 启动后端API
+cd frontend && npm start               # 启动前端
+
+# 数据导入
+python scripts/import_policy_data.py  # 传统RAG导入
+python scripts/import_graphrag_data.py # GraphRAG导入
+
+# 测试验证
+python scripts/test_neo4j_connection.py
+python scripts/test_ollama_connection.py
+python scripts/test_backend_response.py
+```
