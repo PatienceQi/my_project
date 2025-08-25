@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>政策法规问答系统 - 连接诊断</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #fafafa;
+        }
+        .test-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .result {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        .json-display {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 3px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>政策法规问答系统 - 连接诊断</h1>
+        
+        <div class="test-section">
+            <div class="test-title">基础连接测试</div>
+            <button onclick="testBasicConnection()">测试基础连接</button>
+            <button onclick="testPing()">测试 Ping 端点</button>
+            <button onclick="testHealth()">测试健康检查</button>
+            <div id="basicResults"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">API端点测试</div>
+            <button onclick="testCreateSession()">测试创建会话</button>
+            <button onclick="testAskAPI()">测试问答API</button>
+            <button onclick="testStatus()">测试系统状态</button>
+            <div id="apiResults"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">CORS测试</div>
+            <button onclick="testCORS()">测试跨域请求</button>
+            <div id="corsResults"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">网络详情</div>
+            <button onclick="showNetworkInfo()">显示网络信息</button>
+            <button onclick="runAllTests()">运行所有测试</button>
+            <div id="networkResults"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://127.0.0.1:5000';
+        
+        function addResult(containerId, message, type = 'info') {
+            const container = document.getElementById(containerId);
+            const div = document.createElement('div');
+            div.className = `result ${type}`;
+            div.textContent = message;
+            container.appendChild(div);
+        }
+
+        function addJSONResult(containerId, data, title = '') {
+            const container = document.getElementById(containerId);
+            if (title) {
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'result info';
+                titleDiv.textContent = title;
+                container.appendChild(titleDiv);
+            }
+            const div = document.createElement('div');
+            div.className = 'json-display';
+            div.textContent = JSON.stringify(data, null, 2);
+            container.appendChild(div);
+        }
+
+        function clearResults(containerId) {
+            document.getElementById(containerId).innerHTML = '';
+        }
+
+        async function testBasicConnection() {
+            clearResults('basicResults');
+            addResult('basicResults', '测试基础连接...', 'loading');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/ping`, {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    addResult('basicResults', `✓ 基础连接成功 (${response.status})`, 'success');
+                    addJSONResult('basicResults', data, 'Ping 响应:');
+                } else {
+                    addResult('basicResults', `✗ 基础连接失败 (${response.status})`, 'error');
+                }
+            } catch (error) {
+                addResult('basicResults', `✗ 基础连接错误: ${error.message}`, 'error');
+            }
+        }
+
+        async function testPing() {
+            clearResults('basicResults');
+            addResult('basicResults', '测试Ping端点...', 'loading');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/ping`);
+                const data = await response.json();
+                addResult('basicResults', `✓ Ping成功 (${response.status})`, 'success');
+                addJSONResult('basicResults', data);
+            } catch (error) {
+                addResult('basicResults', `✗ Ping失败: ${error.message}`, 'error');
+            }
+        }
+
+        async function testHealth() {
+            clearResults('basicResults');
+            addResult('basicResults', '测试健康检查...', 'loading');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`);
+                const data = await response.json();
+                const isHealthy = data.status === 'healthy';
+                addResult('basicResults', `${isHealthy ? '✓' : '⚠'} 健康检查 (${response.status})`, isHealthy ? 'success' : 'warning');
+                addJSONResult('basicResults', data);
+            } catch (error) {
+                addResult('basicResults', `✗ 健康检查失败: ${error.message}`, 'error');
+            }
+        }
+
+        async function testCreateSession() {
+            clearResults('apiResults');
+            addResult('apiResults', '测试创建会话...', 'loading');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/session/create`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                const data = await response.json();
+                addResult('apiResults', `✓ 会话创建成功 (${response.status})`, 'success');
+                addJSONResult('apiResults', data);
+            } catch (error) {
+                addResult('apiResults', `✗ 会话创建失败: ${error.message}`, 'error');
+            }
+        }
+
+        async function testAskAPI() {
+            clearResults('apiResults');
+            addResult('apiResults', '测试问答API...', 'loading');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/ask`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: '测试问题' })
+                });
+                const data = await response.json();
+                addResult('apiResults', `✓ 问答API成功 (${response.status})`, 'success');
+                addJSONResult('apiResults', data);
+            } catch (error) {
+                addResult('apiResults', `✗ 问答API失败: ${error.message}`, 'error');
+            }
+        }
+
+        async function testStatus() {
+            clearResults('apiResults');
+            addResult('apiResults', '测试系统状态...', 'loading');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/status`);
+                const data = await response.json();
+                addResult('apiResults', `✓ 状态查询成功 (${response.status})`, 'success');
+                addJSONResult('apiResults', data);
+            } catch (error) {
+                addResult('apiResults', `✗ 状态查询失败: ${error.message}`, 'error');
+            }
+        }
+
+        async function testCORS() {
+            clearResults('corsResults');
+            addResult('corsResults', '测试CORS配置...', 'loading');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/ping`, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Origin': window.location.origin
+                    }
+                });
+                
+                const corsHeaders = {
+                    'Access-Control-Allow-Origin': response.headers.get('Access-Control-Allow-Origin'),
+                    'Access-Control-Allow-Methods': response.headers.get('Access-Control-Allow-Methods'),
+                    'Access-Control-Allow-Headers': response.headers.get('Access-Control-Allow-Headers')
+                };
+                
+                addResult('corsResults', `✓ CORS配置正常 (${response.status})`, 'success');
+                addJSONResult('corsResults', corsHeaders, 'CORS Headers:');
+            } catch (error) {
+                addResult('corsResults', `✗ CORS配置问题: ${error.message}`, 'error');
+            }
+        }
+
+        function showNetworkInfo() {
+            clearResults('networkResults');
+            
+            const info = {
+                'User Agent': navigator.userAgent,
+                'Current URL': window.location.href,
+                'Protocol': window.location.protocol,
+                'Host': window.location.host,
+                'Target API': API_BASE_URL,
+                'Online Status': navigator.onLine,
+                'Connection Type': navigator.connection ? navigator.connection.effectiveType : 'Unknown'
+            };
+            
+            addJSONResult('networkResults', info, '网络环境信息:');
+        }
+
+        async function runAllTests() {
+            addResult('networkResults', '开始运行所有测试...', 'info');
+            
+            await testBasicConnection();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testHealth();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testCreateSession();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testAskAPI();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testCORS();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            addResult('networkResults', '所有测试完成！', 'success');
+        }
+
+        // 页面加载时显示网络信息
+        window.onload = function() {
+            showNetworkInfo();
+        };
+    </script>
+</body>
+</html>

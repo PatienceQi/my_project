@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿#frontend/index.html
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -20,12 +21,48 @@
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 20px;
+            position: relative;
+        }
+        .session-info {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
         }
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
+        }
+        .controls {
+            width: 80%;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .control-button {
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .control-button:hover {
+            background-color: #218838;
+        }
+        .control-button.clear {
+            background-color: #ffc107;
+        }
+        .control-button.clear:hover {
+            background-color: #e0a800;
         }
         .chat-box {
             width: 80%;
@@ -103,6 +140,15 @@
             background-color: #dc3545;
             color: white;
         }
+        .loading {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        .error-message {
+            background-color: #f8d7da !important;
+            color: #721c24 !important;
+            border-left: 4px solid #dc3545;
+        }
         footer {
             text-align: center;
             margin-top: 20px;
@@ -112,142 +158,459 @@
     </style>
 </head>
 <body>
-    <header>政策法规问答系统Demo</header>
-    <div class="status disconnected" id="connectionStatus">未连接</div>
+    <header>
+        政策法规问答系统Demo
+        <div class="session-info" id="sessionInfo">会话: 无</div>
+    </header>
+    <div class="status disconnected" id="connectionStatus">检查中...</div>
+    
     <div class="container">
+        <div class="controls">
+            <button class="control-button" onclick="createNewSession()">新建会话</button>
+            <button class="control-button clear" onclick="clearChat()">清空聊天</button>
+            <button class="control-button" onclick="manualConnectionTest()" id="testConnectionBtn">测试连接</button>
+        </div>
+        
         <div class="chat-box">
             <div class="messages" id="messages">
-                <!-- 聊天消息将在这里显示 -->
+                <div class="message bot-message">
+                    欢迎使用政策法规问答系统！请输入您的问题，我会基于政策法规知识库为您提供准确的回答。
+                </div>
             </div>
             <div class="input-area">
-                <input type="text" id="userInput" placeholder="请输入您的问题..." autocomplete="off">
+                <input type="text" id="userInput" placeholder="请输入您的问题..." autocomplete="off" maxlength="1000">
                 <button id="sendButton">发送</button>
             </div>
         </div>
     </div>
-    <footer>© 2023 政策法规问答系统</footer>
+    
+    <footer>© 2025 政策法规问答系统 - 支持多轮对话</footer>
 
     <script>
-        const backendUrl = 'http://127.0.0.1:5000/api/ask';
+        // 配置
+        const API_BASE_URL = 'http://127.0.0.1:5000';
+        const PING_URL = `${API_BASE_URL}/ping`;
+        const HEALTH_CHECK_URL = `${API_BASE_URL}/health`;
+        const ASK_URL = `${API_BASE_URL}/api/ask`;
+        const SESSION_CREATE_URL = `${API_BASE_URL}/api/session/create`;
+        const STATUS_URL = `${API_BASE_URL}/api/status`;
+        
+        // 全局状态
         let isConnected = false;
+        let currentSessionId = null;
+        let isTyping = false;
+        
+        // DOM 元素
         const statusElement = document.getElementById('connectionStatus');
-
-        function updateConnectionStatus() {
-            fetch('http://127.0.0.1:5000/api/ask', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ question: 'test' }),
-                mode: 'cors'
-            })
-                .then(response => {
-                    if (response.ok) {
+        const sessionInfoElement = document.getElementById('sessionInfo');
+        const messagesElement = document.getElementById('messages');
+        const userInputElement = document.getElementById('userInput');
+        const sendButtonElement = document.getElementById('sendButton');
+        
+        // 连接状态检查
+        async function checkConnectionStatus() {
+            try {
+                console.log('开始连接检查...');
+                statusElement.textContent = '检查中...';
+                statusElement.className = 'status loading';
+                
+                // 使用更可靠的方式实现超时
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => {
+                    console.log('连接检查超时');
+                    controller.abort();
+                }, 8000); // 增加到8秒超时
+                
+                console.log(`正在请求: ${PING_URL}`);
+                
+                // 先尝试简单的ping端点
+                const response = await fetch(PING_URL, {
+                    method: 'GET',
+                    mode: 'cors',
+                    signal: controller.signal,
+                    cache: 'no-cache',
+                    credentials: 'omit' // 明确不发送凭据
+                });
+                
+                clearTimeout(timeoutId);
+                console.log(`收到响应: ${response.status} ${response.statusText}`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('响应数据:', data);
+                    
+                    if (data.status === 'ok') {
                         isConnected = true;
-                        statusElement.textContent = '已连接';
+                        statusElement.textContent = '系统正常';
                         statusElement.className = 'status connected';
+                        console.log('连接成功！');
+                        
+                        // 成功连接后，检查更详细的系统状态
+                        checkDetailedStatus();
                     } else {
                         isConnected = false;
-                        statusElement.textContent = '未连接';
+                        statusElement.textContent = '服务异常';
                         statusElement.className = 'status disconnected';
+                        console.log('服务状态异常:', data);
                     }
-                })
-                .catch(() => {
+                } else {
                     isConnected = false;
-                    statusElement.textContent = '未连接';
+                    let errorMsg = '服务异常';
+                    
+                    if (response.status === 404) {
+                        errorMsg = 'API端点不存在';
+                    } else if (response.status >= 500) {
+                        errorMsg = '服务器错误';
+                    } else if (response.status === 0) {
+                        errorMsg = '网络连接失败';
+                    } else {
+                        errorMsg = `服务异常 (${response.status})`;
+                    }
+                    
+                    statusElement.textContent = errorMsg;
                     statusElement.className = 'status disconnected';
-                });
-        }
-
-        // 每5秒检查一次连接状态
-        setInterval(updateConnectionStatus, 5000);
-        updateConnectionStatus();
-
-        async function sendMessage() {
-            if (!isConnected) {
-                const messages = document.getElementById('messages');
-                const botMsg = document.createElement('div');
-                botMsg.className = 'message bot-message';
-                botMsg.textContent = '后端服务未连接，请稍后再试。';
-                messages.appendChild(botMsg);
-                messages.scrollTop = messages.scrollHeight;
-                return;
-            }
-
-            const input = document.getElementById('userInput');
-            const messages = document.getElementById('messages');
-            const question = input.value.trim();
-
-            if (question === '') return;
-
-            // 显示用户消息
-            const userMsg = document.createElement('div');
-            userMsg.className = 'message user-message';
-            userMsg.textContent = question;
-            messages.appendChild(userMsg);
-
-            // 清空输入框
-            input.value = '';
-
-            // 自动滚动到底部
-            messages.scrollTop = messages.scrollHeight;
-
-            try {
-                // 调用后端API获取回答
-                const response = await fetch(backendUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ question }),
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const data = await response.json();
-                const botMsg = document.createElement('div');
-                botMsg.className = 'message bot-message';
-                
-                // 显示回答内容
-                botMsg.innerHTML = `<strong>回答:</strong> ${data.answer.replace(/\n/g, '<br>')}`;
-                
-                // 如果有实体信息，展示实体和关系
-                if (data.entities && data.entities.length > 0) {
-                    botMsg.innerHTML += `<br><strong>相关政策法规:</strong>`;
-                    const entityList = document.createElement('ul');
-                    data.entities.forEach(entity => {
-                        const listItem = document.createElement('li');
-                        listItem.innerHTML = `<strong>${entity.policy_title}</strong> - ${entity.section_title} （发布单位: ${entity.agency}）`;
-                        entityList.appendChild(listItem);
-                    });
-                    botMsg.appendChild(entityList);
+                    console.log(`连接失败: ${errorMsg}`, response);
                 }
                 
-                messages.appendChild(botMsg);
-
-                // 自动滚动到底部
-                messages.scrollTop = messages.scrollHeight;
             } catch (error) {
-                console.error('Error:', error);
-                const botMsg = document.createElement('div');
-                botMsg.className = 'message bot-message';
-                botMsg.textContent = '抱歉，发生了一个错误，请稍后再试。';
-                messages.appendChild(botMsg);
-
-                // 自动滚动到底部
-                messages.scrollTop = messages.scrollHeight;
+                isConnected = false;
+                let errorMsg = '无法连接';
+                
+                console.error('连接检查异常:', error);
+                console.log(`当前页面源: ${window.location.origin}`);
+                console.log(`目标API: ${PING_URL}`);
+                
+                if (error.name === 'AbortError') {
+                    errorMsg = '连接超时';
+                    console.log('连接超时错误');
+                } else if (error.message.includes('CORS') || error.message.includes('Cross-Origin')) {
+                    errorMsg = 'CORS跨域错误';
+                    console.log('CORS错误:', error.message);
+                    console.log(`⚠️ CORS问题诊断:`);
+                    console.log(`   前端地址: ${window.location.origin}`);
+                    console.log(`   后端地址: ${API_BASE_URL}`);
+                    console.log(`   需要重启后端服务使新的CORS配置生效`);
+                } else if (error.message.includes('NetworkError') || error.message.includes('Failed to fetch')) {
+                    errorMsg = '网络连接失败';
+                    console.log('网络错误:', error.message);
+                    console.log(`可能原因:`);
+                    console.log(`   1. 后端服务未启动`);
+                    console.log(`   2. CORS配置问题`);
+                    console.log(`   3. 网络防火墙阻拦`);
+                } else if (error.message.includes('TypeError')) {
+                    errorMsg = '请求配置错误';
+                    console.log('类型错误:', error.message);
+                } else {
+                    errorMsg = `连接错误: ${error.message}`;
+                    console.log('未知错误:', error);
+                }
+                
+                statusElement.textContent = errorMsg;
+                statusElement.className = 'status disconnected';
+            }
+            
+            console.log(`连接状态更新完成，当前状态: ${isConnected ? '已连接' : '未连接'}`);
+            updateUIState();
+        }
+        
+        // 检查详细系统状态
+        async function checkDetailedStatus() {
+            try {
+                console.log('🔍 检查详细系统状态...');
+                
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000);
+                
+                const response = await fetch(STATUS_URL, {
+                    method: 'GET',
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    signal: controller.signal,
+                    credentials: 'omit'
+                });
+                
+                clearTimeout(timeoutId);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('系统状态数据:', data);
+                    
+                    // 根据系统状态更新显示
+                    if (data.system && data.system.status === 'healthy') {
+                        statusElement.textContent = '系统正常';
+                        statusElement.className = 'status connected';
+                        console.log('✅ 系统状态健康');
+                    } else if (data.system && data.system.status === 'degraded') {
+                        statusElement.textContent = '系统降级运行';
+                        statusElement.className = 'status connected'; // 仍然显示为连接状态
+                        console.log('⚠️ 系统降级运行');
+                    } else {
+                        console.log('⚠️ 未知系统状态:', data.system);
+                    }
+                    
+                    // 检查连接状态
+                    if (data.connections) {
+                        const conn = data.connections;
+                        console.log('连接状态:', {
+                            initialized: conn.initialized,
+                            neo4j: conn.neo4j ? '已配置' : '未配置',
+                            ollama: conn.ollama ? '已配置' : '未配置'
+                        });
+                    }
+                } else {
+                    console.warn(`系统状态检查失败: ${response.status}`);
+                }
+            } catch (error) {
+                // 详细状态检查失败不影响基本连接状态
+                if (error.name === 'AbortError') {
+                    console.warn('详细状态检查超时');
+                } else {
+                    console.warn('详细状态检查失败:', error);
+                }
             }
         }
-
-        // 监听回车键发送消息
-        document.getElementById('userInput').addEventListener('keypress', function (e) {
+        
+        // 手动连接测试
+        async function manualConnectionTest() {
+            const testBtn = document.getElementById('testConnectionBtn');
+            const originalText = testBtn.textContent;
+            
+            try {
+                testBtn.textContent = '测试中...';
+                testBtn.disabled = true;
+                
+                console.log('🛠️ 手动连接测试开始');
+                console.log(`当前时间: ${new Date().toLocaleString()}`);
+                console.log(`浏览器: ${navigator.userAgent}`);
+                console.log(`当前页面: ${window.location.href}`);
+                console.log(`目标API: ${API_BASE_URL}`);
+                
+                // 检查网络状态
+                console.log(`网络状态: ${navigator.onLine ? '在线' : '离线'}`);
+                
+                // 执行连接检查
+                await checkConnectionStatus();
+                
+                // 显示结果
+                if (isConnected) {
+                    addBotMessage('🎉 手动连接测试成功！系统工作正常。');
+                    console.log('✅ 手动连接测试成功');
+                } else {
+                    addErrorMessage('❌ 手动连接测试失败，请检查控制台获取详细信息。');
+                    console.log('❌ 手动连接测试失败');
+                }
+                
+            } catch (error) {
+                console.error('手动连接测试异常:', error);
+                addErrorMessage(`测试异常: ${error.message}`);
+            } finally {
+                testBtn.textContent = originalText;
+                testBtn.disabled = false;
+            }
+        }
+        
+        // 更新UI状态
+        function updateUIState() {
+            const isDisabled = !isConnected || isTyping;
+            userInputElement.disabled = isDisabled;
+            sendButtonElement.disabled = isDisabled;
+        }
+        
+        // 创建新会话
+        async function createNewSession() {
+            try {
+                const response = await fetch(SESSION_CREATE_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    mode: 'cors'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    currentSessionId = data.session_id;
+                    sessionInfoElement.textContent = `会话: ${currentSessionId.substring(0, 8)}...`;
+                    addBotMessage('新会话已创建，您可以开始提问了。');
+                }
+            } catch (error) {
+                console.error('创建会话失败:', error);
+            }
+        }
+        
+        // 发送消息
+        async function sendMessage() {
+            if (!isConnected || isTyping) return;
+            
+            const question = userInputElement.value.trim();
+            if (question === '' || question.length > 1000) return;
+            
+            addUserMessage(question);
+            userInputElement.value = '';
+            isTyping = true;
+            updateUIState();
+            
+            try {
+                const requestBody = { question };
+                if (currentSessionId) {
+                    requestBody.session_id = currentSessionId;
+                }
+                
+                const response = await fetch(ASK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody),
+                    mode: 'cors'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.session_id && data.session_id !== currentSessionId) {
+                        currentSessionId = data.session_id;
+                        sessionInfoElement.textContent = `会话: ${currentSessionId.substring(0, 8)}...`;
+                    }
+                    addBotMessage(data.answer, data.entities);
+                } else {
+                    const errorData = await response.json();
+                    addErrorMessage(`错误: ${errorData.error || '请求失败'}`);
+                }
+            } catch (error) {
+                addErrorMessage('网络错误，请检查连接后重试。');
+            } finally {
+                isTyping = false;
+                updateUIState();
+            }
+        }
+        
+        // 添加消息函数
+        function addUserMessage(text) {
+            const div = document.createElement('div');
+            div.className = 'message user-message';
+            div.textContent = text;
+            messagesElement.appendChild(div);
+            messagesElement.scrollTop = messagesElement.scrollHeight;
+        }
+        
+        function addBotMessage(text, entities = null) {
+            const div = document.createElement('div');
+            div.className = 'message bot-message';
+            div.innerHTML = `<strong>回答:</strong> ${text.replace(/\n/g, '<br>')}`;
+            
+            if (entities && entities.length > 0) {
+                div.innerHTML += `<br><strong>相关政策法规:</strong>`;
+                const ul = document.createElement('ul');
+                entities.forEach(entity => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${entity.policy_title}</strong> - ${entity.section_title} （发布单位: ${entity.agency}）`;
+                    ul.appendChild(li);
+                });
+                div.appendChild(ul);
+            }
+            
+            messagesElement.appendChild(div);
+            messagesElement.scrollTop = messagesElement.scrollHeight;
+        }
+        
+        function addErrorMessage(text) {
+            const div = document.createElement('div');
+            div.className = 'message bot-message error-message';
+            div.textContent = text;
+            messagesElement.appendChild(div);
+            messagesElement.scrollTop = messagesElement.scrollHeight;
+        }
+        
+        // 清空聊天记录
+        function clearChat() {
+            const welcomeMessage = messagesElement.querySelector('.message.bot-message');
+            messagesElement.innerHTML = '';
+            if (welcomeMessage) {
+                messagesElement.appendChild(welcomeMessage.cloneNode(true));
+            }
+        }
+        
+        // 事件监听
+        userInputElement.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
+                e.preventDefault();
                 sendMessage();
             }
         });
-        document.getElementById('sendButton').addEventListener('click', sendMessage);
+        
+        sendButtonElement.addEventListener('click', sendMessage);
+        
+        // 初始化
+        async function initialize() {
+            console.log('✨ 开始初始化系统...');
+            console.log(`当前页面URL: ${window.location.href}`);
+            console.log(`API地址: ${API_BASE_URL}`);
+            console.log(`Ping地址: ${PING_URL}`);
+            
+            // 设置初始状态
+            statusElement.textContent = '初始化中...';
+            statusElement.className = 'status loading';
+            
+            // 第一次连接检查
+            console.log('🔍 执行第一次连接检查...');
+            await checkConnectionStatus();
+            
+            // 检查结果
+            if (isConnected) {
+                console.log('✅ 初始连接成功，尝试创建会话...');
+                try {
+                    await createNewSession();
+                    console.log('✅ 会话创建成功');
+                } catch (error) {
+                    console.warn('⚠️ 会话创建失败:', error);
+                }
+            } else {
+                console.log('❌ 初始连接失败，将在后台重试...');
+                
+                // 在后台进行重试，不阻塞用户界面
+                setTimeout(async () => {
+                    console.log('🔄 开始第一次重试...');
+                    await checkConnectionStatus();
+                    if (isConnected) {
+                        console.log('✅ 重试连接成功，创建会话...');
+                        await createNewSession();
+                    } else {
+                        console.log('❌ 第一次重试仍然失败');
+                    }
+                }, 5000); // 5秒后第一次重试
+                
+                // 第二次重试
+                setTimeout(async () => {
+                    if (!isConnected) {
+                        console.log('🔄 开始第二次重试...');
+                        await checkConnectionStatus();
+                        if (isConnected) {
+                            console.log('✅ 第二次重试成功，创建会话...');
+                            await createNewSession();
+                        } else {
+                            console.log('❌ 第二次重试仍然失败');
+                            statusElement.textContent = '连接失败，请检查后端服务';
+                        }
+                    }
+                }, 15000); // 15秒后第二次重试
+            }
+            
+            // 设置定时检查（每15秒检查一次）
+            const intervalId = setInterval(async () => {
+                // 只有在不在输入状态时才进行定时检查
+                if (!isTyping) {
+                    console.log('🕒 定时连接检查...');
+                    await checkConnectionStatus();
+                }
+            }, 15000);
+            
+            console.log('✨ 系统初始化完成');
+            console.log(`定时器ID: ${intervalId}`);
+            
+            // 在页面卸载时清理定时器
+            window.addEventListener('beforeunload', () => {
+                clearInterval(intervalId);
+                console.log('页面卸载，清理定时器');
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', initialize);
     </script>
 </body>
 </html>

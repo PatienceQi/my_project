@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>政策法规问答系统 - GraphRAG增强版</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .session-info {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+        .mode-selector {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+        }
+        .mode-toggle {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .mode-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .controls {
+            width: 80%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .control-button {
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .control-button:hover {
+            background-color: #218838;
+        }
+        .control-button.clear {
+            background-color: #ffc107;
+        }
+        .control-button.clear:hover {
+            background-color: #e0a800;
+        }
+        .control-button.compare {
+            background-color: #17a2b8;
+        }
+        .control-button.compare:hover {
+            background-color: #138496;
+        }
+        .control-button.disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .chat-box {
+            width: 80%;
+            max-width: 800px;
+            height: 500px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            border-bottom: 1px solid #eee;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 8px 12px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        .bot-message {
+            background-color: #e9ecef;
+            align-self: flex-start;
+            margin-right: auto;
+        }
+        .confidence-bar {
+            margin-top: 10px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .confidence-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .confidence-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+        }
+        .warning-item {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 4px;
+            padding: 8px;
+            margin-top: 5px;
+            color: #856404;
+            font-size: 12px;
+        }
+        .sources-info {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+        .source-item {
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 5px 8px;
+            margin: 2px 0;
+            border-left: 3px solid #007bff;
+        }
+        .processing-time {
+            text-align: right;
+            font-size: 11px;
+            color: #999;
+            margin-top: 5px;
+        }
+        .input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .status {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        .connected {
+            background-color: #28a745;
+            color: white;
+        }
+        .disconnected {
+            background-color: #dc3545;
+            color: white;
+        }
+        .loading {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        .error-message {
+            background-color: #f8d7da !important;
+            color: #721c24 !important;
+            border-left: 4px solid #dc3545;
+        }
+        .graphrag-enabled {
+            border-left: 4px solid #28a745;
+        }
+        .comparison-result {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .method-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .traditional-rag {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+        .graph-rag {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+        .feature-badge {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 5px;
+        }
+        .options-panel {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .option-group {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .option-group label {
+            margin-left: 8px;
+            font-size: 14px;
+        }
+        .checkbox {
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        政策法规问答系统 - GraphRAG增强版
+        <span class="feature-badge">AI增强</span>
+        <div class="session-info" id="sessionInfo">会话: 无</div>
+        <div class="mode-selector">
+            <button class="mode-toggle" id="modeToggle" onclick="toggleMode()">
+                当前: <span id="currentMode">GraphRAG</span>
+            </button>
+        </div>
+    </header>
+    <div class="status disconnected" id="connectionStatus">检查中...</div>
+    
+    <div class="container">
+        <!-- 选项面板 -->
+        <div class="options-panel" id="optionsPanel">
+            <h4 style="margin-top: 0;">问答设置</h4>
+            <div class="option-group">
+                <input type="checkbox" id="useGraphOption" class="checkbox" checked>
+                <label for="useGraphOption">启用图谱增强 (GraphRAG)</label>
+            </div>
+            <div class="option-group">
+                <input type="checkbox" id="returnConfidenceOption" class="checkbox" checked>
+                <label for="returnConfidenceOption">显示可信度评估</label>
+            </div>
+            <div class="option-group">
+                <input type="checkbox" id="showSourcesOption" class="checkbox" checked>
+                <label for="showSourcesOption">显示来源信息</label>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="control-button" onclick="createNewSession()">新建会话</button>
+            <button class="control-button clear" onclick="clearChat()">清空聊天</button>
+            <button class="control-button compare" onclick="compareRAGMethods()" id="compareBtn">
+                对比RAG方法
+            </button>
+            <button class="control-button" onclick="manualConnectionTest()" id="testConnectionBtn">测试连接</button>
+            <button class="control-button" onclick="getSystemStats()" id="statsBtn">系统状态</button>
+        </div>
+        
+        <div class="chat-box">
+            <div class="messages" id="messages">
+                <div class="message bot-message graphrag-enabled">
+                    欢迎使用政策法规问答系统 GraphRAG增强版！
+                    <br>🚀 新功能：智能图谱推理 + 可信度评估 + 幻觉检测
+                    <br>请输入您的问题，系统将提供更准确、可信的回答。
+                </div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="userInput" placeholder="请输入您的问题..." autocomplete="off" maxlength="1000">
+                <button id="sendButton">发送</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>© 2025 政策法规问答系统 - GraphRAG增强版 v2.0</footer>
+
+    <script>
+        // 配置
+        const API_BASE_URL = 'http://127.0.0.1:5000';
+        const PING_URL = `${API_BASE_URL}/ping`;
+        const HEALTH_CHECK_URL = `${API_BASE_URL}/health`;
+        const ASK_URL = `${API_BASE_URL}/api/ask`;
+        const ASK_ENHANCED_URL = `${API_BASE_URL}/api/ask/enhanced`;
+        const COMPARE_URL = `${API_BASE_URL}/api/compare`;
+        const SESSION_CREATE_URL = `${API_BASE_URL}/api/session/create`;
+        const STATS_URL = `${API_BASE_URL}/api/system/stats`;
+        
+        // 全局状态
+        let isConnected = false;
+        let currentSessionId = null;
+        let isGraphRAGMode = true;
+        let systemStats = null;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            startConnectionCheck();
+            
+            // 绑定事件
+            document.getElementById('userInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            document.getElementById('sendButton').addEventListener('click', sendMessage);
+            
+            // 获取系统状态
+            getSystemStats();
+        });
+
+        // 连接检查
+        function startConnectionCheck() {
+            checkConnection();
+            setInterval(checkConnection, 15000); // 每15秒检查一次
+        }
+
+        async function checkConnection() {
+            try {
+                updateStatus('检查连接中...', 'loading');
+                
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000);
+                
+                const response = await fetch(PING_URL, {
+                    method: 'GET',
+                    signal: controller.signal,
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                clearTimeout(timeoutId);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    isConnected = true;
+                    updateStatus('已连接', 'connected');
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+            } catch (error) {
+                isConnected = false;
+                console.error('连接检查失败:', error);
+                
+                if (error.name === 'AbortError') {
+                    updateStatus('连接超时', 'disconnected');
+                } else if (error.message.includes('CORS')) {
+                    updateStatus('CORS错误', 'disconnected');
+                } else {
+                    updateStatus('连接失败', 'disconnected');
+                }
+            }
+        }
+
+        function updateStatus(message, className) {
+            const statusElement = document.getElementById('connectionStatus');
+            statusElement.textContent = message;
+            statusElement.className = `status ${className}`;
+        }
+
+        // 创建新会话
+        async function createNewSession() {
+            try {
+                const response = await fetch(SESSION_CREATE_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    currentSessionId = data.session_id;
+                    updateSessionInfo(currentSessionId);
+                    addMessage('system', `新会话已创建: ${currentSessionId}`);
+                } else {
+                    throw new Error('创建会话失败');
+                }
+            } catch (error) {
+                console.error('创建会话失败:', error);
+                addMessage('error', '创建会话失败，请检查网络连接');
+            }
+        }
+
+        function updateSessionInfo(sessionId) {
+            const sessionInfo = document.getElementById('sessionInfo');
+            sessionInfo.textContent = sessionId ? `会话: ${sessionId.substring(0, 8)}...` : '会话: 无';
+        }
+
+        // 切换模式
+        function toggleMode() {
+            isGraphRAGMode = !isGraphRAGMode;
+            const modeElement = document.getElementById('currentMode');
+            modeElement.textContent = isGraphRAGMode ? 'GraphRAG' : '传统RAG';
+            
+            // 更新选项面板显示
+            const optionsPanel = document.getElementById('optionsPanel');
+            optionsPanel.style.display = isGraphRAGMode ? 'block' : 'none';
+            
+            addMessage('system', `已切换到 ${isGraphRAGMode ? 'GraphRAG增强' : '传统RAG'} 模式`);
+        }
+
+        // 发送消息
+        async function sendMessage() {
+            const input = document.getElementById('userInput');
+            const question = input.value.trim();
+            
+            if (!question) return;
+            if (!isConnected) {
+                addMessage('error', '请先检查网络连接');
+                return;
+            }
+            
+            // 添加用户消息
+            addMessage('user', question);
+            input.value = '';
+            
+            // 禁用发送按钮
+            const sendButton = document.getElementById('sendButton');
+            sendButton.disabled = true;
+            sendButton.textContent = '处理中...';
+            
+            try {
+                let response;
+                
+                if (isGraphRAGMode) {
+                    // 使用GraphRAG增强API
+                    const useGraph = document.getElementById('useGraphOption').checked;
+                    const returnConfidence = document.getElementById('returnConfidenceOption').checked;
+                    
+                    response = await fetch(ASK_ENHANCED_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            question: question,
+                            use_graph: useGraph,
+                            return_confidence: returnConfidence,
+                            session_id: currentSessionId
+                        })
+                    });
+                } else {
+                    // 使用传统RAG API
+                    response = await fetch(ASK_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            question: question,
+                            session_id: currentSessionId
+                        })
+                    });
+                }
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    if (isGraphRAGMode) {
+                        addGraphRAGMessage(data);
+                    } else {
+                        addTraditionalMessage(data);
+                    }
+                    
+                    // 更新会话ID
+                    if (data.session_id && !currentSessionId) {
+                        currentSessionId = data.session_id;
+                        updateSessionInfo(currentSessionId);
+                    }
+                    
+                } else {
+                    const errorData = await response.json();
+                    addMessage('error', errorData.message || '请求失败');
+                }
+                
+            } catch (error) {
+                console.error('发送消息失败:', error);
+                addMessage('error', '网络错误，请稍后重试');
+            } finally {
+                // 恢复发送按钮
+                sendButton.disabled = false;
+                sendButton.textContent = '发送';
+            }
+        }
+
+        // 添加GraphRAG消息
+        function addGraphRAGMessage(data) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot-message graphrag-enabled';
+            
+            let html = `<div>${data.answer}</div>`;
+            
+            // 可信度显示
+            if (data.confidence !== undefined) {
+                const confidence = data.confidence;
+                const percentage = Math.round(confidence * 100);
+                const color = confidence >= 0.7 ? '#4CAF50' : confidence >= 0.4 ? '#FF9800' : '#F44336';
+                
+                html += `
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" style="width: ${percentage}%; background: ${color};">
+                        </div>
+                        <div class="confidence-text">可信度: ${percentage}%</div>
+                    </div>
+                `;
+            }
+            
+            // 警告信息
+            if (data.warnings && data.warnings.length > 0) {
+                data.warnings.forEach(warning => {
+                    html += `<div class="warning-item">⚠️ ${warning}</div>`;
+                });
+            }
+            
+            // 来源信息
+            if (data.sources && data.sources.length > 0 && document.getElementById('showSourcesOption').checked) {
+                html += '<div class="sources-info"><strong>来源:</strong>';
+                data.sources.forEach(source => {
+                    if (source.type === 'document') {
+                        html += `<div class="source-item">📄 ${source.title} (相关度: ${Math.round(source.relevance * 100)}%)</div>`;
+                    } else if (source.type === 'graph_entity') {
+                        html += `<div class="source-item">🔗 图谱实体: ${source.entities.join(', ')}</div>`;
+                    }
+                });
+                html += '</div>';
+            }
+            
+            // 处理时间
+            if (data.processing_time) {
+                html += `<div class="processing-time">处理时间: ${data.processing_time}秒</div>`;
+            }
+            
+            messageDiv.innerHTML = html;
+            
+            const messagesContainer = document.getElementById('messages');
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // 添加传统消息
+        function addTraditionalMessage(data) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot-message';
+            messageDiv.textContent = data.answer;
+            
+            const messagesContainer = document.getElementById('messages');
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // 添加消息（通用）
+        function addMessage(type, content) {
+            const messageDiv = document.createElement('div');
+            
+            if (type === 'user') {
+                messageDiv.className = 'message user-message';
+            } else if (type === 'error') {
+                messageDiv.className = 'message bot-message error-message';
+            } else if (type === 'system') {
+                messageDiv.className = 'message bot-message';
+                messageDiv.style.fontStyle = 'italic';
+                messageDiv.style.opacity = '0.8';
+            } else {
+                messageDiv.className = 'message bot-message';
+            }
+            
+            messageDiv.textContent = content;
+            
+            const messagesContainer = document.getElementById('messages');
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // 对比RAG方法
+        async function compareRAGMethods() {
+            const input = document.getElementById('userInput');
+            const question = input.value.trim();
+            
+            if (!question) {
+                addMessage('error', '请先输入问题再进行对比');
+                return;
+            }
+            
+            if (!isConnected) {
+                addMessage('error', '请先检查网络连接');
+                return;
+            }
+            
+            const compareBtn = document.getElementById('compareBtn');
+            compareBtn.disabled = true;
+            compareBtn.textContent = '对比中...';
+            
+            try {
+                const response = await fetch(COMPARE_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        question: question
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    addComparisonResult(data);
+                } else {
+                    const errorData = await response.json();
+                    addMessage('error', errorData.message || '对比请求失败');
+                }
+                
+            } catch (error) {
+                console.error('对比失败:', error);
+                addMessage('error', '对比功能暂时不可用');
+            } finally {
+                compareBtn.disabled = false;
+                compareBtn.textContent = '对比RAG方法';
+            }
+        }
+
+        // 添加对比结果
+        function addComparisonResult(data) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot-message';
+            
+            let html = `<div class="comparison-result">
+                <h4>RAG方法对比结果</h4>
+                <p><strong>问题:</strong> ${data.question}</p>
+            `;
+            
+            // 传统RAG结果
+            if (data.traditional_rag) {
+                html += `<div class="method-result traditional-rag">
+                    <h5>传统RAG</h5>`;
+                if (data.traditional_rag.error) {
+                    html += `<p style="color: #dc3545;">错误: ${data.traditional_rag.error}</p>`;
+                } else {
+                    html += `<p>${data.traditional_rag.answer}</p>`;
+                }
+                html += '</div>';
+            }
+            
+            // GraphRAG结果
+            if (data.graph_rag) {
+                html += `<div class="method-result graph-rag">
+                    <h5>GraphRAG</h5>`;
+                if (data.graph_rag.error) {
+                    html += `<p style="color: #dc3545;">错误: ${data.graph_rag.error}</p>`;
+                } else {
+                    html += `<p>${data.graph_rag.answer}</p>`;
+                    if (data.graph_rag.confidence !== undefined) {
+                        const confidence = Math.round(data.graph_rag.confidence * 100);
+                        html += `<p><strong>可信度:</strong> ${confidence}%</p>`;
+                    }
+                    if (data.graph_rag.warnings && data.graph_rag.warnings.length > 0) {
+                        html += `<p><strong>警告:</strong> ${data.graph_rag.warnings.join(', ')}</p>`;
+                    }
+                }
+                html += '</div>';
+            }
+            
+            html += '</div>';
+            messageDiv.innerHTML = html;
+            
+            const messagesContainer = document.getElementById('messages');
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // 获取系统状态
+        async function getSystemStats() {
+            try {
+                const response = await fetch(STATS_URL, {
+                    method: 'GET'
+                });
+                
+                if (response.ok) {
+                    systemStats = await response.json();
+                    
+                    let statusText = '系统状态:\n';
+                    statusText += `• GraphRAG: ${systemStats.graphrag_available ? '✅ 可用' : '❌ 不可用'}\n`;
+                    statusText += `• 传统RAG: ${systemStats.traditional_rag_available ? '✅ 可用' : '❌ 不可用'}\n`;
+                    statusText += `• LLM服务: ${systemStats.llm_service_available ? '✅ 可用' : '❌ 不可用'}\n`;
+                    
+                    if (systemStats.vector_db) {
+                        statusText += `• 向量数据库: ${systemStats.vector_db.total_documents || 0} 文档\n`;
+                    }
+                    
+                    if (systemStats.graph_db) {
+                        statusText += `• 知识图谱: ${systemStats.graph_db.total_nodes || 0} 节点, ${systemStats.graph_db.total_relationships || 0} 关系`;
+                    }
+                    
+                    addMessage('system', statusText);
+                    
+                    // 更新按钮状态
+                    updateButtonStates();
+                } else {
+                    addMessage('error', '获取系统状态失败');
+                }
+                
+            } catch (error) {
+                console.error('获取系统状态失败:', error);
+                addMessage('error', '无法获取系统状态');
+            }
+        }
+
+        // 更新按钮状态
+        function updateButtonStates() {
+            if (systemStats) {
+                const compareBtn = document.getElementById('compareBtn');
+                if (!systemStats.graphrag_available) {
+                    compareBtn.classList.add('disabled');
+                    compareBtn.title = 'GraphRAG不可用，无法进行对比';
+                } else {
+                    compareBtn.classList.remove('disabled');
+                    compareBtn.title = '';
+                }
+            }
+        }
+
+        // 手动连接测试
+        function manualConnectionTest() {
+            checkConnection();
+        }
+
+        // 清空聊天
+        function clearChat() {
+            const messagesContainer = document.getElementById('messages');
+            messagesContainer.innerHTML = `
+                <div class="message bot-message graphrag-enabled">
+                    聊天记录已清空。请输入新的问题。
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
