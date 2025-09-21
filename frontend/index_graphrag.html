@@ -5,12 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>政策法规问答系统 - GraphRAG增强版</title>
     <style>
+        :root {
+            --chat-box-min-width: 320px;
+            --chat-box-max-width: 1200px;
+            --chat-box-min-height: 300px;
+            --chat-box-max-height: 800px;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f2f5;
             color: #333;
+            min-height: 100vh;
         }
         header {
             background: linear-gradient(135deg, #007bff, #0056b3);
@@ -56,25 +70,26 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: clamp(10px, 3vw, 20px);
+            min-height: calc(100vh - 120px);
         }
         .controls {
-            width: 80%;
-            max-width: 800px;
+            width: min(90vw, var(--chat-box-max-width));
+            min-width: var(--chat-box-min-width);
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
         .control-button {
-            padding: 8px 16px;
+            padding: clamp(6px, 2vw, 8px) clamp(12px, 3vw, 16px);
             background-color: #28a745;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             transition: background-color 0.3s;
         }
         .control-button:hover {
@@ -97,27 +112,31 @@
             cursor: not-allowed;
         }
         .chat-box {
-            width: 80%;
-            max-width: 800px;
-            height: 500px;
+            width: min(90vw, var(--chat-box-max-width));
+            min-width: var(--chat-box-min-width);
+            height: clamp(var(--chat-box-min-height), 70vh, var(--chat-box-max-height));
             border: 1px solid #ccc;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             background-color: white;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease-in-out;
         }
         .messages {
             flex: 1;
-            padding: 10px;
+            padding: clamp(8px, 2vw, 15px);
             overflow-y: auto;
             border-bottom: 1px solid #eee;
+            scroll-behavior: smooth;
         }
         .message {
-            margin: 10px 0;
-            padding: 8px 12px;
-            border-radius: 5px;
-            max-width: 80%;
+            margin: clamp(5px, 1.5vw, 10px) 0;
+            padding: clamp(6px, 2vw, 12px);
+            border-radius: 8px;
+            max-width: min(80%, 600px);
+            word-wrap: break-word;
+            font-size: clamp(14px, 2.5vw, 16px);
         }
         .user-message {
             background-color: #007bff;
@@ -278,10 +297,10 @@
             background-color: white;
             border: 1px solid #ddd;
             border-radius: 8px;
-            padding: 15px;
+            padding: clamp(10px, 3vw, 15px);
             margin-bottom: 20px;
-            width: 80%;
-            max-width: 800px;
+            width: min(90vw, var(--chat-box-max-width));
+            min-width: var(--chat-box-min-width);
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .option-group {
@@ -296,6 +315,186 @@
         .checkbox {
             width: 16px;
             height: 16px;
+        }
+
+        /* 响应式媒体查询 */
+        /* 移动端适配 (< 768px) */
+        @media (max-width: 767px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .options-panel {
+                width: 100%;
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                margin-bottom: 10px;
+            }
+            
+            .chat-box {
+                width: 100%;
+                height: calc(100vh - 200px);
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                min-height: 250px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .control-button {
+                width: 100%;
+                padding: 12px;
+                font-size: 14px;
+            }
+            
+            .input-area {
+                padding: 8px;
+            }
+            
+            input[type="text"] {
+                font-size: 16px; /* 防止iOS缩放 */
+            }
+
+            .message {
+                max-width: 90%;
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+
+            .confidence-bar {
+                height: 18px;
+            }
+
+            .confidence-text {
+                font-size: 11px;
+                line-height: 18px;
+            }
+
+            .source-item {
+                font-size: 11px;
+                padding: 3px 6px;
+            }
+
+            .warning-item {
+                font-size: 11px;
+                padding: 6px;
+            }
+
+            .option-group {
+                flex-direction: column;
+                align-items: flex-start;
+                margin: 8px 0;
+            }
+
+            .option-group label {
+                margin-left: 0;
+                margin-top: 5px;
+            }
+
+            .mode-selector {
+                position: static;
+                transform: none;
+                margin-top: 10px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .mode-toggle {
+                width: 100%;
+            }
+        }
+
+        /* 平板端适配 (768px - 1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .options-panel {
+                width: 95%;
+            }
+            
+            .chat-box {
+                width: 95%;
+                height: calc(100vh - 220px);
+            }
+            
+            .controls {
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .message {
+                max-width: 75%;
+            }
+
+            .control-button {
+                min-width: 120px;
+            }
+
+            .confidence-bar {
+                height: 20px;
+            }
+
+            .source-item {
+                font-size: 13px;
+            }
+        }
+
+        /* 桌面端适配 (≥ 1024px) */
+        @media (min-width: 1024px) {
+            .options-panel {
+                width: min(85vw, var(--chat-box-max-width));
+            }
+            
+            .chat-box {
+                width: min(85vw, var(--chat-box-max-width));
+                height: calc(100vh - 240px);
+                min-height: 500px;
+            }
+            
+            .controls {
+                justify-content: space-between;
+            }
+            
+            .message {
+                max-width: 70%;
+            }
+            
+            /* 大屏幕专用功能 */
+            .chat-box:hover {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            }
+
+            .options-panel:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .control-button {
+                min-width: 100px;
+            }
+        }
+
+        /* 超大屏幕适配 (≥ 1440px) */
+        @media (min-width: 1440px) {
+            .chat-box {
+                width: min(80vw, var(--chat-box-max-width));
+                height: calc(100vh - 260px);
+                max-height: 900px;
+            }
+
+            .options-panel {
+                width: min(80vw, var(--chat-box-max-width));
+            }
+        }
+
+        /* 减少动画偏好设置 */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
         }
     </style>
 </head>
@@ -337,7 +536,8 @@
                 对比RAG方法
             </button>
             <button class="control-button" onclick="manualConnectionTest()" id="testConnectionBtn">测试连接</button>
-            <button class="control-button" onclick="getSystemStats()" id="statsBtn">系统状态</button>
+            <button class="control-button" onclick="getSystemStats('basic')" id="statsBtn">系统状态(基础)</button>
+            <button class="control-button" onclick="getSystemStats('detailed')" id="detailedStatsBtn">详细状态</button>
         </div>
         
         <div class="chat-box">
@@ -374,8 +574,128 @@
         let isGraphRAGMode = true;
         let systemStats = null;
 
+        // 窗口尺寸监听类 (为GraphRAG界面增强)
+        class WindowResizeHandler {
+            constructor() {
+                this.chatBox = document.querySelector('.chat-box');
+                this.messages = document.querySelector('.messages');
+                this.optionsPanel = document.querySelector('.options-panel');
+                this.init();
+            }
+            
+            init() {
+                this.handleResize = this.throttle(this.handleResize.bind(this), 200);
+                window.addEventListener('resize', this.handleResize);
+                window.addEventListener('orientationchange', () => {
+                    setTimeout(this.handleResize.bind(this), 100);
+                });
+                this.handleResize(); // 初始化调用
+            }
+            
+            throttle(func, delay) {
+                let timeoutId;
+                return function(...args) {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => func.apply(this, args), delay);
+                };
+            }
+            
+            handleResize() {
+                this.adjustChatBoxHeight();
+                this.adjustOptionsPanel();
+                this.scrollToBottom();
+                this.applyDeviceSpecificStyles();
+            }
+            
+            adjustChatBoxHeight() {
+                if (!this.chatBox) return;
+                
+                const windowHeight = window.innerHeight;
+                const headerHeight = 90; // 头部高度(增加了mode selector)
+                const footerHeight = 60; // 底部高度
+                const controlsHeight = 60; // 控制按钮高度
+                const optionsPanelHeight = this.optionsPanel ? this.optionsPanel.offsetHeight + 20 : 80;
+                const padding = 40; // 上下内边距
+                
+                const availableHeight = windowHeight - headerHeight - footerHeight - controlsHeight - optionsPanelHeight - padding;
+                const minHeight = 300;
+                const maxHeight = 800;
+                
+                let targetHeight = Math.min(Math.max(availableHeight, minHeight), maxHeight);
+                
+                // 移动设备特殊处理
+                if (window.innerWidth < 768) {
+                    targetHeight = Math.max(windowHeight - 200, 250);
+                } else if (window.innerWidth < 1024) {
+                    targetHeight = Math.max(windowHeight - 220, 350);
+                }
+                
+                this.chatBox.style.height = `${targetHeight}px`;
+            }
+            
+            adjustOptionsPanel() {
+                if (!this.optionsPanel) return;
+                
+                // 移动端隐藏/显示选项面板的逻辑
+                if (window.innerWidth < 768) {
+                    // 移动端可以考虑默认折叠选项面板
+                    this.optionsPanel.style.position = 'relative';
+                } else {
+                    this.optionsPanel.style.position = 'static';
+                }
+            }
+            
+            scrollToBottom() {
+                if (this.messages) {
+                    this.messages.scrollTop = this.messages.scrollHeight;
+                }
+            }
+            
+            applyDeviceSpecificStyles() {
+                const body = document.body;
+                body.classList.remove('mobile', 'tablet', 'desktop');
+                
+                if (window.innerWidth < 768) {
+                    body.classList.add('mobile');
+                } else if (window.innerWidth < 1024) {
+                    body.classList.add('tablet');
+                } else {
+                    body.classList.add('desktop');
+                }
+            }
+        }
+
+        // 设备检测类
+        class DeviceDetector {
+            static isMobile() {
+                return window.innerWidth < 768;
+            }
+            
+            static isTablet() {
+                return window.innerWidth >= 768 && window.innerWidth < 1024;
+            }
+            
+            static isDesktop() {
+                return window.innerWidth >= 1024;
+            }
+            
+            static isTouchDevice() {
+                return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            }
+        }
+
+        // 初始化窗口监听器
+        let windowResizeHandler;
+
         // 初始化
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('✨ GraphRAG界面初始化开始...');
+            
+            // 初始化窗口监听器
+            windowResizeHandler = new WindowResizeHandler();
+            console.log('✨ 窗口监听器初始化完成');
+            
+            // 开始连接检查
             startConnectionCheck();
             
             // 绑定事件
@@ -389,7 +709,74 @@
             
             // 获取系统状态
             getSystemStats();
+            
+            // 初始化移动端优化
+            initializeMobileOptimizations();
+            
+            console.log('✨ GraphRAG界面初始化完成');
         });
+
+        // 移动端优化初始化
+        function initializeMobileOptimizations() {
+            if (DeviceDetector.isMobile()) {
+                console.log('📱 检测到移动设备，应用移动端优化...');
+                
+                // 移动端特殊处理
+                const optionsPanel = document.getElementById('optionsPanel');
+                if (optionsPanel) {
+                    // 移动端默认折叠选项面板
+                    optionsPanel.style.display = 'none';
+                    
+                    // 添加切换按钮
+                    const toggleButton = document.createElement('button');
+                    toggleButton.className = 'control-button';
+                    toggleButton.textContent = '显示选项';
+                    toggleButton.onclick = () => {
+                        const isVisible = optionsPanel.style.display !== 'none';
+                        optionsPanel.style.display = isVisible ? 'none' : 'block';
+                        toggleButton.textContent = isVisible ? '显示选项' : '隐藏选项';
+                        
+                        // 重新调整布局
+                        setTimeout(() => {
+                            if (windowResizeHandler) {
+                                windowResizeHandler.handleResize();
+                            }
+                        }, 100);
+                    };
+                    
+                    const controlsDiv = document.querySelector('.controls');
+                    controlsDiv.insertBefore(toggleButton, controlsDiv.firstChild);
+                }
+                
+                // 移动端触摸优化
+                setupTouchOptimizations();
+            }
+        }
+
+        // 触摸优化设置
+        function setupTouchOptimizations() {
+            const chatBox = document.querySelector('.chat-box');
+            const messages = document.querySelector('.messages');
+            
+            if (chatBox && messages) {
+                // 优化滚动体验
+                messages.style.webkitOverflowScrolling = 'touch';
+                
+                // 触摸反馈
+                const buttons = document.querySelectorAll('.control-button');
+                buttons.forEach(button => {
+                    button.addEventListener('touchstart', function() {
+                        this.style.backgroundColor = '#007bff';
+                    });
+                    
+                    button.addEventListener('touchend', function() {
+                        setTimeout(() => {
+                            this.style.backgroundColor = '';
+                        }, 150);
+                    });
+                });
+            }
+        }
 
         // 连接检查
         function startConnectionCheck() {
@@ -620,7 +1007,7 @@
             
             const messagesContainer = document.getElementById('messages');
             messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            scrollToBottom();
         }
 
         // 添加传统消息
@@ -631,7 +1018,7 @@
             
             const messagesContainer = document.getElementById('messages');
             messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            scrollToBottom();
         }
 
         // 添加消息（通用）
@@ -654,7 +1041,17 @@
             
             const messagesContainer = document.getElementById('messages');
             messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            scrollToBottom();
+        }
+
+        // 滚动到底部函数
+        function scrollToBottom() {
+            if (windowResizeHandler && windowResizeHandler.messages) {
+                windowResizeHandler.scrollToBottom();
+            } else {
+                const messagesContainer = document.getElementById('messages');
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
         }
 
         // 对比RAG方法
@@ -750,43 +1147,180 @@
             
             const messagesContainer = document.getElementById('messages');
             messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            scrollToBottom();
         }
 
-        // 获取系统状态
-        async function getSystemStats() {
+        // 获取系统状态（分级查询）
+        async function getSystemStats(level = 'basic') {
             try {
-                const response = await fetch(STATS_URL, {
-                    method: 'GET'
+                updateStatus('获取系统状态中...', 'loading');
+                
+                // 渐进式策略：先快速检查，再根据需要获取详细信息
+                let quickCheckSuccess = false;
+                
+                // 第一步：尝试快速状态检查（只有在非基础级别时才执行）
+                if (level !== 'basic') {
+                    try {
+                        const quickResponse = await fetch(`${STATS_URL}/quick`, {
+                            method: 'GET',
+                            signal: AbortSignal.timeout(3000), // 3秒超时
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            }
+                        });
+                        
+                        if (quickResponse.ok) {
+                            const quickData = await quickResponse.json();
+                            quickCheckSuccess = true;
+                            
+                            // 更新连接状态显示
+                            if (quickData.status === 'healthy') {
+                                updateStatus('系统正常', 'connected');
+                            } else if (quickData.status === 'degraded') {
+                                updateStatus('系统降级', 'loading');
+                            } else {
+                                updateStatus('系统异常', 'disconnected');
+                            }
+                            
+                            // 显示快速状态信息
+                            let quickStatusText = '快速系统状态检查:\n';
+                            quickStatusText += `全部服务: ${quickData.connectivity_ratio}\n`;
+                            quickStatusText += `Neo4j: ${quickData.basic_connectivity.neo4j ? '✅ 连接' : '❌ 断开'}\n`;
+                            quickStatusText += `Ollama: ${quickData.basic_connectivity.ollama ? '✅ 连接' : '❌ 断开'}\n`;
+                            quickStatusText += `GraphRAG: ${quickData.basic_connectivity.graphrag ? '✅ 可用' : '❌ 不可用'}`;
+                            
+                            addMessage('system', quickStatusText);
+                            
+                            // 如果系统状态不正常，停止在这里
+                            if (quickData.status === 'error') {
+                                return;
+                            }
+                        }
+                    } catch (quickError) {
+                        console.warn('快速状态检查失败:', quickError);
+                        // 快速检查失败不阻止后续操作
+                    }
+                }
+                
+                // 第二步：根据级别获取详细信息
+                const timeout = level === 'basic' ? 5000 : level === 'detailed' ? 15000 : 30000;
+                
+                const response = await fetch(`${STATS_URL}?level=${level}`, {
+                    method: 'GET',
+                    signal: AbortSignal.timeout(timeout),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
                 });
                 
                 if (response.ok) {
                     systemStats = await response.json();
                     
-                    let statusText = '系统状态:\n';
-                    statusText += `• GraphRAG: ${systemStats.graphrag_available ? '✅ 可用' : '❌ 不可用'}\n`;
-                    statusText += `• 传统RAG: ${systemStats.traditional_rag_available ? '✅ 可用' : '❌ 不可用'}\n`;
-                    statusText += `• LLM服务: ${systemStats.llm_service_available ? '✅ 可用' : '❌ 不可用'}\n`;
+                    let statusText = `${level.toUpperCase()}级别系统状态:\n`;
+                    statusText += `GraphRAG: ${systemStats.graphrag_available ? '✅ 可用' : '❌ 不可用'}\n`;
+                    statusText += `传统RAG: ${systemStats.traditional_rag_available ? '✅ 可用' : '❌ 不可用'}\n`;
+                    statusText += `LLM服务: ${systemStats.llm_service_available ? '✅ 可用' : '❌ 不可用'}\n`;
                     
-                    if (systemStats.vector_db) {
-                        statusText += `• 向量数据库: ${systemStats.vector_db.total_documents || 0} 文档\n`;
+                    // 显示查询级别信息
+                    if (systemStats.query_level) {
+                        statusText += `查询级别: ${systemStats.query_level}\n`;
                     }
                     
-                    if (systemStats.graph_db) {
-                        statusText += `• 知识图谱: ${systemStats.graph_db.total_nodes || 0} 节点, ${systemStats.graph_db.total_relationships || 0} 关系`;
+                    // 显示警告或错误信息
+                    if (systemStats.warning) {
+                        statusText += `⚠️ 警告: ${systemStats.warning}\n`;
+                    }
+                    if (systemStats.error) {
+                        statusText += `❌ 错误: ${systemStats.error}\n`;
+                    }
+                    if (systemStats.suggestion) {
+                        statusText += `💡 建议: ${systemStats.suggestion}\n`;
+                    }
+                    
+                    // 显示组件状态（详细级别及以上）
+                    if (level !== 'basic' || systemStats.vector_db || systemStats.graph_db) {
+                        if (systemStats.vector_db) {
+                            if (systemStats.vector_db.status === 'healthy') {
+                                statusText += `向量数据库: ✅ ${systemStats.vector_db.total_documents || 0} 文档\n`;
+                                if (systemStats.vector_db.service_type) {
+                                    statusText += `嵌入服务: ${systemStats.vector_db.service_type}\n`;
+                                }
+                            } else {
+                                statusText += `向量数据库: ❌ ${systemStats.vector_db.message || '不可用'}\n`;
+                            }
+                        }
+                        
+                        if (systemStats.graph_db) {
+                            if (systemStats.graph_db.status === 'healthy') {
+                                statusText += `知识图谱: ✅ `;
+                                if (systemStats.graph_db.label_count) {
+                                    statusText += `${systemStats.graph_db.label_count} 标签类型, `;
+                                }
+                                if (systemStats.graph_db.relationship_types_count) {
+                                    statusText += `${systemStats.graph_db.relationship_types_count} 关系类型`;
+                                }
+                                if (systemStats.graph_db.total_nodes_sample !== undefined) {
+                                    statusText += `, 节点数: ${systemStats.graph_db.total_nodes_sample}`;
+                                }
+                                statusText += '\n';
+                            } else {
+                                statusText += `知识图谱: ❌ ${systemStats.graph_db.message || '不可用'}\n`;
+                            }
+                        }
+                    }
+                    
+                    // 显示系统整体状态
+                    const overallStatus = systemStats.system_status || 'unknown';
+                    if (overallStatus === 'error' || systemStats.fallback_mode) {
+                        statusText += `\n⚠️ 系统状态: ${overallStatus.toUpperCase()}`;
+                        if (systemStats.fallback_mode) {
+                            statusText += ' (降级模式)';
+                        }
+                    } else if (overallStatus === 'healthy') {
+                        statusText += '\n✅ 系统状态: 正常';
+                    } else if (overallStatus === 'degraded') {
+                        statusText += '\n⚠️ 系统状态: 降级运行';
                     }
                     
                     addMessage('system', statusText);
                     
                     // 更新按钮状态
                     updateButtonStates();
+                    
+                    // 更新连接状态显示
+                    if (!quickCheckSuccess) {
+                        if (systemStats.system_status === 'healthy') {
+                            updateStatus('系统正常', 'connected');
+                        } else if (systemStats.system_status === 'degraded') {
+                            updateStatus('系统降级', 'loading');
+                        } else {
+                            updateStatus('系统异常', 'disconnected');
+                        }
+                    }
                 } else {
-                    addMessage('error', '获取系统状态失败');
+                    const errorData = await response.json().catch(() => null);
+                    const errorMessage = errorData?.message || `HTTP ${response.status}`;
+                    addMessage('error', `获取${level}级别系统状态失败: ${errorMessage}`);
+                    updateStatus('状态获取失败', 'disconnected');
                 }
                 
             } catch (error) {
                 console.error('获取系统状态失败:', error);
-                addMessage('error', '无法获取系统状态');
+                
+                if (error.name === 'TimeoutError' || error.name === 'AbortError') {
+                    addMessage('error', `获取系统状态超时，请尝试使用基础级别检查`);
+                    // 超时后自动尝试基础检查
+                    if (level !== 'basic') {
+                        setTimeout(() => getSystemStats('basic'), 1000);
+                    }
+                } else if (error.message.includes('Failed to fetch')) {
+                    addMessage('error', '无法连接到后端服务，请检查服务器状态');
+                } else {
+                    addMessage('error', `无法获取系统状态: ${error.message}`);
+                }
+                updateStatus('状态未知', 'disconnected');
             }
         }
 

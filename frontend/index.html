@@ -6,12 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>政策法规问答系统</title>
     <style>
+        :root {
+            --chat-box-min-width: 320px;
+            --chat-box-max-width: 1200px;
+            --chat-box-min-height: 300px;
+            --chat-box-max-height: 800px;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f2f5;
             color: #333;
+            min-height: 100vh;
         }
         header {
             background-color: #007bff;
@@ -37,23 +51,27 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: clamp(10px, 3vw, 20px);
+            min-height: calc(100vh - 120px);
         }
         .controls {
-            width: 80%;
-            max-width: 600px;
+            width: min(90vw, var(--chat-box-max-width));
+            min-width: var(--chat-box-min-width);
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         .control-button {
-            padding: 8px 16px;
+            padding: clamp(6px, 2vw, 8px) clamp(12px, 3vw, 16px);
             background-color: #28a745;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
+            transition: background-color 0.3s;
         }
         .control-button:hover {
             background-color: #218838;
@@ -65,27 +83,31 @@
             background-color: #e0a800;
         }
         .chat-box {
-            width: 80%;
-            max-width: 600px;
-            height: 400px;
+            width: min(90vw, var(--chat-box-max-width));
+            min-width: var(--chat-box-min-width);
+            height: clamp(var(--chat-box-min-height), 70vh, var(--chat-box-max-height));
             border: 1px solid #ccc;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             background-color: white;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease-in-out;
         }
         .messages {
             flex: 1;
-            padding: 10px;
+            padding: clamp(8px, 2vw, 15px);
             overflow-y: auto;
             border-bottom: 1px solid #eee;
+            scroll-behavior: smooth;
         }
         .message {
-            margin: 10px 0;
-            padding: 8px 12px;
-            border-radius: 5px;
-            max-width: 80%;
+            margin: clamp(5px, 1.5vw, 10px) 0;
+            padding: clamp(6px, 2vw, 12px);
+            border-radius: 8px;
+            max-width: min(80%, 600px);
+            word-wrap: break-word;
+            font-size: clamp(14px, 2.5vw, 16px);
         }
         .user-message {
             background-color: #007bff;
@@ -155,6 +177,93 @@
             color: #777;
             font-size: 14px;
         }
+
+        /* 响应式媒体查询 */
+        /* 移动端适配 (< 768px) */
+        @media (max-width: 767px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .chat-box {
+                width: 100%;
+                height: calc(100vh - 160px);
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                min-height: 250px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .control-button {
+                width: 100%;
+                padding: 12px;
+            }
+            
+            .input-area {
+                padding: 8px;
+            }
+            
+            input[type="text"] {
+                font-size: 16px; /* 防止iOS缩放 */
+            }
+
+            .message {
+                max-width: 90%;
+                font-size: 14px;
+            }
+        }
+
+        /* 平板端适配 (768px - 1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .chat-box {
+                width: 95%;
+                height: calc(100vh - 180px);
+            }
+            
+            .controls {
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .message {
+                max-width: 75%;
+            }
+        }
+
+        /* 桌面端适配 (≥ 1024px) */
+        @media (min-width: 1024px) {
+            .chat-box {
+                width: min(85vw, var(--chat-box-max-width));
+                height: calc(100vh - 200px);
+                min-height: 500px;
+            }
+            
+            .controls {
+                justify-content: space-between;
+            }
+            
+            .message {
+                max-width: 70%;
+            }
+            
+            /* 大屏幕专用功能 */
+            .chat-box:hover {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        /* 减少动画偏好设置 */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -210,6 +319,102 @@
         const messagesElement = document.getElementById('messages');
         const userInputElement = document.getElementById('userInput');
         const sendButtonElement = document.getElementById('sendButton');
+
+        // 窗口尺寸监听类
+        class WindowResizeHandler {
+            constructor() {
+                this.chatBox = document.querySelector('.chat-box');
+                this.messages = document.querySelector('.messages');
+                this.init();
+            }
+            
+            init() {
+                this.handleResize = this.throttle(this.handleResize.bind(this), 200);
+                window.addEventListener('resize', this.handleResize);
+                window.addEventListener('orientationchange', () => {
+                    setTimeout(this.handleResize.bind(this), 100);
+                });
+                this.handleResize(); // 初始化调用
+            }
+            
+            throttle(func, delay) {
+                let timeoutId;
+                return function(...args) {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => func.apply(this, args), delay);
+                };
+            }
+            
+            handleResize() {
+                this.adjustChatBoxHeight();
+                this.scrollToBottom();
+                this.applyDeviceSpecificStyles();
+            }
+            
+            adjustChatBoxHeight() {
+                if (!this.chatBox) return;
+                
+                const windowHeight = window.innerHeight;
+                const headerHeight = 80; // 头部高度
+                const footerHeight = 60; // 底部高度
+                const controlsHeight = 50; // 控制按钮高度
+                const padding = 40; // 上下内边距
+                
+                const availableHeight = windowHeight - headerHeight - footerHeight - controlsHeight - padding;
+                const minHeight = 300;
+                const maxHeight = 800;
+                
+                let targetHeight = Math.min(Math.max(availableHeight, minHeight), maxHeight);
+                
+                // 移动设备特殊处理
+                if (window.innerWidth < 768) {
+                    targetHeight = Math.max(windowHeight - 160, 250);
+                }
+                
+                this.chatBox.style.height = `${targetHeight}px`;
+            }
+            
+            scrollToBottom() {
+                if (this.messages) {
+                    this.messages.scrollTop = this.messages.scrollHeight;
+                }
+            }
+            
+            applyDeviceSpecificStyles() {
+                const body = document.body;
+                body.classList.remove('mobile', 'tablet', 'desktop');
+                
+                if (window.innerWidth < 768) {
+                    body.classList.add('mobile');
+                } else if (window.innerWidth < 1024) {
+                    body.classList.add('tablet');
+                } else {
+                    body.classList.add('desktop');
+                }
+            }
+        }
+
+        // 设备检测类
+        class DeviceDetector {
+            static isMobile() {
+                return window.innerWidth < 768;
+            }
+            
+            static isTablet() {
+                return window.innerWidth >= 768 && window.innerWidth < 1024;
+            }
+            
+            static isDesktop() {
+                return window.innerWidth >= 1024;
+            }
+            
+            static isTouchDevice() {
+                return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            }
+        }
+
+        // 初始化窗口监听器
+        let windowResizeHandler;
         
         // 连接状态检查
         async function checkConnectionStatus() {
@@ -490,7 +695,7 @@
             div.className = 'message user-message';
             div.textContent = text;
             messagesElement.appendChild(div);
-            messagesElement.scrollTop = messagesElement.scrollHeight;
+            scrollToBottom();
         }
         
         function addBotMessage(text, entities = null) {
@@ -510,7 +715,7 @@
             }
             
             messagesElement.appendChild(div);
-            messagesElement.scrollTop = messagesElement.scrollHeight;
+            scrollToBottom();
         }
         
         function addErrorMessage(text) {
@@ -518,7 +723,16 @@
             div.className = 'message bot-message error-message';
             div.textContent = text;
             messagesElement.appendChild(div);
-            messagesElement.scrollTop = messagesElement.scrollHeight;
+            scrollToBottom();
+        }
+
+        // 滚动到底部函数
+        function scrollToBottom() {
+            if (windowResizeHandler && windowResizeHandler.messages) {
+                windowResizeHandler.scrollToBottom();
+            } else {
+                messagesElement.scrollTop = messagesElement.scrollHeight;
+            }
         }
         
         // 清空聊天记录
@@ -546,6 +760,10 @@
             console.log(`当前页面URL: ${window.location.href}`);
             console.log(`API地址: ${API_BASE_URL}`);
             console.log(`Ping地址: ${PING_URL}`);
+            
+            // 初始化窗口监听器
+            windowResizeHandler = new WindowResizeHandler();
+            console.log('✨ 窗口监听器初始化完成');
             
             // 设置初始状态
             statusElement.textContent = '初始化中...';

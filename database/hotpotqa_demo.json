@@ -1,0 +1,49 @@
+[
+  {
+    "_id": "demo_001",
+    "question": "What is the capital city of France?",
+    "answer": "Paris",
+    "level": "easy",
+    "type": "bridge",
+    "context": [
+      ["France", "France is a country located in Western Europe. It is known for its rich history, culture, and cuisine. The capital of France is Paris, which is also its largest city."],
+      ["Paris", "Paris is the capital and most populous city of France. It is located in the north-central part of the country and is known for landmarks such as the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral."]
+    ],
+    "supporting_facts": [
+      ["France", 2],
+      ["Paris", 0]
+    ]
+  },
+  {
+    "_id": "demo_002", 
+    "question": "Who is the current president of the United States?",
+    "answer": "Joe Biden",
+    "level": "medium",
+    "type": "comparison",
+    "context": [
+      ["United States", "The United States of America is a federal republic composed of 50 states. The president serves as both head of state and head of government."],
+      ["Joe Biden", "Joseph Robinette Biden Jr. is an American politician who has served as the 46th president of the United States since January 20, 2021. He previously served as vice president from 2009 to 2017."],
+      ["Presidential Election", "The 2020 United States presidential election was held on November 3, 2020. Joe Biden won the election, defeating incumbent president Donald Trump."]
+    ],
+    "supporting_facts": [
+      ["Joe Biden", 0],
+      ["Presidential Election", 1]
+    ]
+  },
+  {
+    "_id": "demo_003",
+    "question": "What is the largest planet in our solar system?",
+    "answer": "Jupiter", 
+    "level": "easy",
+    "type": "bridge",
+    "context": [
+      ["Solar System", "The Solar System consists of the Sun and the astronomical objects that orbit it. It includes eight planets, with Jupiter being the largest."],
+      ["Jupiter", "Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass more than two and a half times that of all the other planets combined."],
+      ["Planets", "The eight planets in our solar system are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune. They vary greatly in size and composition."]
+    ],
+    "supporting_facts": [
+      ["Solar System", 1],
+      ["Jupiter", 0]
+    ]
+  }
+]

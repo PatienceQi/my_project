@@ -11,6 +11,13 @@ from typing import Dict, Any, List, Optional
 from backend.connections import get_connection_manager
 from backend.session_manager import get_conversation_manager
 
+# GraphRAG诊断相关导入
+try:
+    from backend.graphrag_diagnostic import GraphRAGDiagnostic, DiagnosticLevel
+    GRAPHRAG_DIAGNOSTIC_AVAILABLE = True
+except ImportError:
+    GRAPHRAG_DIAGNOSTIC_AVAILABLE = False
+
 
 class HealthChecker:
     """系统健康检查器"""
@@ -19,6 +26,15 @@ class HealthChecker:
         self.start_time = datetime.now()
         self.check_history: List[Dict[str, Any]] = []
         self.max_history = 100
+        
+        # 初始化GraphRAG诊断器
+        self.graphrag_diagnostic = None
+        if GRAPHRAG_DIAGNOSTIC_AVAILABLE:
+            try:
+                self.graphrag_diagnostic = GraphRAGDiagnostic()
+            except Exception as e:
+                import logging
+                logging.warning(f"GraphRAG诊断器初始化失败: {e}")
     
     def get_system_health(self) -> Dict[str, Any]:
         """获取系统整体健康状态"""
@@ -278,6 +294,115 @@ class HealthChecker:
             }
         
         return deep_check
+    
+    def get_graphrag_diagnosis(self, level: str = "basic", components: Optional[List[str]] = None) -> Dict[str, Any]:
+        """获取GraphRAG诊断结果"""
+        if not self.graphrag_diagnostic:
+            return {
+                "status": "unavailable",
+                "message": "GraphRAG诊断功能不可用",
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        try:
+            # 转换诊断级别
+            diagnostic_level = DiagnosticLevel.BASIC
+            if level.lower() == "full":
+                diagnostic_level = DiagnosticLevel.FULL
+            elif level.lower() == "repair":
+                diagnostic_level = DiagnosticLevel.REPAIR
+            
+            # 执行GraphRAG诊断
+            diagnosis_result = self.graphrag_diagnostic.diagnose_system(
+                level=diagnostic_level,
+                components=components
+            )
+            
+            return diagnosis_result
+            
+        except Exception as e:
+            return {
+                "status": "error",
+                "message": f"GraphRAG诊断失败: {str(e)}",
+                "error": str(e),
+                "timestamp": datetime.now().isoformat()
+            }
+    
+    def get_quick_graphrag_status(self) -> Dict[str, Any]:
+        """获取快速GraphRAG状态检查"""
+        if not self.graphrag_diagnostic:
+            return {
+                "graphrag_available": False,
+                "status": "unavailable",
+                "message": "GraphRAG诊断功能不可用"
+            }
+        
+        try:
+            quick_status = self.graphrag_diagnostic.get_quick_status()
+            return {
+                "graphrag_available": True,
+                **quick_status
+            }
+        except Exception as e:
+            return {
+                "graphrag_available": False,
+                "status": "error",
+                "message": f"快速检查失败: {str(e)}",
+                "error": str(e)
+            }
+    
+    def get_comprehensive_health_report(self) -> Dict[str, Any]:
+        """获取综合健康报告（包含GraphRAG诊断）"""
+        report = {
+            "timestamp": datetime.now().isoformat(),
+            "report_type": "comprehensive",
+            "basic_health": self.get_system_health(),
+            "deep_check": self.perform_deep_check(),
+            "graphrag_diagnosis": None,
+            "overall_assessment": {}
+        }
+        
+        # 添加GraphRAG诊断
+        if self.graphrag_diagnostic:
+            report["graphrag_diagnosis"] = self.get_graphrag_diagnosis("full")
+        
+        # 生成整体评估
+        all_statuses = []
+        
+        # 收集基本健康状态
+        basic_status = report["basic_health"].get("status", "unknown")
+        all_statuses.append(basic_status)
+        
+        # 收集深度检查状态
+        deep_status = report["deep_check"].get("status", "unknown")
+        all_statuses.append(deep_status)
+        
+        # 收集GraphRAG诊断状态
+        if report["graphrag_diagnosis"]:
+            graphrag_status = report["graphrag_diagnosis"].get("overall_status", "unknown")
+            all_statuses.append(graphrag_status)
+        
+        # 确定整体状态
+        if "error" in all_statuses or "unhealthy" in all_statuses:
+            overall_status = "critical"
+        elif "warning" in all_statuses:
+            overall_status = "degraded"
+        elif "healthy" in all_statuses:
+            overall_status = "healthy"
+        else:
+            overall_status = "unknown"
+        
+        # 生成评估结果
+        report["overall_assessment"] = {
+            "status": overall_status,
+            "component_count": len(all_statuses),
+            "status_distribution": {
+                status: all_statuses.count(status) for status in set(all_statuses)
+            },
+            "graphrag_available": self.graphrag_diagnostic is not None
+        }
+        
+        return report
 
 
 # 全局健康检查器实例
@@ -290,8 +415,8 @@ def get_health_checker() -> HealthChecker:
 
 
 def create_health_endpoints():
-    """创建健康检查相关的Flask路由"""
-    from flask import jsonify
+    """创建GraphRAG增强的健康检查相关的Flask路由"""
+    from flask import jsonify, request
     
     def health():
         """基础健康检查端点"""
@@ -319,14 +444,82 @@ def create_health_endpoints():
                 "timestamp": datetime.now().isoformat()
             }), 500
     
+    def health_graphrag():
+        """GraphRAG专项诊断端点"""
+        try:
+            # 获取请求参数
+            level = request.args.get('level', 'basic')  # basic, full, repair
+            components = request.args.get('components', '').split(',') if request.args.get('components') else None
+            
+            # 执行诊断
+            diagnosis_result = health_checker.get_graphrag_diagnosis(level, components)
+            
+            # 确定 HTTP 状态码
+            if diagnosis_result.get("overall_status") == "healthy":
+                status_code = 200
+            elif diagnosis_result.get("overall_status") in ["warning", "degraded"]:
+                status_code = 200  # 警告不返回503
+            else:
+                status_code = 503
+            
+            return jsonify(diagnosis_result), status_code
+            
+        except Exception as e:
+            return jsonify({
+                "status": "error",
+                "message": f"GraphRAG诊断失败: {str(e)}",
+                "timestamp": datetime.now().isoformat()
+            }), 500
+    
+    def health_comprehensive():
+        """综合健康报告端点"""
+        try:
+            comprehensive_report = health_checker.get_comprehensive_health_report()
+            
+            # 根据整体评估确定状态码
+            overall_status = comprehensive_report.get("overall_assessment", {}).get("status", "unknown")
+            if overall_status == "healthy":
+                status_code = 200
+            elif overall_status == "degraded":
+                status_code = 200
+            else:
+                status_code = 503
+            
+            return jsonify(comprehensive_report), status_code
+            
+        except Exception as e:
+            return jsonify({
+                "status": "error",
+                "message": f"综合健康报告失败: {str(e)}",
+                "timestamp": datetime.now().isoformat()
+            }), 500
+    
+    def health_quick_graphrag():
+        """快速GraphRAG状态检查端点"""
+        try:
+            quick_status = health_checker.get_quick_graphrag_status()
+            
+            status_code = 200 if quick_status.get("status") == "healthy" else 503
+            return jsonify(quick_status), status_code
+            
+        except Exception as e:
+            return jsonify({
+                "status": "error", 
+                "message": f"快速GraphRAG检查失败: {str(e)}",
+                "timestamp": datetime.now().isoformat()
+            }), 500
+    
     def health_history():
         """健康检查历史端点"""
         try:
-            history = health_checker.get_health_history()
+            limit = int(request.args.get('limit', 50))
+            history = health_checker.get_health_history(limit)
+            
             return jsonify({
                 "status": "success",
                 "history": history,
-                "count": len(history)
+                "count": len(history),
+                "limit": limit
             })
         except Exception as e:
             return jsonify({
@@ -345,9 +538,38 @@ def create_health_endpoints():
                 "message": f"获取运行时间信息失败: {str(e)}"
             }), 500
     
+    def health_diagnosis_history():
+        """GraphRAG诊断历史端点"""
+        try:
+            if not health_checker.graphrag_diagnostic:
+                return jsonify({
+                    "status": "unavailable",
+                    "message": "GraphRAG诊断功能不可用"
+                }), 503
+            
+            limit = int(request.args.get('limit', 20))
+            diagnosis_history = health_checker.graphrag_diagnostic.get_diagnosis_history(limit)
+            
+            return jsonify({
+                "status": "success",
+                "diagnosis_history": diagnosis_history,
+                "count": len(diagnosis_history),
+                "limit": limit
+            })
+            
+        except Exception as e:
+            return jsonify({
+                "status": "error",
+                "message": f"获取诊断历史失败: {str(e)}"
+            }), 500
+    
     return {
         'health': health,
         'health_deep': health_deep,
+        'health_graphrag': health_graphrag,
+        'health_comprehensive': health_comprehensive,
+        'health_quick_graphrag': health_quick_graphrag,
         'health_history': health_history,
+        'health_diagnosis_history': health_diagnosis_history,
         'uptime': uptime
     }

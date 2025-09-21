@@ -22,6 +22,7 @@ from backend.validators import InputValidator, SecurityChecker
 from backend.connections import get_connection_manager
 from backend.session_manager import get_conversation_manager
 from backend.health_checker import get_health_checker, create_health_endpoints
+from backend.metrics_collector import create_metrics_endpoints
 
 # 尝试导入GraphRAG模块（可选）
 GRAPHRAG_AVAILABLE = False
@@ -542,6 +543,110 @@ def ask_enhanced():
         return jsonify(handle_error(SystemError("系统内部错误"))), 500
 
 
+@app.route('/api/ask/evaluated', methods=['POST'])
+def ask_with_earag_evaluation():
+    """
+    带EARAG-Eval多维度评估的问答API端点
+    
+    请求格式:
+    {
+        "question": "用户问题",
+        "use_graph": true,
+        "session_id": "会话 ID（可选）"
+    }
+    
+    响应格式:
+    {
+        "answer": "回答内容",
+        "quality_score": 0.85,
+        "quality_level": "优秀",
+        "quality_warning": false,
+        "evaluation_diagnosis": "综合评估结果",
+        "earag_evaluation": {
+            "overall_score": 0.85,
+            "dimension_scores": {...},
+            "entity_analysis": {...},
+            "detailed_analysis": {...}
+        },
+        "traditional_confidence": {...},
+        "sources": [来源信息],
+        "processing_time": 2.3,
+        "recommendations": [改进建议]
+    }
+    """
+    try:
+        # 检查GraphRAG和EARAG-Eval可用性
+        if not GRAPHRAG_AVAILABLE or not graphrag_engine:
+            return jsonify({
+                "error": "GraphRAG功能不可用",
+                "message": "请使用 /api/ask 接口访问传统RAG功能",
+                "available_endpoints": ["/api/ask"]
+            }), 503
+        
+        if not hasattr(graphrag_engine, 'earag_evaluator') or not graphrag_engine.earag_evaluator:
+            return jsonify({
+                "error": "EARAG-Eval评估器不可用",
+                "message": "请使用 /api/ask/enhanced 接口访问增强问答功能",
+                "available_endpoints": ["/api/ask", "/api/ask/enhanced"]
+            }), 503
+        
+        # 获取请求数据
+        data = request.get_json()
+        if not data:
+            return jsonify(handle_error(ValidationError("请求数据格式错误", "request_body"))), 400
+        
+        # 验证输入
+        SecurityChecker.validate_api_request(data)
+        
+        question = data.get('question', '').strip()
+        use_graph = data.get('use_graph', True)
+        session_id = data.get('session_id')
+        
+        # 验证问题内容
+        is_valid, error_msg, cleaned_question = InputValidator.validate_question(question)
+        if not is_valid:
+            return jsonify(handle_error(ValidationError(error_msg, "question", question))), 400
+        
+        # 验证会话 ID（如果提供）
+        if session_id:
+            is_valid, error_msg = InputValidator.validate_session_id(session_id)
+            if not is_valid:
+                return jsonify(handle_error(ValidationError(error_msg, "session_id", session_id))), 400
+        
+        # 使用EARAG-Eval评估问答
+        result = graphrag_engine.answer_question_with_earag_eval(
+            cleaned_question, 
+            use_graph=use_graph
+        )
+        
+        # 保存到会话历史
+        if session_id:
+            try:
+                conversation_manager.add_message_to_session(
+                    session_id, 'user', cleaned_question, result.get('question_entities', [])
+                )
+                conversation_manager.add_message_to_session(
+                    session_id, 'assistant', result['answer'], result.get('question_entities', [])
+                )
+            except SessionError:
+                logger.warning(f"保存EARAG-Eval会话消息失败: {session_id}")
+        
+        result['session_id'] = session_id
+        
+        # 记录评估结果
+        quality_info = f"score={result.get('quality_score', 'N/A')}, level={result.get('quality_level', 'N/A')}"
+        logger.info(f"EARAG-Eval评估问答请求成功: question='{cleaned_question[:50]}...', {quality_info}")
+        
+        return jsonify(result)
+        
+    except ValidationError as e:
+        log_error(e, {"endpoint": "/api/ask/evaluated"})
+        return jsonify(handle_error(e)), 400
+    except Exception as e:
+        log_error(e, {"endpoint": "/api/ask/evaluated"})
+        return jsonify(handle_error(SystemError("EARAG-Eval评估失败"))), 500
+
+
 @app.route('/api/graph/analyze', methods=['POST'])
 def analyze_entities():
     """
@@ -619,7 +724,10 @@ def analyze_entities():
 @app.route('/api/system/stats', methods=['GET'])
 def get_system_stats():
     """
-    获取系统统计信息
+    获取系统统计信息（分级查询）
+    
+    查询参数:
+    - level: basic (default), detailed, full
     
     响应格式:
     {
@@ -630,26 +738,144 @@ def get_system_stats():
     }
     """
     try:
+        level = request.args.get('level', 'basic')
+        
+        # 基础状态信息
         stats = {
             "graphrag_available": GRAPHRAG_AVAILABLE and graphrag_engine is not None,
             "traditional_rag_available": connection_manager.neo4j is not None,
-            "llm_service_available": connection_manager.ollama is not None
+            "llm_service_available": connection_manager.ollama is not None,
+            "timestamp": datetime.now().isoformat()
         }
         
-        # 获取GraphRAG统计信息
-        if stats["graphrag_available"]:
+        # 根据级别返回不同的信息
+        if not stats["graphrag_available"]:
+            # GraphRAG不可用时的降级响应
+            stats.update({
+                "system_status": "partial",
+                "message": "GraphRAG功能不可用",
+                "available_services": {
+                    "traditional_rag": stats["traditional_rag_available"],
+                    "llm_service": stats["llm_service_available"]
+                }
+            })
+            return jsonify(stats)
+        
+        # GraphRAG可用时的分级响应
+        if level == 'basic':
+            # 基础级别：快速返回，不执行复杂查询
             try:
-                graphrag_stats = graphrag_engine.get_system_stats()
-                stats.update(graphrag_stats)
+                basic_stats = graphrag_engine.get_basic_stats()
+                stats.update(basic_stats)
+                stats["query_level"] = "basic"
             except Exception as e:
-                logger.warning(f"获取GraphRAG统计失败: {e}")
-                stats["graphrag_error"] = str(e)
+                logger.error(f"GraphRAG基础统计失败: {e}")
+                stats.update({
+                    "system_status": "error", 
+                    "error": "基础统计查询失败",
+                    "suggestion": "请尝试使用 /api/system/stats/quick 端点"
+                })
+        
+        elif level == 'detailed':
+            # 详细级别：为防止服务崩溃，暂时禁用复杂统计查询
+            try:
+                # 使用基础统计代替详细统计
+                basic_stats = graphrag_engine.get_basic_stats()
+                stats.update(basic_stats)
+                stats["query_level"] = "basic_safe"
+                stats["note"] = "为保证服务稳定性，详细统计暂时停用"
+            except Exception as e:
+                logger.error(f"GraphRAG基础统计失败: {e}")
+                stats.update({
+                    "system_status": "error",
+                    "error": "系统统计查询失败",
+                    "suggestion": "请尝试使用 /api/system/stats/quick 端点"
+                })
+        
+        else:  # level == 'full' 或其他
+            # 完整级别：为防止服务崩溃，暂时禁用复杂统计查询
+            try:
+                # 使用基础统计代替完整统计
+                basic_stats = graphrag_engine.get_basic_stats()
+                stats.update(basic_stats)
+                stats["query_level"] = "basic_safe"
+                stats["note"] = "为保证服务稳定性，完整统计暂时停用"
+            except Exception as e:
+                logger.error(f"GraphRAG完整统计失败: {e}")
+                stats.update({
+                    "system_status": "error",
+                    "error": "所有统计方法都失败",
+                    "fallback_error": str(e)
+                })
         
         return jsonify(stats)
         
     except Exception as e:
         log_error(e, {"endpoint": "/api/system/stats"})
-        return jsonify(handle_error(SystemError("获取系统统计失败"))), 500
+        # 返回基本的系统信息，即使部分功能不可用
+        fallback_stats = {
+            "graphrag_available": False,
+            "traditional_rag_available": connection_manager.neo4j is not None if connection_manager else False,
+            "llm_service_available": connection_manager.ollama is not None if connection_manager else False,
+            "system_status": "error",
+            "error": "系统统计服务暂时不可用",
+            "fallback_mode": True,
+            "timestamp": datetime.now().isoformat()
+        }
+        return jsonify(fallback_stats), 200  # 使用20x状态码而不是500，避免前端错误
+
+
+@app.route('/api/system/stats/quick', methods=['GET'])
+def get_quick_system_status():
+    """
+    快速系统状态检查（1秒内返回）
+    
+    响应格式:
+    {
+        "status": "healthy",
+        "timestamp": "2025-01-20T...",
+        "basic_connectivity": {
+            "neo4j": true,
+            "ollama": true,
+            "graphrag": true
+        }
+    }
+    """
+    try:
+        stats = {
+            "status": "healthy",
+            "timestamp": datetime.now().isoformat(),
+            "basic_connectivity": {
+                "neo4j": connection_manager.neo4j is not None if connection_manager else False,
+                "ollama": connection_manager.ollama is not None if connection_manager else False,
+                "graphrag": GRAPHRAG_AVAILABLE and graphrag_engine is not None
+            },
+            "response_type": "quick_check"
+        }
+        
+        # 检查整体状态
+        connected_services = sum(stats["basic_connectivity"].values())
+        total_services = len(stats["basic_connectivity"])
+        
+        if connected_services == total_services:
+            stats["status"] = "healthy"
+        elif connected_services > 0:
+            stats["status"] = "degraded"
+        else:
+            stats["status"] = "error"
+        
+        stats["connectivity_ratio"] = f"{connected_services}/{total_services}"
+        
+        return jsonify(stats)
+        
+    except Exception as e:
+        logger.error(f"快速状态检查失败: {e}")
+        return jsonify({
+            "status": "error",
+            "timestamp": datetime.now().isoformat(),
+            "error": "快速状态检查失败",
+            "response_type": "quick_check_error"
+        }), 200  # 仍然返回200，避免前端报错
 
 
 @app.route('/api/compare', methods=['POST'])
@@ -758,6 +984,9 @@ def compare_rag_methods():
 # 健康检查端点
 health_endpoints = create_health_endpoints()
 
+# 监控指标端点
+metrics_endpoints = create_metrics_endpoints()
+
 @app.route('/ping', methods=['GET'])
 def ping():
     """简单的连接测试端点"""
@@ -777,6 +1006,26 @@ def health_deep():
     """深度健康检查"""
     return health_endpoints['health_deep']()
 
+@app.route('/health/graphrag', methods=['GET'])
+def health_graphrag():
+    """GraphRAG专项诊断"""
+    return health_endpoints['health_graphrag']()
+
+@app.route('/health/comprehensive', methods=['GET'])
+def health_comprehensive():
+    """综合健康报告"""
+    return health_endpoints['health_comprehensive']()
+
+@app.route('/health/graphrag/quick', methods=['GET'])
+def health_quick_graphrag():
+    """快速GraphRAG状态检查"""
+    return health_endpoints['health_quick_graphrag']()
+
+@app.route('/health/diagnosis/history', methods=['GET'])
+def health_diagnosis_history():
+    """GraphRAG诊断历史"""
+    return health_endpoints['health_diagnosis_history']()
+
 @app.route('/health/history', methods=['GET'])
 def health_history():
     """健康检查历史"""
@@ -786,6 +1035,33 @@ def health_history():
 def uptime():
     """系统运行时间"""
     return health_endpoints['uptime']()
+
+
+# 监控指标端点
+@app.route('/metrics/system', methods=['GET'])
+def metrics_system():
+    """系统指标"""
+    return metrics_endpoints['metrics_system']()
+
+@app.route('/metrics/api', methods=['GET'])
+def metrics_api():
+    """API指标"""
+    return metrics_endpoints['metrics_api']()
+
+@app.route('/metrics/business', methods=['GET'])
+def metrics_business():
+    """业务指标"""
+    return metrics_endpoints['metrics_business']()
+
+@app.route('/metrics/summary', methods=['GET'])
+def metrics_summary():
+    """指标摘要"""
+    return metrics_endpoints['metrics_summary']()
+
+@app.route('/metrics/comprehensive', methods=['GET'])
+def metrics_comprehensive():
+    """综合指标报告"""
+    return metrics_endpoints['metrics_comprehensive']()
 
 
 @app.route('/api/status', methods=['GET'])
@@ -869,7 +1145,7 @@ if __name__ == '__main__':
         if not os.path.basename(os.getcwd()) == 'backend':
             logger.warning("建议使用项目根目录的 start_server.py 启动脚本")
         
-        app.run(debug=True, host='127.0.0.1', port=5000, threaded=True)
+        app.run(debug=True, host='127.0.0.1', port=5000, threaded=True, use_reloader=False)
     except KeyboardInterrupt:
         logger.info("收到中断信号，正在关闭应用...")
     except Exception as e:

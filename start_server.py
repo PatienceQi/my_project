@@ -41,7 +41,7 @@ def start_api_server():
         print("✓ Backend模块导入成功")
         
         # 启动Flask服务
-        app.run(host='0.0.0.0', port=5000, debug=True)
+        app.run(host='0.0.0.0', port=5000, debug=True, use_reloader=False)
         
     except ImportError as e:
         print(f"✗ Backend模块导入失败: {e}")

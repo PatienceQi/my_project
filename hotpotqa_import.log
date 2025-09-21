@@ -1,0 +1,1909 @@
+2025-09-18 22:51:05,596 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-18 22:51:05,597 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-18 22:51:05,597 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-18 22:51:09,739 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-18 22:51:11,795 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-18 22:51:11,796 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 20
+2025-09-18 22:51:11,797 - __main__ - INFO - 开始导入HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-18 22:51:11,797 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-18 22:51:13,846 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-18 22:51:13,847 - __main__ - INFO - 加载数据集...
+2025-09-18 22:51:13,847 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-18 22:51:13,858 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-18 22:51:13,858 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-18 22:51:13,859 - __main__ - INFO - 处理批次 1/10 (20 个问题)
+2025-09-18 22:51:13,859 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,859 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,859 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,860 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,860 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,860 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,860 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,861 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,861 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,861 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,861 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,861 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,862 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,862 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,862 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,862 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,863 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,863 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,863 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,864 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,864 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/20 个问题有效
+2025-09-18 22:51:13,864 - __main__ - INFO - 批次 1 完成，用时: 0.01s
+2025-09-18 22:51:13,864 - __main__ - INFO - 进度: 10.0% | 成功率: 0.0%
+2025-09-18 22:51:13,864 - __main__ - INFO - 处理批次 2/10 (20 个问题)
+2025-09-18 22:51:13,865 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,865 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,865 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,865 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,866 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,866 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,866 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,866 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,866 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,867 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,867 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,867 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,867 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,868 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,868 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,868 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,868 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,868 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,869 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,869 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,869 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/20 个问题有效
+2025-09-18 22:51:13,869 - __main__ - INFO - 批次 2 完成，用时: 0.01s
+2025-09-18 22:51:13,870 - __main__ - INFO - 进度: 20.0% | 成功率: 0.0% | 预计剩余时间: 0.1分钟
+2025-09-18 22:51:13,870 - __main__ - INFO - 处理批次 3/10 (20 个问题)
+2025-09-18 22:51:13,870 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,870 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,870 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,871 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,871 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,871 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,871 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,872 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,872 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,872 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,872 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,873 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,873 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,873 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,873 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,873 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,874 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,874 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,874 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,874 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,875 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/20 个问题有效
+2025-09-18 22:51:13,875 - __main__ - INFO - 批次 3 完成，用时: 0.01s
+2025-09-18 22:51:13,875 - __main__ - INFO - 进度: 30.0% | 成功率: 0.0% | 预计剩余时间: 0.1分钟
+2025-09-18 22:51:13,875 - __main__ - INFO - 处理批次 4/10 (20 个问题)
+2025-09-18 22:51:13,875 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,875 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,876 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,876 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,876 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,876 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,877 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,877 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,877 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,877 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,878 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,878 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,878 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,878 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,879 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,879 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,879 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,879 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,879 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,880 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,880 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/20 个问题有效
+2025-09-18 22:51:13,880 - __main__ - INFO - 批次 4 完成，用时: 0.00s
+2025-09-18 22:51:13,880 - __main__ - INFO - 进度: 40.0% | 成功率: 0.0% | 预计剩余时间: 0.1分钟
+2025-09-18 22:51:13,880 - __main__ - INFO - 处理批次 5/10 (20 个问题)
+2025-09-18 22:51:13,880 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,881 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,881 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,881 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,881 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,882 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,882 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,882 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,883 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,883 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,883 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,883 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,883 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,884 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,884 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,884 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,884 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,885 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,885 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,885 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,885 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/20 个问题有效
+2025-09-18 22:51:13,885 - __main__ - INFO - 批次 5 完成，用时: 0.00s
+2025-09-18 22:51:13,885 - __main__ - INFO - 进度: 50.0% | 成功率: 0.0% | 预计剩余时间: 0.0分钟
+2025-09-18 22:51:13,886 - __main__ - INFO - 处理批次 6/10 (20 个问题)
+2025-09-18 22:51:13,886 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,886 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,886 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,887 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,887 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,887 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,887 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,888 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,888 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,888 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,888 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,889 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,889 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,889 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,889 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,890 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,890 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,890 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,890 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,891 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,891 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/20 个问题有效
+2025-09-18 22:51:13,891 - __main__ - INFO - 批次 6 完成，用时: 0.01s
+2025-09-18 22:51:13,891 - __main__ - INFO - 进度: 60.0% | 成功率: 0.0% | 预计剩余时间: 0.0分钟
+2025-09-18 22:51:13,891 - __main__ - INFO - 处理批次 7/10 (20 个问题)
+2025-09-18 22:51:13,892 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,892 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,892 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,892 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,892 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,893 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,893 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,893 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,893 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,894 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,894 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,894 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,894 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,894 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,895 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,895 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,895 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,895 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,896 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,896 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,896 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/20 个问题有效
+2025-09-18 22:51:13,896 - __main__ - INFO - 批次 7 完成，用时: 0.00s
+2025-09-18 22:51:13,896 - __main__ - INFO - 进度: 70.0% | 成功率: 0.0% | 预计剩余时间: 0.0分钟
+2025-09-18 22:51:13,897 - __main__ - INFO - 处理批次 8/10 (20 个问题)
+2025-09-18 22:51:13,897 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,897 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,897 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,897 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,898 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,898 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,898 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,898 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,899 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,899 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,899 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,899 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,900 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,900 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,900 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,900 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,901 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,901 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,901 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,901 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,901 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/20 个问题有效
+2025-09-18 22:51:13,902 - __main__ - INFO - 批次 8 完成，用时: 0.01s
+2025-09-18 22:51:13,902 - __main__ - INFO - 进度: 80.0% | 成功率: 0.0% | 预计剩余时间: 0.0分钟
+2025-09-18 22:51:13,902 - __main__ - INFO - 处理批次 9/10 (20 个问题)
+2025-09-18 22:51:13,902 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,902 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,903 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,903 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,903 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,903 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,904 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,904 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,904 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,904 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,904 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,905 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,905 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,905 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,905 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,905 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,906 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,906 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,906 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,906 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,906 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/20 个问题有效
+2025-09-18 22:51:13,907 - __main__ - INFO - 批次 9 完成，用时: 0.01s
+2025-09-18 22:51:13,907 - __main__ - INFO - 进度: 90.0% | 成功率: 0.0% | 预计剩余时间: 0.0分钟
+2025-09-18 22:51:13,907 - __main__ - INFO - 处理批次 10/10 (20 个问题)
+2025-09-18 22:51:13,907 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,907 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,908 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,908 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,908 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,908 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,909 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,909 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,909 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,909 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,910 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,910 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,910 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,910 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,910 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,911 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,911 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,911 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,911 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,911 - scripts.hotpotqa_processor.preprocessor - ERROR - 预处理问题数据失败: expected string or bytes-like object, got 'list'
+2025-09-18 22:51:13,912 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/20 个问题有效
+2025-09-18 22:51:13,912 - __main__ - INFO - 批次 10 完成，用时: 0.00s
+2025-09-18 22:51:13,912 - __main__ - INFO - 进度: 100.0% | 成功率: 0.0% | 预计剩余时间: 0.0分钟
+2025-09-18 22:51:13,912 - __main__ - INFO - 优化图结构...
+2025-09-18 22:51:15,957 - scripts.hotpotqa_processor.graph_builder - ERROR - 优化图结构失败: {code: Neo.ClientError.Statement.SyntaxError} {message: A pattern expression should only be used in order to test the existence of a pattern. It should therefore only be used in contexts that evaluate to a boolean, e.g. inside the function exists() or in a WHERE-clause. No other uses are allowed, instead they should be replaced by a pattern comprehension. (line 4, column 26 (offset: 101))
+"                    SIZE((e)<-[:HAS_ENTITY]-(:HotpotQuestion)) * 2 +"
+                          ^}
+2025-09-18 22:51:18,013 - __main__ - ERROR - 导入数据集失败: unsupported operand type(s) for -: 'NoneType' and 'float'
+2025-09-18 22:51:18,013 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-18 22:58:24,648 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-18 22:58:24,648 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-18 22:58:24,649 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-18 22:58:28,756 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-18 22:58:30,811 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-18 22:58:30,811 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 5
+2025-09-18 22:58:30,812 - __main__ - INFO - 开始导入HotpotQA数据集: test_hotpotqa_sample.json
+2025-09-18 22:58:30,812 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-18 22:58:32,858 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-18 22:58:32,858 - __main__ - INFO - 加载数据集...
+2025-09-18 22:58:32,858 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: test_hotpotqa_sample.json
+2025-09-18 22:58:32,859 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 2 个样本
+2025-09-18 22:58:32,859 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 2 个问题
+2025-09-18 22:58:32,860 - __main__ - INFO - 处理批次 1/1 (2 个问题)
+2025-09-18 22:58:32,860 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 2/2 个问题有效
+2025-09-18 23:10:01,945 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-18 23:10:01,945 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-18 23:10:01,946 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-18 23:10:06,077 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-18 23:10:08,132 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-18 23:10:08,132 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 20
+2025-09-18 23:10:08,132 - __main__ - INFO - 开始导入HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-18 23:10:08,133 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-18 23:10:10,188 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-18 23:10:10,189 - __main__ - INFO - 加载数据集...
+2025-09-18 23:10:10,189 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-18 23:10:10,198 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-18 23:10:10,199 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-18 23:10:10,199 - __main__ - INFO - 处理批次 1/10 (20 个问题)
+2025-09-18 23:10:10,206 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 20/20 个问题有效
+2025-09-18 23:14:48,144 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: HTTPConnectionPool(host='127.0.0.1', port=58194): Max retries exceeded with url: http://120.232.79.82:11434/api/generate (Caused by ProxyError('Unable to connect to proxy', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+2025-09-18 23:14:48,146 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): HTTPConnectionPool(host='127.0.0.1', port=58194): Max retries exceeded with url: http://120.232.79.82:11434/api/generate (Caused by ProxyError('Unable to connect to proxy', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+2025-09-18 23:14:50,177 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: HTTPConnectionPool(host='127.0.0.1', port=58194): Max retries exceeded with url: http://120.232.79.82:11434/api/generate (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000213880A1160>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。')))
+2025-09-18 23:14:50,177 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): HTTPConnectionPool(host='127.0.0.1', port=58194): Max retries exceeded with url: http://120.232.79.82:11434/api/generate (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000213880A1160>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。')))
+2025-09-18 23:16:14,010 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8b57f25542995d1e6f1371: 71 个实体, 2 个关系
+2025-09-18 23:16:16,050 - neo4j - ERROR - Failed to write data to connection ResolvedIPv4Address(('127.0.0.1', 7687)) (ResolvedIPv4Address(('127.0.0.1', 7687)))
+2025-09-18 23:16:16,050 - neo4j - ERROR - Failed to write data to connection IPv4Address(('localhost', 7687)) (ResolvedIPv4Address(('127.0.0.1', 7687)))
+2025-09-18 23:16:16,051 - neo4j - ERROR - Unable to retrieve routing information
+2025-09-18 23:16:16,051 - scripts.hotpotqa_processor.graph_builder - ERROR - 构建问题图谱失败 5a8b57f25542995d1e6f1371: Unable to retrieve routing information
+2025-09-18 23:16:16,051 - __main__ - ERROR - 处理问题 5a8b57f25542995d1e6f1371 失败: Unable to retrieve routing information
+2025-09-18 23:16:21,738 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-18 23:17:29,766 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-18 23:17:29,767 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-18 23:17:29,767 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-18 23:17:47,685 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-18 23:17:47,685 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-18 23:17:47,685 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-18 23:17:51,853 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-18 23:17:53,962 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-18 23:17:53,963 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 2
+2025-09-18 23:17:53,963 - __main__ - INFO - 开始导入HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-18 23:17:53,963 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-18 23:17:56,080 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-18 23:17:56,080 - __main__ - INFO - 加载数据集...
+2025-09-18 23:17:56,080 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-18 23:17:56,087 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-18 23:17:56,087 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-18 23:17:56,088 - __main__ - INFO - 限制处理数量为: 10
+2025-09-18 23:17:56,088 - __main__ - INFO - 处理批次 1/5 (2 个问题)
+2025-09-18 23:17:56,089 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 2/2 个问题有效
+2025-09-18 23:23:57,426 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8b57f25542995d1e6f1371: 78 个实体, 5 个关系
+2025-09-18 23:24:00,439 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8b57f25542995d1e6f1371: 78 个实体, 31 个段落, 2 个支持事实, 用时 3.01s
+2025-09-18 23:29:56,587 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8c7595554299585d9e36b6: 72 个实体, 4 个关系
+2025-09-18 23:29:59,377 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8c7595554299585d9e36b6: 72 个实体, 36 个段落, 3 个支持事实, 用时 2.79s
+2025-09-18 23:29:59,377 - __main__ - INFO - 批次 1 完成，用时: 723.29s, 成功: 2/2
+2025-09-18 23:29:59,378 - __main__ - INFO - 进度: 20.0% | 成功率: 100.0%
+2025-09-18 23:29:59,378 - __main__ - INFO - 处理批次 2/5 (2 个问题)
+2025-09-18 23:29:59,378 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 2/2 个问题有效
+2025-09-18 23:31:14,100 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-18 23:31:36,002 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-18 23:31:36,003 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-18 23:31:36,003 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-18 23:31:40,140 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-18 23:31:42,204 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-18 23:31:42,204 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 20
+2025-09-18 23:31:42,205 - __main__ - INFO - 开始导入HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-18 23:31:42,205 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-18 23:31:44,391 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-18 23:31:44,392 - __main__ - INFO - 加载数据集...
+2025-09-18 23:31:44,392 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-18 23:31:44,400 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-18 23:31:44,400 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-18 23:31:44,400 - __main__ - INFO - 处理批次 1/10 (20 个问题)
+2025-09-18 23:31:44,407 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 20/20 个问题有效
+2025-09-18 23:37:57,560 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8b57f25542995d1e6f1371: 79 个实体, 7 个关系
+2025-09-18 23:37:59,930 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8b57f25542995d1e6f1371: 79 个实体, 31 个段落, 2 个支持事实, 用时 2.37s
+2025-09-18 23:44:24,364 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8c7595554299585d9e36b6: 72 个实体, 13 个关系
+2025-09-18 23:44:26,798 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8c7595554299585d9e36b6: 72 个实体, 36 个段落, 3 个支持事实, 用时 2.43s
+2025-09-19 09:43:11,361 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 09:43:11,361 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 09:43:11,361 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 09:43:15,449 - neo4j - ERROR - Unable to retrieve routing information
+2025-09-19 09:43:15,449 - scripts.hotpotqa_processor.graph_builder - ERROR - Neo4j连接失败: Unable to retrieve routing information
+2025-09-19 09:47:55,594 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 09:47:55,595 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 09:47:55,595 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 09:47:59,718 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 09:48:01,946 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 09:48:01,946 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 20
+2025-09-19 09:48:01,946 - __main__ - INFO - 开始导入HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 09:48:01,946 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 09:48:04,678 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 09:48:04,678 - __main__ - INFO - 加载数据集...
+2025-09-19 09:48:04,678 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 09:48:04,688 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 09:48:04,689 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 09:48:04,689 - __main__ - INFO - 处理批次 1/10 (20 个问题)
+2025-09-19 09:48:04,693 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 20/20 个问题有效
+2025-09-19 09:58:37,888 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama关系提取失败: HTTPConnectionPool(host='127.0.0.1', port=58692): Read timed out. (read timeout=600)
+2025-09-19 09:58:37,888 - scripts.hotpotqa_processor.entity_extractor - WARNING - 提取关系失败: HTTPConnectionPool(host='127.0.0.1', port=58692): Read timed out. (read timeout=600)
+2025-09-19 09:58:37,889 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8b57f25542995d1e6f1371: 77 个实体, 0 个关系
+2025-09-19 09:58:40,817 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8b57f25542995d1e6f1371: 77 个实体, 31 个段落, 2 个支持事实, 用时 2.93s
+2025-09-19 09:59:59,100 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8c7595554299585d9e36b6: 73 个实体, 100 个关系
+2025-09-19 10:00:01,866 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8c7595554299585d9e36b6: 73 个实体, 36 个段落, 3 个支持事实, 用时 2.77s
+2025-09-19 10:01:01,083 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "Animorphs",
+            "target": "Katherine Applegate",
+            "relation": "WRITTEN_BY",
+            "confidence": 0.9,
+            "descrip
+2025-09-19 10:01:01,083 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a85ea095542994775f606a8: 61 个实体, 0 个关系
+2025-09-19 10:01:03,446 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a85ea095542994775f606a8: 61 个实体, 42 个段落, 5 个支持事实, 用时 2.36s
+2025-09-19 10:01:34,301 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5adbf0a255429947ff17385a: 39 个实体, 6 个关系
+2025-09-19 10:01:36,459 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5adbf0a255429947ff17385a: 39 个实体, 22 个段落, 2 个支持事实, 用时 2.16s
+2025-09-19 10:02:14,931 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 10:09:14,553 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:09:14,553 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:09:14,553 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:09:18,649 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 10:09:20,687 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 10:09:20,687 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 10:09:20,688 - __main__ - INFO - 开始导入HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 10:09:20,688 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 10:09:22,770 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 10:09:22,770 - __main__ - INFO - 加载数据集...
+2025-09-19 10:09:22,770 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 10:09:22,779 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 10:09:22,780 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 10:09:22,780 - __main__ - INFO - 限制处理数量为: 2
+2025-09-19 10:09:22,780 - __main__ - INFO - 处理批次 1/2 (1 个问题)
+2025-09-19 10:09:22,781 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 10:10:05,770 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8b57f25542995d1e6f1371: 76 个实体, 2 个关系
+2025-09-19 10:10:08,184 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8b57f25542995d1e6f1371: 76 个实体, 31 个段落, 2 个支持事实, 用时 2.41s
+2025-09-19 10:10:08,184 - __main__ - INFO - 批次 1 完成，用时: 45.40s, 成功: 1/1
+2025-09-19 10:10:08,184 - __main__ - INFO - 进度: 50.0% | 成功率: 100.0%
+2025-09-19 10:10:08,184 - __main__ - INFO - 处理批次 2/2 (1 个问题)
+2025-09-19 10:10:08,185 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 10:29:44,399 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:29:44,400 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:29:44,400 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:30:12,370 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:30:12,371 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:30:12,371 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:30:16,497 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 10:30:18,565 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 10:30:18,565 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 10:30:18,565 - __main__ - INFO - 开始导入HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 10:30:18,566 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 10:30:20,684 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 10:30:20,684 - __main__ - INFO - 加载数据集...
+2025-09-19 10:30:20,684 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 10:30:20,691 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 10:30:20,692 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 10:30:20,692 - __main__ - INFO - 限制处理数量为: 2
+2025-09-19 10:30:20,692 - __main__ - INFO - 处理批次 1/2 (1 个问题)
+2025-09-19 10:30:20,693 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 10:30:54,529 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8b57f25542995d1e6f1371: 73 个实体, 6 个关系
+2025-09-19 10:30:56,850 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8b57f25542995d1e6f1371: 73 个实体, 31 个段落, 2 个支持事实, 用时 2.32s
+2025-09-19 10:30:56,850 - __main__ - INFO - 批次 1 完成，用时: 36.16s, 成功: 1/1
+2025-09-19 10:30:56,850 - __main__ - INFO - 进度: 50.0% | 成功率: 100.0%
+2025-09-19 10:30:56,850 - __main__ - INFO - 处理批次 2/2 (1 个问题)
+2025-09-19 10:30:56,851 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 10:31:27,358 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8c7595554299585d9e36b6: 67 个实体, 4 个关系
+2025-09-19 10:31:29,736 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8c7595554299585d9e36b6: 67 个实体, 36 个段落, 3 个支持事实, 用时 2.38s
+2025-09-19 10:31:29,736 - __main__ - INFO - 批次 2 完成，用时: 32.89s, 成功: 1/1
+2025-09-19 10:31:29,736 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0% | 预计剩余时间: 0.0分钟
+2025-09-19 10:31:29,736 - __main__ - INFO - 优化图结构...
+2025-09-19 10:31:31,957 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 138}
+2025-09-19 10:31:34,088 - __main__ - ERROR - 导入数据集失败: unsupported operand type(s) for -: 'NoneType' and 'float'
+2025-09-19 10:31:34,089 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 10:36:02,962 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:36:02,962 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:36:02,962 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:36:07,107 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 10:36:09,172 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 10:36:09,172 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 10:36:09,172 - __main__ - INFO - 开始导入HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 10:36:09,173 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 10:36:11,262 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 10:36:11,262 - __main__ - INFO - 加载数据集...
+2025-09-19 10:36:11,263 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 10:36:11,270 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 10:36:11,271 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 10:36:11,271 - __main__ - INFO - 限制处理数量为: 1
+2025-09-19 10:36:11,271 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-19 10:36:11,272 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 10:36:41,622 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8b57f25542995d1e6f1371: 81 个实体, 2 个关系
+2025-09-19 10:36:44,111 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8b57f25542995d1e6f1371: 81 个实体, 31 个段落, 2 个支持事实, 用时 2.49s
+2025-09-19 10:36:44,111 - __main__ - INFO - 批次 1 完成，用时: 32.84s, 成功: 1/1
+2025-09-19 10:36:44,111 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 10:36:44,112 - __main__ - INFO - 优化图结构...
+2025-09-19 10:36:46,187 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 81}
+2025-09-19 10:36:48,251 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 39.08s
+2025-09-19 10:36:48,251 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-19 10:36:48,252 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 10:37:18,030 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:37:18,031 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:37:18,031 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:37:22,170 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 10:37:24,226 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 10:37:24,227 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 2
+2025-09-19 10:37:24,227 - __main__ - INFO - 开始导入HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 10:37:24,227 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 10:37:26,305 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 10:37:26,305 - __main__ - INFO - 加载数据集...
+2025-09-19 10:37:26,305 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 10:37:26,312 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 10:37:26,313 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 10:37:26,313 - __main__ - INFO - 限制处理数量为: 10
+2025-09-19 10:37:26,313 - __main__ - INFO - 处理批次 1/5 (2 个问题)
+2025-09-19 10:37:26,314 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 2/2 个问题有效
+2025-09-19 10:54:15,233 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:54:15,233 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:54:15,233 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:54:19,359 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 10:54:21,423 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 10:54:21,423 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 50
+2025-09-19 10:54:21,423 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/test_hotpotqa_small.json
+2025-09-19 10:54:21,424 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 5 个样本
+2025-09-19 10:54:21,424 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 5 个问题
+2025-09-19 10:54:21,424 - __main__ - INFO - 开始导入HotpotQA数据集 - 第2-4条
+2025-09-19 10:54:21,425 - __main__ - INFO - 原始数据集: 5 个样本
+2025-09-19 10:54:21,425 - __main__ - INFO - 过滤后数据集: 3 个样本
+2025-09-19 10:54:21,425 - __main__ - INFO - 处理批次 1/1 (3 个问题)
+2025-09-19 10:54:21,425 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 3/3 个问题有效
+2025-09-19 10:54:24,792 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 q_0: 3 个实体, 2 个关系
+2025-09-19 10:54:26,970 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 q_0: 3 个实体, 2 个段落, 1 个支持事实, 用时 2.18s
+2025-09-19 10:54:30,437 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 q_1: 3 个实体, 1 个关系
+2025-09-19 10:54:32,539 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 q_1: 3 个实体, 2 个段落, 1 个支持事实, 用时 2.10s
+2025-09-19 10:54:36,787 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 q_2: 3 个实体, 2 个关系
+2025-09-19 10:54:39,010 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 q_2: 3 个实体, 2 个段落, 1 个支持事实, 用时 2.22s
+2025-09-19 10:54:39,011 - __main__ - INFO - 批次 1 完成，用时: 17.59s, 成功: 3/3
+2025-09-19 10:54:39,011 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 10:54:39,011 - __main__ - INFO - 优化图结构...
+2025-09-19 10:54:41,129 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 9}
+2025-09-19 10:54:43,238 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 21.81s
+2025-09-19 10:54:43,238 - __main__ - INFO - 成功导入: 3/3 个问题
+2025-09-19 10:54:43,238 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 10:54:59,818 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:54:59,818 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:54:59,819 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:55:03,956 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 10:55:06,008 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 10:55:06,008 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 50
+2025-09-19 10:55:06,009 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/test_hotpotqa_small.json
+2025-09-19 10:55:06,010 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 5 个样本
+2025-09-19 10:55:06,010 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 5 个问题
+2025-09-19 10:55:06,011 - __main__ - INFO - 开始导入HotpotQA数据集 - 第4-5条
+2025-09-19 10:55:06,011 - __main__ - INFO - 原始数据集: 5 个样本
+2025-09-19 10:55:06,011 - __main__ - INFO - 过滤后数据集: 2 个样本
+2025-09-19 10:55:06,011 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 10:55:08,114 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 10:55:08,114 - __main__ - INFO - 处理批次 1/1 (2 个问题)
+2025-09-19 10:55:08,114 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 2/2 个问题有效
+2025-09-19 10:55:13,138 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:55:13,138 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (question): 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:55:18,163 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:55:18,163 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (answer): 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:55:23,188 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:55:23,188 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:55:28,208 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:55:28,208 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:55:28,208 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 q_0: 0 个实体, 0 个关系
+2025-09-19 10:55:30,303 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 q_0: 0 个实体, 2 个段落, 1 个支持事实, 用时 2.09s
+2025-09-19 10:55:35,325 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:55:35,326 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (question): 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:55:48,235 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:55:48,235 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:55:48,236 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:55:52,349 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 10:55:54,416 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 10:55:54,416 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 50
+2025-09-19 10:55:54,416 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/test_hotpotqa_small.json
+2025-09-19 10:55:54,417 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 5 个样本
+2025-09-19 10:55:54,417 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 5 个问题
+2025-09-19 10:55:54,441 - neo4j - ERROR - Failed to write data to connection IPv4Address(('localhost', 7687)) (ResolvedIPv4Address(('127.0.0.1', 7687)))
+2025-09-19 10:56:12,326 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:56:12,327 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:56:12,327 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:56:16,488 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 10:56:18,540 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 10:56:18,540 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 50
+2025-09-19 10:56:18,541 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/test_hotpotqa_small.json
+2025-09-19 10:56:18,541 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 5 个样本
+2025-09-19 10:56:18,541 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 5 个问题
+2025-09-19 10:56:18,565 - neo4j - ERROR - Failed to write data to connection IPv4Address(('localhost', 7687)) (ResolvedIPv4Address(('127.0.0.1', 7687)))
+2025-09-19 10:57:09,055 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:57:09,056 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:57:09,056 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:57:13,198 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 10:57:15,266 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 10:57:15,267 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 10:57:15,267 - __main__ - INFO - 开始导入HotpotQA数据集: database/hotpotqa_dev_fullwiki_v1.json
+2025-09-19 10:57:15,267 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 10:57:17,322 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 10:57:17,322 - __main__ - INFO - 加载数据集...
+2025-09-19 10:57:17,322 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpotqa_dev_fullwiki_v1.json
+2025-09-19 10:57:18,062 - scripts.hotpotqa_processor.preprocessor - ERROR - 从Hugging Face加载数据集失败: Couldn't find a dataset script at F:\Project\政策法规RAG问答系统\database\hotpotqa_dev_fullwiki_v1.json\hotpotqa_dev_fullwiki_v1.json.py or any data file in the same directory. Couldn't find 'database/hotpotqa_dev_fullwiki_v1.json' on the Hugging Face Hub either: FileNotFoundError: Dataset 'database/hotpotqa_dev_fullwiki_v1.json' doesn't exist on the Hub. If the repo is private or gated, make sure to log in with `huggingface-cli login`.
+2025-09-19 10:57:18,062 - __main__ - ERROR - 导入数据集失败: Couldn't find a dataset script at F:\Project\政策法规RAG问答系统\database\hotpotqa_dev_fullwiki_v1.json\hotpotqa_dev_fullwiki_v1.json.py or any data file in the same directory. Couldn't find 'database/hotpotqa_dev_fullwiki_v1.json' on the Hugging Face Hub either: FileNotFoundError: Dataset 'database/hotpotqa_dev_fullwiki_v1.json' doesn't exist on the Hub. If the repo is private or gated, make sure to log in with `huggingface-cli login`.
+2025-09-19 10:57:18,063 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 10:58:58,122 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:58:58,123 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:58:58,123 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:59:02,229 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 10:59:04,280 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 10:59:04,280 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 10:59:04,281 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_test_fullwiki_v1.json
+2025-09-19 10:59:04,288 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 10:59:04,288 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 10:59:04,288 - __main__ - INFO - 开始导入HotpotQA数据集 - 第2-3条
+2025-09-19 10:59:04,289 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 10:59:04,289 - __main__ - INFO - 过滤后数据集: 2 个样本
+2025-09-19 10:59:04,289 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 10:59:06,354 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 10:59:06,354 - __main__ - INFO - 处理批次 1/2 (1 个问题)
+2025-09-19 10:59:06,354 - scripts.hotpotqa_processor.preprocessor - WARNING - 问题数据缺少必需字段: answer
+2025-09-19 10:59:06,355 - scripts.hotpotqa_processor.preprocessor - WARNING - 问题数据验证失败: 5a7befac5542996dd594b857
+2025-09-19 10:59:06,355 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/1 个问题有效
+2025-09-19 10:59:06,355 - __main__ - INFO - 批次 1 完成，用时: 0.00s, 成功: 0/0
+2025-09-19 10:59:06,356 - __main__ - INFO - 进度: 50.0% | 成功率: 0.0%
+2025-09-19 10:59:06,356 - __main__ - INFO - 处理批次 2/2 (1 个问题)
+2025-09-19 10:59:06,356 - scripts.hotpotqa_processor.preprocessor - WARNING - 问题数据缺少必需字段: answer
+2025-09-19 10:59:06,356 - scripts.hotpotqa_processor.preprocessor - WARNING - 问题数据验证失败: 5ab80e565542991d32223821
+2025-09-19 10:59:06,356 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 0/1 个问题有效
+2025-09-19 10:59:06,357 - __main__ - INFO - 批次 2 完成，用时: 0.00s, 成功: 0/0
+2025-09-19 10:59:06,357 - __main__ - INFO - 进度: 100.0% | 成功率: 0.0% | 预计剩余时间: 0.0分钟
+2025-09-19 10:59:06,357 - __main__ - INFO - 优化图结构...
+2025-09-19 10:59:08,450 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 0}
+2025-09-19 10:59:10,522 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 6.23s
+2025-09-19 10:59:10,523 - __main__ - INFO - 成功导入: 0/0 个问题
+2025-09-19 10:59:10,523 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 10:59:25,118 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 10:59:25,118 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 10:59:25,118 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 10:59:29,236 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 10:59:31,276 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 10:59:31,276 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 10:59:31,277 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 10:59:31,284 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 10:59:31,284 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 10:59:31,285 - __main__ - INFO - 开始导入HotpotQA数据集 - 第2-3条
+2025-09-19 10:59:31,285 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 10:59:31,285 - __main__ - INFO - 过滤后数据集: 2 个样本
+2025-09-19 10:59:31,285 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 10:59:33,354 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 10:59:33,354 - __main__ - INFO - 处理批次 1/2 (1 个问题)
+2025-09-19 10:59:33,355 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 10:59:38,387 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:59:38,387 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (question): 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:59:43,418 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:59:43,418 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (answer): 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:59:48,434 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:59:48,435 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:59:53,461 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:59:53,461 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:59:58,491 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 10:59:58,491 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 502 Server Error: Bad Gateway for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:00:03,518 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 11:25:18,943 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 11:25:18,944 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 11:25:18,944 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 11:25:23,072 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 11:25:25,129 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 11:25:25,130 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 11:25:25,130 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 11:25:25,140 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 11:25:25,140 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 11:25:25,141 - __main__ - INFO - 开始导入HotpotQA数据集 - 第2-3条
+2025-09-19 11:25:25,141 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 11:25:25,141 - __main__ - INFO - 过滤后数据集: 2 个样本
+2025-09-19 11:25:25,141 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 11:25:27,189 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 11:25:27,189 - __main__ - INFO - 处理批次 1/2 (1 个问题)
+2025-09-19 11:25:27,189 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:25:27,233 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:27,233 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (question): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:27,255 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:27,255 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (answer): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:27,517 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:27,517 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:27,557 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:27,557 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:27,900 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:27,900 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:27,921 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:27,921 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:28,254 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:28,254 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,205 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,205 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,245 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,245 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,265 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,266 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,608 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,608 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,646 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,646 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,678 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,678 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,709 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,709 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,989 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:29,989 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,032 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,032 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,053 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,053 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,089 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,089 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,125 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,125 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,169 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,169 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,203 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,203 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,222 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,222 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,264 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,264 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,284 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,284 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,327 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,327 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,357 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,357 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,378 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,378 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,419 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,419 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,439 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,439 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,479 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,479 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,510 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,510 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,542 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,542 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,889 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,889 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,929 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,929 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,948 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,948 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,968 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,968 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,987 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:30,987 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:31,021 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:31,021 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): 404 Client Error: Not Found for url: http://120.232.79.82:11434/api/generate
+2025-09-19 11:25:31,021 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8c7595554299585d9e36b6: 0 个实体, 0 个关系
+2025-09-19 11:25:33,116 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8c7595554299585d9e36b6: 0 个实体, 36 个段落, 3 个支持事实, 用时 2.09s
+2025-09-19 11:25:33,116 - __main__ - INFO - 批次 1 完成，用时: 5.93s, 成功: 1/1
+2025-09-19 11:25:33,117 - __main__ - INFO - 进度: 50.0% | 成功率: 100.0%
+2025-09-19 11:25:33,117 - __main__ - INFO - 处理批次 2/2 (1 个问题)
+2025-09-19 11:25:33,117 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:25:33,465 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 11:38:17,018 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 11:38:17,018 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 11:38:17,018 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 11:38:21,134 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 11:38:23,187 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 11:38:23,187 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 11:38:23,187 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 11:38:23,194 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 11:38:23,195 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 11:38:23,196 - __main__ - INFO - 开始导入HotpotQA数据集 - 第2-3条
+2025-09-19 11:38:23,196 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 11:38:23,196 - __main__ - INFO - 过滤后数据集: 2 个样本
+2025-09-19 11:38:23,196 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 11:38:25,296 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 11:38:25,296 - __main__ - INFO - 处理批次 1/2 (1 个问题)
+2025-09-19 11:38:25,296 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:40:14,768 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8c7595554299585d9e36b6: 73 个实体, 56 个关系
+2025-09-19 11:40:17,149 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8c7595554299585d9e36b6: 73 个实体, 36 个段落, 3 个支持事实, 用时 2.38s
+2025-09-19 11:40:17,150 - __main__ - INFO - 批次 1 完成，用时: 111.85s, 成功: 1/1
+2025-09-19 11:40:17,150 - __main__ - INFO - 进度: 50.0% | 成功率: 100.0%
+2025-09-19 11:40:17,150 - __main__ - INFO - 处理批次 2/2 (1 个问题)
+2025-09-19 11:40:17,150 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:40:58,137 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a85ea095542994775f606a8: 60 个实体, 6 个关系
+2025-09-19 11:41:00,654 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a85ea095542994775f606a8: 60 个实体, 42 个段落, 5 个支持事实, 用时 2.52s
+2025-09-19 11:41:00,654 - __main__ - INFO - 批次 2 完成，用时: 43.50s, 成功: 1/1
+2025-09-19 11:41:00,654 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0% | 预计剩余时间: 0.0分钟
+2025-09-19 11:41:00,654 - __main__ - INFO - 优化图结构...
+2025-09-19 11:41:02,775 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 130}
+2025-09-19 11:41:04,868 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 161.67s
+2025-09-19 11:41:04,868 - __main__ - INFO - 成功导入: 2/2 个问题
+2025-09-19 11:41:04,869 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 11:41:55,357 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 11:41:55,357 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 11:41:55,357 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 11:41:59,440 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 11:42:01,480 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 11:42:01,480 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 11:42:01,481 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 11:42:01,489 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 11:42:01,490 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 11:42:01,490 - __main__ - INFO - 开始导入HotpotQA数据集 - 第1-10条
+2025-09-19 11:42:01,490 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 11:42:01,491 - __main__ - INFO - 过滤后数据集: 10 个样本
+2025-09-19 11:42:01,491 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 11:42:03,579 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 11:42:03,579 - __main__ - INFO - 处理批次 1/10 (1 个问题)
+2025-09-19 11:42:03,579 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:42:38,910 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8b57f25542995d1e6f1371: 73 个实体, 6 个关系
+2025-09-19 11:42:41,274 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8b57f25542995d1e6f1371: 73 个实体, 31 个段落, 2 个支持事实, 用时 2.36s
+2025-09-19 11:42:41,275 - __main__ - INFO - 批次 1 完成，用时: 37.70s, 成功: 1/1
+2025-09-19 11:42:41,275 - __main__ - INFO - 进度: 10.0% | 成功率: 100.0%
+2025-09-19 11:42:41,275 - __main__ - INFO - 处理批次 2/10 (1 个问题)
+2025-09-19 11:42:41,275 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:43:26,819 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8c7595554299585d9e36b6: 74 个实体, 39 个关系
+2025-09-19 11:43:29,273 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8c7595554299585d9e36b6: 74 个实体, 36 个段落, 3 个支持事实, 用时 2.45s
+2025-09-19 11:43:29,274 - __main__ - INFO - 批次 2 完成，用时: 48.00s, 成功: 1/1
+2025-09-19 11:43:29,274 - __main__ - INFO - 进度: 20.0% | 成功率: 100.0% | 预计剩余时间: 5.9分钟
+2025-09-19 11:43:29,274 - __main__ - INFO - 处理批次 3/10 (1 个问题)
+2025-09-19 11:43:29,275 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:44:08,702 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a85ea095542994775f606a8: 62 个实体, 5 个关系
+2025-09-19 11:44:10,996 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a85ea095542994775f606a8: 62 个实体, 42 个段落, 5 个支持事实, 用时 2.29s
+2025-09-19 11:44:10,996 - __main__ - INFO - 批次 3 完成，用时: 41.72s, 成功: 1/1
+2025-09-19 11:44:10,996 - __main__ - INFO - 进度: 30.0% | 成功率: 100.0% | 预计剩余时间: 5.0分钟
+2025-09-19 11:44:10,996 - __main__ - INFO - 处理批次 4/10 (1 个问题)
+2025-09-19 11:44:10,997 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:44:36,327 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5adbf0a255429947ff17385a: 39 个实体, 7 个关系
+2025-09-19 11:44:38,469 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5adbf0a255429947ff17385a: 39 个实体, 22 个段落, 2 个支持事实, 用时 2.14s
+2025-09-19 11:44:38,469 - __main__ - INFO - 批次 4 完成，用时: 27.47s, 成功: 1/1
+2025-09-19 11:44:38,469 - __main__ - INFO - 进度: 40.0% | 成功率: 100.0% | 预计剩余时间: 3.9分钟
+2025-09-19 11:44:38,469 - __main__ - INFO - 处理批次 5/10 (1 个问题)
+2025-09-19 11:44:38,470 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:45:20,187 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8e3ea95542995a26add48d: 83 个实体, 3 个关系
+2025-09-19 11:45:22,569 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8e3ea95542995a26add48d: 83 个实体, 39 个段落, 2 个支持事实, 用时 2.38s
+2025-09-19 11:45:22,569 - __main__ - INFO - 批次 5 完成，用时: 44.10s, 成功: 1/1
+2025-09-19 11:45:22,569 - __main__ - INFO - 进度: 50.0% | 成功率: 100.0% | 预计剩余时间: 3.4分钟
+2025-09-19 11:45:22,569 - __main__ - INFO - 处理批次 6/10 (1 个问题)
+2025-09-19 11:45:22,569 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:46:04,593 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5abd94525542992ac4f382d2: 75 个实体, 3 个关系
+2025-09-19 11:46:06,985 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5abd94525542992ac4f382d2: 75 个实体, 39 个段落, 2 个支持事实, 用时 2.39s
+2025-09-19 11:46:06,985 - __main__ - INFO - 批次 6 完成，用时: 44.42s, 成功: 1/1
+2025-09-19 11:46:06,986 - __main__ - INFO - 进度: 60.0% | 成功率: 100.0% | 预计剩余时间: 2.7分钟
+2025-09-19 11:46:06,986 - __main__ - INFO - 处理批次 7/10 (1 个问题)
+2025-09-19 11:46:06,986 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:46:57,969 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a85b2d95542997b5ce40028: 105 个实体, 5 个关系
+2025-09-19 11:47:00,336 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a85b2d95542997b5ce40028: 105 个实体, 48 个段落, 2 个支持事实, 用时 2.37s
+2025-09-19 11:47:00,336 - __main__ - INFO - 批次 7 完成，用时: 53.35s, 成功: 1/1
+2025-09-19 11:47:00,337 - __main__ - INFO - 进度: 70.0% | 成功率: 100.0% | 预计剩余时间: 2.1分钟
+2025-09-19 11:47:00,337 - __main__ - INFO - 处理批次 8/10 (1 个问题)
+2025-09-19 11:47:00,337 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:48:16,700 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a87ab905542996e4f3088c1: 118 个实体, 3 个关系
+2025-09-19 11:48:19,069 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a87ab905542996e4f3088c1: 118 个实体, 68 个段落, 2 个支持事实, 用时 2.37s
+2025-09-19 11:48:19,069 - __main__ - INFO - 批次 8 完成，用时: 78.73s, 成功: 1/1
+2025-09-19 11:48:19,069 - __main__ - INFO - 进度: 80.0% | 成功率: 100.0% | 预计剩余时间: 1.6分钟
+2025-09-19 11:48:19,070 - __main__ - INFO - 处理批次 9/10 (1 个问题)
+2025-09-19 11:48:19,070 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:49:06,318 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7bbb64554299042af8f7cc: 97 个实体, 8 个关系
+2025-09-19 11:49:08,725 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7bbb64554299042af8f7cc: 97 个实体, 37 个段落, 3 个支持事实, 用时 2.41s
+2025-09-19 11:49:08,725 - __main__ - INFO - 批次 9 完成，用时: 49.66s, 成功: 1/1
+2025-09-19 11:49:08,725 - __main__ - INFO - 进度: 90.0% | 成功率: 100.0% | 预计剩余时间: 0.8分钟
+2025-09-19 11:49:08,726 - __main__ - INFO - 处理批次 10/10 (1 个问题)
+2025-09-19 11:49:08,726 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:49:58,095 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8db19d5542994ba4e3dd00: 83 个实体, 8 个关系
+2025-09-19 11:50:00,376 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8db19d5542994ba4e3dd00: 83 个实体, 44 个段落, 2 个支持事实, 用时 2.28s
+2025-09-19 11:50:00,376 - __main__ - INFO - 批次 10 完成，用时: 51.65s, 成功: 1/1
+2025-09-19 11:50:00,376 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0% | 预计剩余时间: 0.0分钟
+2025-09-19 11:50:00,376 - __main__ - INFO - 优化图结构...
+2025-09-19 11:50:02,517 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 763}
+2025-09-19 11:50:04,594 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 483.10s
+2025-09-19 11:50:04,594 - __main__ - INFO - 成功导入: 10/10 个问题
+2025-09-19 11:50:04,595 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 11:50:50,137 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 11:50:50,138 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 11:50:50,138 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 11:51:22,261 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 11:51:22,263 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 11:51:22,263 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 11:51:26,387 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 11:51:28,421 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 11:51:28,421 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 11:51:28,422 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 11:51:28,430 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 11:51:28,431 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 11:51:28,432 - __main__ - INFO - 开始导入HotpotQA数据集 - 第11-100条
+2025-09-19 11:51:28,432 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 11:51:28,432 - __main__ - INFO - 过滤后数据集: 90 个样本
+2025-09-19 11:51:28,432 - __main__ - INFO - 处理批次 1/90 (1 个问题)
+2025-09-19 11:51:28,434 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:52:05,110 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: HTTPConnectionPool(host='127.0.0.1', port=58692): Max retries exceeded with url: http://120.232.79.82:11434/api/generate (Caused by ProxyError('Unable to connect to proxy', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+2025-09-19 11:52:05,111 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): HTTPConnectionPool(host='127.0.0.1', port=58692): Max retries exceeded with url: http://120.232.79.82:11434/api/generate (Caused by ProxyError('Unable to connect to proxy', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+2025-09-19 11:52:07,147 - scripts.hotpotqa_processor.entity_extractor - ERROR - 调用Ollama实体提取失败: HTTPConnectionPool(host='127.0.0.1', port=58692): Max retries exceeded with url: http://120.232.79.82:11434/api/generate (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000026BBA350920>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。')))
+2025-09-19 11:52:07,147 - scripts.hotpotqa_processor.entity_extractor - WARNING - 从文本提取实体失败 (context): HTTPConnectionPool(host='127.0.0.1', port=58692): Max retries exceeded with url: http://120.232.79.82:11434/api/generate (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000026BBA350920>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。')))
+2025-09-19 11:52:23,748 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7166395542994082a3e814: 79 个实体, 9 个关系
+2025-09-19 11:52:26,023 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7166395542994082a3e814: 79 个实体, 47 个段落, 3 个支持事实, 用时 2.28s
+2025-09-19 11:52:26,024 - __main__ - INFO - 批次 1 完成，用时: 57.59s, 成功: 1/1
+2025-09-19 11:52:26,024 - __main__ - INFO - 进度: 1.1% | 成功率: 100.0%
+2025-09-19 11:52:26,024 - __main__ - INFO - 处理批次 2/90 (1 个问题)
+2025-09-19 11:52:26,025 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:53:09,033 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a877e5d5542993e715abf7d: 88 个实体, 9 个关系
+2025-09-19 11:53:11,320 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a877e5d5542993e715abf7d: 88 个实体, 33 个段落, 3 个支持事实, 用时 2.29s
+2025-09-19 11:53:11,320 - __main__ - INFO - 批次 2 完成，用时: 45.30s, 成功: 1/1
+2025-09-19 11:53:11,320 - __main__ - INFO - 进度: 2.2% | 成功率: 100.0% | 预计剩余时间: 75.5分钟
+2025-09-19 11:53:11,320 - __main__ - INFO - 处理批次 3/90 (1 个问题)
+2025-09-19 11:53:11,322 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:54:01,504 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "Guns N' Roses",
+            "target": "Arnold Schwarzenegger",
+            "relation": "WORKS_FOR",
+            "confidence": 0.9,
+            "de
+2025-09-19 11:54:01,505 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab3b0bf5542992ade7c6e39: 82 个实体, 0 个关系
+2025-09-19 11:54:03,733 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab3b0bf5542992ade7c6e39: 82 个实体, 38 个段落, 3 个支持事实, 用时 2.23s
+2025-09-19 11:54:03,733 - __main__ - INFO - 批次 3 完成，用时: 52.41s, 成功: 1/1
+2025-09-19 11:54:03,733 - __main__ - INFO - 进度: 3.3% | 成功率: 100.0% | 预计剩余时间: 75.1分钟
+2025-09-19 11:54:03,733 - __main__ - INFO - 处理批次 4/90 (1 个问题)
+2025-09-19 11:54:03,736 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:55:07,022 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab56e32554299637185c594: 102 个实体, 2 个关系
+2025-09-19 11:55:09,412 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab56e32554299637185c594: 102 个实体, 59 个段落, 2 个支持事实, 用时 2.39s
+2025-09-19 11:55:09,412 - __main__ - INFO - 批次 4 完成，用时: 65.68s, 成功: 1/1
+2025-09-19 11:55:09,413 - __main__ - INFO - 进度: 4.4% | 成功率: 100.0% | 预计剩余时间: 79.2分钟
+2025-09-19 11:55:09,413 - __main__ - INFO - 处理批次 5/90 (1 个问题)
+2025-09-19 11:55:09,414 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:55:40,602 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab6d09255429954757d337d: 55 个实体, 8 个关系
+2025-09-19 11:55:42,835 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab6d09255429954757d337d: 55 个实体, 24 个段落, 3 个支持事实, 用时 2.23s
+2025-09-19 11:55:42,835 - __main__ - INFO - 批次 5 完成，用时: 33.42s, 成功: 1/1
+2025-09-19 11:55:42,835 - __main__ - INFO - 进度: 5.6% | 成功率: 100.0% | 预计剩余时间: 72.1分钟
+2025-09-19 11:55:42,836 - __main__ - INFO - 处理批次 6/90 (1 个问题)
+2025-09-19 11:55:42,837 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:56:27,656 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a75e05c55429976ec32bc5f: 67 个实体, 5 个关系
+2025-09-19 11:56:29,873 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a75e05c55429976ec32bc5f: 67 个实体, 44 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 11:56:29,873 - __main__ - INFO - 批次 6 完成，用时: 47.04s, 成功: 1/1
+2025-09-19 11:56:29,874 - __main__ - INFO - 进度: 6.7% | 成功率: 100.0% | 预计剩余时间: 70.3分钟
+2025-09-19 11:56:29,874 - __main__ - INFO - 处理批次 7/90 (1 个问题)
+2025-09-19 11:56:29,875 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:57:24,720 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab3e45655429976abd1bcd4: 48 个实体, 33 个关系
+2025-09-19 11:57:26,906 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab3e45655429976abd1bcd4: 48 个实体, 39 个段落, 3 个支持事实, 用时 2.19s
+2025-09-19 11:57:26,906 - __main__ - INFO - 批次 7 完成，用时: 57.03s, 成功: 1/1
+2025-09-19 11:57:26,907 - __main__ - INFO - 进度: 7.8% | 成功率: 100.0% | 预计剩余时间: 70.8分钟
+2025-09-19 11:57:26,907 - __main__ - INFO - 处理批次 8/90 (1 个问题)
+2025-09-19 11:57:26,908 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:58:08,712 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab29c24554299449642c932: 85 个实体, 6 个关系
+2025-09-19 11:58:10,968 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab29c24554299449642c932: 85 个实体, 30 个段落, 2 个支持事实, 用时 2.26s
+2025-09-19 11:58:10,968 - __main__ - INFO - 批次 8 完成，用时: 44.06s, 成功: 1/1
+2025-09-19 11:58:10,969 - __main__ - INFO - 进度: 8.9% | 成功率: 100.0% | 预计剩余时间: 68.8分钟
+2025-09-19 11:58:10,969 - __main__ - INFO - 处理批次 9/90 (1 个问题)
+2025-09-19 11:58:10,970 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:58:57,198 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "Roger O. Egeberg",
+            "target": "Clinton Administration",
+            "relation": "WORKS_FOR",
+            "confidence": 0.9,
+           
+2025-09-19 11:58:57,198 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae0d4c9554299603e418468: 87 个实体, 0 个关系
+2025-09-19 11:58:59,474 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae0d4c9554299603e418468: 87 个实体, 48 个段落, 2 个支持事实, 用时 2.28s
+2025-09-19 11:58:59,474 - __main__ - INFO - 批次 9 完成，用时: 48.50s, 成功: 1/1
+2025-09-19 11:58:59,474 - __main__ - INFO - 进度: 10.0% | 成功率: 100.0% | 预计剩余时间: 67.7分钟
+2025-09-19 11:58:59,475 - __main__ - INFO - 处理批次 10/90 (1 个问题)
+2025-09-19 11:58:59,476 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:59:30,461 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8133725542995ce29dcbdb: 49 个实体, 7 个关系
+2025-09-19 11:59:32,670 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8133725542995ce29dcbdb: 49 个实体, 27 个段落, 2 个支持事实, 用时 2.21s
+2025-09-19 11:59:32,670 - __main__ - INFO - 批次 10 完成，用时: 33.20s, 成功: 1/1
+2025-09-19 11:59:32,670 - __main__ - INFO - 进度: 11.1% | 成功率: 100.0% | 预计剩余时间: 64.6分钟
+2025-09-19 11:59:32,670 - __main__ - INFO - 处理批次 11/90 (1 个问题)
+2025-09-19 11:59:32,671 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 11:59:41,152 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 12:01:33,468 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 12:01:33,468 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 12:01:33,468 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 12:01:37,580 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 12:01:39,615 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 12:01:39,616 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 12:01:39,616 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 12:01:39,624 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 12:01:39,624 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 12:01:39,624 - __main__ - INFO - 开始导入HotpotQA数据集 - 第1-100条
+2025-09-19 12:01:39,625 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 12:01:39,625 - __main__ - INFO - 过滤后数据集: 100 个样本
+2025-09-19 12:01:39,625 - __main__ - INFO - 清除现有HotpotQA数据...
+2025-09-19 12:01:41,946 - scripts.hotpotqa_processor.graph_builder - INFO - HotpotQA数据清除完成
+2025-09-19 12:01:41,946 - __main__ - INFO - 处理批次 1/100 (1 个问题)
+2025-09-19 12:01:41,947 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:02:14,711 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8b57f25542995d1e6f1371: 80 个实体, 2 个关系
+2025-09-19 12:02:17,002 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8b57f25542995d1e6f1371: 80 个实体, 31 个段落, 2 个支持事实, 用时 2.29s
+2025-09-19 12:02:17,003 - __main__ - INFO - 批次 1 完成，用时: 35.06s, 成功: 1/1
+2025-09-19 12:02:17,003 - __main__ - INFO - 进度: 1.0% | 成功率: 100.0%
+2025-09-19 12:02:17,003 - __main__ - INFO - 处理批次 2/100 (1 个问题)
+2025-09-19 12:02:17,003 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:02:58,599 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8c7595554299585d9e36b6: 78 个实体, 38 个关系
+2025-09-19 12:03:00,956 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8c7595554299585d9e36b6: 78 个实体, 36 个段落, 3 个支持事实, 用时 2.36s
+2025-09-19 12:03:00,956 - __main__ - INFO - 批次 2 完成，用时: 43.95s, 成功: 1/1
+2025-09-19 12:03:00,956 - __main__ - INFO - 进度: 2.0% | 成功率: 100.0% | 预计剩余时间: 66.4分钟
+2025-09-19 12:03:00,956 - __main__ - INFO - 处理批次 3/100 (1 个问题)
+2025-09-19 12:03:00,957 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:03:34,173 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析实体响应JSON失败: {
+    "entities": [
+        {
+            "name": "Left Behind: The Kids",
+            "type": "TITLE",
+            "confidence": 0.95,
+            "aliases": []
+        },
+        {
+            "name
+2025-09-19 12:03:48,577 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a85ea095542994775f606a8: 62 个实体, 40 个关系
+2025-09-19 12:03:50,743 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a85ea095542994775f606a8: 62 个实体, 42 个段落, 5 个支持事实, 用时 2.17s
+2025-09-19 12:03:50,744 - __main__ - INFO - 批次 3 完成，用时: 49.79s, 成功: 1/1
+2025-09-19 12:03:50,744 - __main__ - INFO - 进度: 3.0% | 成功率: 100.0% | 预计剩余时间: 70.7分钟
+2025-09-19 12:03:50,744 - __main__ - INFO - 处理批次 4/100 (1 个问题)
+2025-09-19 12:03:50,744 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:04:12,643 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5adbf0a255429947ff17385a: 39 个实体, 3 个关系
+2025-09-19 12:04:14,760 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5adbf0a255429947ff17385a: 39 个实体, 22 个段落, 2 个支持事实, 用时 2.12s
+2025-09-19 12:04:14,760 - __main__ - INFO - 批次 4 完成，用时: 24.02s, 成功: 1/1
+2025-09-19 12:04:14,760 - __main__ - INFO - 进度: 4.0% | 成功率: 100.0% | 预计剩余时间: 62.1分钟
+2025-09-19 12:04:14,760 - __main__ - INFO - 处理批次 5/100 (1 个问题)
+2025-09-19 12:04:14,761 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:04:53,079 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8e3ea95542995a26add48d: 81 个实体, 4 个关系
+2025-09-19 12:04:55,283 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8e3ea95542995a26add48d: 81 个实体, 39 个段落, 2 个支持事实, 用时 2.20s
+2025-09-19 12:04:55,283 - __main__ - INFO - 批次 5 完成，用时: 40.52s, 成功: 1/1
+2025-09-19 12:04:55,283 - __main__ - INFO - 进度: 5.0% | 成功率: 100.0% | 预计剩余时间: 62.0分钟
+2025-09-19 12:04:55,283 - __main__ - INFO - 处理批次 6/100 (1 个问题)
+2025-09-19 12:04:55,284 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:05:44,539 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5abd94525542992ac4f382d2: 75 个实体, 56 个关系
+2025-09-19 12:05:46,849 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5abd94525542992ac4f382d2: 75 个实体, 39 个段落, 2 个支持事实, 用时 2.31s
+2025-09-19 12:05:46,849 - __main__ - INFO - 批次 6 完成，用时: 51.57s, 成功: 1/1
+2025-09-19 12:05:46,849 - __main__ - INFO - 进度: 6.0% | 成功率: 100.0% | 预计剩余时间: 64.6分钟
+2025-09-19 12:05:46,849 - __main__ - INFO - 处理批次 7/100 (1 个问题)
+2025-09-19 12:05:46,850 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:06:33,400 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a85b2d95542997b5ce40028: 107 个实体, 4 个关系
+2025-09-19 12:06:35,596 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a85b2d95542997b5ce40028: 107 个实体, 48 个段落, 2 个支持事实, 用时 2.20s
+2025-09-19 12:06:35,596 - __main__ - INFO - 批次 7 完成，用时: 48.75s, 成功: 1/1
+2025-09-19 12:06:35,596 - __main__ - INFO - 进度: 7.0% | 成功率: 100.0% | 预计剩余时间: 65.5分钟
+2025-09-19 12:06:35,596 - __main__ - INFO - 处理批次 8/100 (1 个问题)
+2025-09-19 12:06:35,597 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:07:41,690 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a87ab905542996e4f3088c1: 119 个实体, 4 个关系
+2025-09-19 12:07:43,922 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a87ab905542996e4f3088c1: 119 个实体, 68 个段落, 2 个支持事实, 用时 2.23s
+2025-09-19 12:07:43,922 - __main__ - INFO - 批次 8 完成，用时: 68.33s, 成功: 1/1
+2025-09-19 12:07:43,922 - __main__ - INFO - 进度: 8.0% | 成功率: 100.0% | 预计剩余时间: 69.8分钟
+2025-09-19 12:07:43,922 - __main__ - INFO - 处理批次 9/100 (1 个问题)
+2025-09-19 12:07:43,923 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:08:24,278 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7bbb64554299042af8f7cc: 94 个实体, 10 个关系
+2025-09-19 12:08:26,475 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7bbb64554299042af8f7cc: 94 个实体, 37 个段落, 3 个支持事实, 用时 2.20s
+2025-09-19 12:08:26,476 - __main__ - INFO - 批次 9 完成，用时: 42.55s, 成功: 1/1
+2025-09-19 12:08:26,476 - __main__ - INFO - 进度: 9.0% | 成功率: 100.0% | 预计剩余时间: 68.6分钟
+2025-09-19 12:08:26,476 - __main__ - INFO - 处理批次 10/100 (1 个问题)
+2025-09-19 12:08:26,477 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:09:11,250 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8db19d5542994ba4e3dd00: 85 个实体, 7 个关系
+2025-09-19 12:09:13,457 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8db19d5542994ba4e3dd00: 85 个实体, 44 个段落, 2 个支持事实, 用时 2.21s
+2025-09-19 12:09:13,457 - __main__ - INFO - 批次 10 完成，用时: 46.98s, 成功: 1/1
+2025-09-19 12:09:13,457 - __main__ - INFO - 进度: 10.0% | 成功率: 100.0% | 预计剩余时间: 68.1分钟
+2025-09-19 12:09:13,458 - __main__ - INFO - 处理批次 11/100 (1 个问题)
+2025-09-19 12:09:13,458 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:10:03,842 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "University of Kansas",
+            "target": "Lawrence, Kansas",
+            "relation": "LOCATED_IN",
+            "confidence": 0.9,
+            
+2025-09-19 12:10:03,843 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7166395542994082a3e814: 71 个实体, 0 个关系
+2025-09-19 12:10:05,990 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7166395542994082a3e814: 71 个实体, 47 个段落, 3 个支持事实, 用时 2.15s
+2025-09-19 12:10:05,991 - __main__ - INFO - 批次 11 完成，用时: 52.53s, 成功: 1/1
+2025-09-19 12:10:05,991 - __main__ - INFO - 进度: 11.0% | 成功率: 100.0% | 预计剩余时间: 68.3分钟
+2025-09-19 12:10:05,991 - __main__ - INFO - 处理批次 12/100 (1 个问题)
+2025-09-19 12:10:05,992 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:10:43,022 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a877e5d5542993e715abf7d: 86 个实体, 4 个关系
+2025-09-19 12:10:45,225 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a877e5d5542993e715abf7d: 86 个实体, 33 个段落, 3 个支持事实, 用时 2.20s
+2025-09-19 12:10:45,225 - __main__ - INFO - 批次 12 完成，用时: 39.23s, 成功: 1/1
+2025-09-19 12:10:45,225 - __main__ - INFO - 进度: 12.0% | 成功率: 100.0% | 预计剩余时间: 66.7分钟
+2025-09-19 12:10:45,226 - __main__ - INFO - 处理批次 13/100 (1 个问题)
+2025-09-19 12:10:45,226 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:11:36,209 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab3b0bf5542992ade7c6e39: 90 个实体, 56 个关系
+2025-09-19 12:11:38,438 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab3b0bf5542992ade7c6e39: 90 个实体, 38 个段落, 3 个支持事实, 用时 2.23s
+2025-09-19 12:11:38,439 - __main__ - INFO - 批次 13 完成，用时: 53.21s, 成功: 1/1
+2025-09-19 12:11:38,439 - __main__ - INFO - 进度: 13.0% | 成功率: 100.0% | 预计剩余时间: 66.8分钟
+2025-09-19 12:11:38,439 - __main__ - INFO - 处理批次 14/100 (1 个问题)
+2025-09-19 12:11:38,440 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:12:33,141 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab56e32554299637185c594: 93 个实体, 5 个关系
+2025-09-19 12:12:35,336 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab56e32554299637185c594: 93 个实体, 59 个段落, 2 个支持事实, 用时 2.20s
+2025-09-19 12:12:35,337 - __main__ - INFO - 批次 14 完成，用时: 56.90s, 成功: 1/1
+2025-09-19 12:12:35,337 - __main__ - INFO - 进度: 14.0% | 成功率: 100.0% | 预计剩余时间: 67.1分钟
+2025-09-19 12:12:35,337 - __main__ - INFO - 处理批次 15/100 (1 个问题)
+2025-09-19 12:12:35,338 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:13:02,820 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab6d09255429954757d337d: 53 个实体, 6 个关系
+2025-09-19 12:13:05,001 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab6d09255429954757d337d: 53 个实体, 24 个段落, 3 个支持事实, 用时 2.18s
+2025-09-19 12:13:05,001 - __main__ - INFO - 批次 15 完成，用时: 29.66s, 成功: 1/1
+2025-09-19 12:13:05,001 - __main__ - INFO - 进度: 15.0% | 成功率: 100.0% | 预计剩余时间: 64.7分钟
+2025-09-19 12:13:05,002 - __main__ - INFO - 处理批次 16/100 (1 个问题)
+2025-09-19 12:13:05,003 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:13:48,826 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a75e05c55429976ec32bc5f: 75 个实体, 20 个关系
+2025-09-19 12:13:51,128 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a75e05c55429976ec32bc5f: 75 个实体, 44 个段落, 2 个支持事实, 用时 2.30s
+2025-09-19 12:13:51,128 - __main__ - INFO - 批次 16 完成，用时: 46.13s, 成功: 1/1
+2025-09-19 12:13:51,128 - __main__ - INFO - 进度: 16.0% | 成功率: 100.0% | 预计剩余时间: 64.0分钟
+2025-09-19 12:13:51,129 - __main__ - INFO - 处理批次 17/100 (1 个问题)
+2025-09-19 12:13:51,129 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:14:32,282 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab3e45655429976abd1bcd4: 49 个实体, 9 个关系
+2025-09-19 12:14:34,428 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab3e45655429976abd1bcd4: 49 个实体, 39 个段落, 3 个支持事实, 用时 2.14s
+2025-09-19 12:14:34,429 - __main__ - INFO - 批次 17 完成，用时: 43.30s, 成功: 1/1
+2025-09-19 12:14:34,429 - __main__ - INFO - 进度: 17.0% | 成功率: 100.0% | 预计剩余时间: 63.0分钟
+2025-09-19 12:14:34,429 - __main__ - INFO - 处理批次 18/100 (1 个问题)
+2025-09-19 12:14:34,430 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:15:11,322 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab29c24554299449642c932: 87 个实体, 9 个关系
+2025-09-19 12:15:13,523 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab29c24554299449642c932: 87 个实体, 30 个段落, 2 个支持事实, 用时 2.20s
+2025-09-19 12:15:13,523 - __main__ - INFO - 批次 18 完成，用时: 39.09s, 成功: 1/1
+2025-09-19 12:15:13,523 - __main__ - INFO - 进度: 18.0% | 成功率: 100.0% | 预计剩余时间: 61.8分钟
+2025-09-19 12:15:13,523 - __main__ - INFO - 处理批次 19/100 (1 个问题)
+2025-09-19 12:15:13,524 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:15:57,054 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae0d4c9554299603e418468: 83 个实体, 3 个关系
+2025-09-19 12:15:59,228 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae0d4c9554299603e418468: 83 个实体, 48 个段落, 2 个支持事实, 用时 2.17s
+2025-09-19 12:15:59,228 - __main__ - INFO - 批次 19 完成，用时: 45.71s, 成功: 1/1
+2025-09-19 12:15:59,229 - __main__ - INFO - 进度: 19.0% | 成功率: 100.0% | 预计剩余时间: 61.1分钟
+2025-09-19 12:15:59,229 - __main__ - INFO - 处理批次 20/100 (1 个问题)
+2025-09-19 12:15:59,229 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:16:28,893 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8133725542995ce29dcbdb: 46 个实体, 7 个关系
+2025-09-19 12:16:31,024 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8133725542995ce29dcbdb: 46 个实体, 27 个段落, 2 个支持事实, 用时 2.13s
+2025-09-19 12:16:31,025 - __main__ - INFO - 批次 20 完成，用时: 31.80s, 成功: 1/1
+2025-09-19 12:16:31,025 - __main__ - INFO - 进度: 20.0% | 成功率: 100.0% | 预计剩余时间: 59.4分钟
+2025-09-19 12:16:31,025 - __main__ - INFO - 处理批次 21/100 (1 个问题)
+2025-09-19 12:16:31,026 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:17:02,949 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae7a8175542993210983ed8: 66 个实体, 2 个关系
+2025-09-19 12:17:05,115 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae7a8175542993210983ed8: 66 个实体, 33 个段落, 3 个支持事实, 用时 2.17s
+2025-09-19 12:17:05,115 - __main__ - INFO - 批次 21 完成，用时: 34.09s, 成功: 1/1
+2025-09-19 12:17:05,115 - __main__ - INFO - 进度: 21.0% | 成功率: 100.0% | 预计剩余时间: 58.0分钟
+2025-09-19 12:17:05,115 - __main__ - INFO - 处理批次 22/100 (1 个问题)
+2025-09-19 12:17:05,116 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:17:52,930 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae6050f55429929b0807a5e: 69 个实体, 37 个关系
+2025-09-19 12:17:55,161 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae6050f55429929b0807a5e: 69 个实体, 40 个段落, 2 个支持事实, 用时 2.23s
+2025-09-19 12:17:55,161 - __main__ - INFO - 批次 22 完成，用时: 50.05s, 成功: 1/1
+2025-09-19 12:17:55,161 - __main__ - INFO - 进度: 22.0% | 成功率: 100.0% | 预计剩余时间: 57.6分钟
+2025-09-19 12:17:55,162 - __main__ - INFO - 处理批次 23/100 (1 个问题)
+2025-09-19 12:17:55,162 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:18:43,512 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5adddccd5542997dc7907069: 54 个实体, 27 个关系
+2025-09-19 12:18:45,695 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5adddccd5542997dc7907069: 54 个实体, 48 个段落, 4 个支持事实, 用时 2.18s
+2025-09-19 12:18:45,695 - __main__ - INFO - 批次 23 完成，用时: 50.53s, 成功: 1/1
+2025-09-19 12:18:45,695 - __main__ - INFO - 进度: 23.0% | 成功率: 100.0% | 预计剩余时间: 57.3分钟
+2025-09-19 12:18:45,695 - __main__ - INFO - 处理批次 24/100 (1 个问题)
+2025-09-19 12:18:45,696 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:19:14,536 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae2070a5542994d89d5b313: 65 个实体, 4 个关系
+2025-09-19 12:19:16,721 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae2070a5542994d89d5b313: 65 个实体, 27 个段落, 2 个支持事实, 用时 2.19s
+2025-09-19 12:19:16,721 - __main__ - INFO - 批次 24 完成，用时: 31.03s, 成功: 1/1
+2025-09-19 12:19:16,721 - __main__ - INFO - 进度: 24.0% | 成功率: 100.0% | 预计剩余时间: 55.8分钟
+2025-09-19 12:19:16,721 - __main__ - INFO - 处理批次 25/100 (1 个问题)
+2025-09-19 12:19:16,722 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:19:44,990 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae22b8d554299234fd0440f: 56 个实体, 11 个关系
+2025-09-19 12:19:47,197 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae22b8d554299234fd0440f: 56 个实体, 30 个段落, 3 个支持事实, 用时 2.21s
+2025-09-19 12:19:47,197 - __main__ - INFO - 批次 25 完成，用时: 30.48s, 成功: 1/1
+2025-09-19 12:19:47,197 - __main__ - INFO - 进度: 25.0% | 成功率: 100.0% | 预计剩余时间: 54.4分钟
+2025-09-19 12:19:47,197 - __main__ - INFO - 处理批次 26/100 (1 个问题)
+2025-09-19 12:19:47,198 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:20:22,174 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a722b8655429971e9dc9329: 52 个实体, 33 个关系
+2025-09-19 12:20:24,377 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a722b8655429971e9dc9329: 52 个实体, 31 个段落, 2 个支持事实, 用时 2.20s
+2025-09-19 12:20:24,378 - __main__ - INFO - 批次 26 完成，用时: 37.18s, 成功: 1/1
+2025-09-19 12:20:24,378 - __main__ - INFO - 进度: 26.0% | 成功率: 100.0% | 预计剩余时间: 53.4分钟
+2025-09-19 12:20:24,378 - __main__ - INFO - 处理批次 27/100 (1 个问题)
+2025-09-19 12:20:24,378 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:21:12,891 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5adf37a95542995ec70e8f97: 59 个实体, 9 个关系
+2025-09-19 12:21:15,107 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5adf37a95542995ec70e8f97: 59 个实体, 48 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 12:21:15,107 - __main__ - INFO - 批次 27 完成，用时: 50.73s, 成功: 1/1
+2025-09-19 12:21:15,107 - __main__ - INFO - 进度: 27.0% | 成功率: 100.0% | 预计剩余时间: 53.0分钟
+2025-09-19 12:21:15,107 - __main__ - INFO - 处理批次 28/100 (1 个问题)
+2025-09-19 12:21:15,107 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:21:21,626 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5abd259d55429924427fcf1a: 11 个实体, 6 个关系
+2025-09-19 12:21:23,724 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5abd259d55429924427fcf1a: 11 个实体, 4 个段落, 2 个支持事实, 用时 2.10s
+2025-09-19 12:21:23,724 - __main__ - INFO - 批次 28 完成，用时: 8.62s, 成功: 1/1
+2025-09-19 12:21:23,725 - __main__ - INFO - 进度: 28.0% | 成功率: 100.0% | 预计剩余时间: 50.7分钟
+2025-09-19 12:21:23,725 - __main__ - INFO - 处理批次 29/100 (1 个问题)
+2025-09-19 12:21:23,725 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:21:59,157 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a828c8355429966c78a6a50: 57 个实体, 21 个关系
+2025-09-19 12:22:01,406 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a828c8355429966c78a6a50: 57 个实体, 32 个段落, 3 个支持事实, 用时 2.25s
+2025-09-19 12:22:01,406 - __main__ - INFO - 批次 29 完成，用时: 37.68s, 成功: 1/1
+2025-09-19 12:22:01,406 - __main__ - INFO - 进度: 29.0% | 成功率: 100.0% | 预计剩余时间: 49.9分钟
+2025-09-19 12:22:01,406 - __main__ - INFO - 处理批次 30/100 (1 个问题)
+2025-09-19 12:22:01,407 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:22:44,255 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8a3e745542996c9b8d5e70: 60 个实体, 43 个关系
+2025-09-19 12:22:46,517 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8a3e745542996c9b8d5e70: 60 个实体, 31 个段落, 2 个支持事实, 用时 2.26s
+2025-09-19 12:22:46,517 - __main__ - INFO - 批次 30 完成，用时: 45.11s, 成功: 1/1
+2025-09-19 12:22:46,517 - __main__ - INFO - 进度: 30.0% | 成功率: 100.0% | 预计剩余时间: 49.3分钟
+2025-09-19 12:22:46,517 - __main__ - INFO - 处理批次 31/100 (1 个问题)
+2025-09-19 12:22:46,518 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:23:18,959 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ac23ff0554299636651994d: 58 个实体, 6 个关系
+2025-09-19 12:23:21,189 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ac23ff0554299636651994d: 58 个实体, 32 个段落, 2 个支持事实, 用时 2.23s
+2025-09-19 12:23:21,190 - __main__ - INFO - 批次 31 完成，用时: 34.67s, 成功: 1/1
+2025-09-19 12:23:21,190 - __main__ - INFO - 进度: 31.0% | 成功率: 100.0% | 预计剩余时间: 48.3分钟
+2025-09-19 12:23:21,190 - __main__ - INFO - 处理批次 32/100 (1 个问题)
+2025-09-19 12:23:21,191 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:23:50,178 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae4a3265542995ad6573de5: 52 个实体, 2 个关系
+2025-09-19 12:23:52,357 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae4a3265542995ad6573de5: 52 个实体, 32 个段落, 2 个支持事实, 用时 2.18s
+2025-09-19 12:23:52,357 - __main__ - INFO - 批次 32 完成，用时: 31.17s, 成功: 1/1
+2025-09-19 12:23:52,357 - __main__ - INFO - 进度: 32.0% | 成功率: 100.0% | 预计剩余时间: 47.2分钟
+2025-09-19 12:23:52,358 - __main__ - INFO - 处理批次 33/100 (1 个问题)
+2025-09-19 12:23:52,359 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:24:23,465 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae0361155429925eb1afc2c: 55 个实体, 6 个关系
+2025-09-19 12:24:25,649 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae0361155429925eb1afc2c: 55 个实体, 29 个段落, 2 个支持事实, 用时 2.18s
+2025-09-19 12:24:25,649 - __main__ - INFO - 批次 33 完成，用时: 33.29s, 成功: 1/1
+2025-09-19 12:24:25,649 - __main__ - INFO - 进度: 33.0% | 成功率: 100.0% | 预计剩余时间: 46.2分钟
+2025-09-19 12:24:25,650 - __main__ - INFO - 处理批次 34/100 (1 个问题)
+2025-09-19 12:24:25,650 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:25:04,316 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5abc0a5d5542993f40c73c64: 75 个实体, 10 个关系
+2025-09-19 12:25:06,617 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5abc0a5d5542993f40c73c64: 75 个实体, 41 个段落, 2 个支持事实, 用时 2.30s
+2025-09-19 12:25:06,617 - __main__ - INFO - 批次 34 完成，用时: 40.97s, 成功: 1/1
+2025-09-19 12:25:06,618 - __main__ - INFO - 进度: 34.0% | 成功率: 100.0% | 预计剩余时间: 45.5分钟
+2025-09-19 12:25:06,618 - __main__ - INFO - 处理批次 35/100 (1 个问题)
+2025-09-19 12:25:06,618 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:26:00,148 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "Letters to Cleo",
+            "target": "Truly Truly",
+            "relation": "MEMBER_OF",
+            "confidence": 0.99,
+            "descripti
+2025-09-19 12:26:00,149 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7cc50e554299452d57ba3e: 60 个实体, 0 个关系
+2025-09-19 12:26:02,345 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7cc50e554299452d57ba3e: 60 个实体, 37 个段落, 4 个支持事实, 用时 2.20s
+2025-09-19 12:26:02,345 - __main__ - INFO - 批次 35 完成，用时: 55.73s, 成功: 1/1
+2025-09-19 12:26:02,345 - __main__ - INFO - 进度: 35.0% | 成功率: 100.0% | 预计剩余时间: 45.3分钟
+2025-09-19 12:26:02,345 - __main__ - INFO - 处理批次 36/100 (1 个问题)
+2025-09-19 12:26:02,346 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:27:02,650 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5abf63f15542997ec76fd3ea: 76 个实体, 71 个关系
+2025-09-19 12:27:04,909 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5abf63f15542997ec76fd3ea: 76 个实体, 46 个段落, 2 个支持事实, 用时 2.26s
+2025-09-19 12:27:04,910 - __main__ - INFO - 批次 36 完成，用时: 62.56s, 成功: 1/1
+2025-09-19 12:27:04,911 - __main__ - INFO - 进度: 36.0% | 成功率: 100.0% | 预计剩余时间: 45.2分钟
+2025-09-19 12:27:04,911 - __main__ - INFO - 处理批次 37/100 (1 个问题)
+2025-09-19 12:27:04,912 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:27:30,847 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8ef2a75542995a26add583: 52 个实体, 3 个关系
+2025-09-19 12:27:33,061 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8ef2a75542995a26add583: 52 个实体, 28 个段落, 2 个支持事实, 用时 2.21s
+2025-09-19 12:27:33,061 - __main__ - INFO - 批次 37 完成，用时: 28.15s, 成功: 1/1
+2025-09-19 12:27:33,062 - __main__ - INFO - 进度: 37.0% | 成功率: 100.0% | 预计剩余时间: 44.1分钟
+2025-09-19 12:27:33,062 - __main__ - INFO - 处理批次 38/100 (1 个问题)
+2025-09-19 12:27:33,062 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:27:59,537 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a80721b554299485f5985ef: 53 个实体, 8 个关系
+2025-09-19 12:28:01,711 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a80721b554299485f5985ef: 53 个实体, 24 个段落, 2 个支持事实, 用时 2.17s
+2025-09-19 12:28:01,711 - __main__ - INFO - 批次 38 完成，用时: 28.65s, 成功: 1/1
+2025-09-19 12:28:01,712 - __main__ - INFO - 进度: 38.0% | 成功率: 100.0% | 预计剩余时间: 43.0分钟
+2025-09-19 12:28:01,713 - __main__ - INFO - 处理批次 39/100 (1 个问题)
+2025-09-19 12:28:01,713 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:28:35,077 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab51dae5542991779162d82: 66 个实体, 4 个关系
+2025-09-19 12:28:37,297 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab51dae5542991779162d82: 66 个实体, 35 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 12:28:37,297 - __main__ - INFO - 批次 39 完成，用时: 35.58s, 成功: 1/1
+2025-09-19 12:28:37,297 - __main__ - INFO - 进度: 39.0% | 成功率: 100.0% | 预计剩余时间: 42.2分钟
+2025-09-19 12:28:37,298 - __main__ - INFO - 处理批次 40/100 (1 个问题)
+2025-09-19 12:28:37,298 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:29:09,652 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7571135542992d0ec05f98: 71 个实体, 3 个关系
+2025-09-19 12:29:11,878 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7571135542992d0ec05f98: 71 个实体, 38 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 12:29:11,878 - __main__ - INFO - 批次 40 完成，用时: 34.58s, 成功: 1/1
+2025-09-19 12:29:11,878 - __main__ - INFO - 进度: 40.0% | 成功率: 100.0% | 预计剩余时间: 41.3分钟
+2025-09-19 12:29:11,878 - __main__ - INFO - 处理批次 41/100 (1 个问题)
+2025-09-19 12:29:11,879 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:29:51,776 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7a0e1e5542990783324e1a: 59 个实体, 3 个关系
+2025-09-19 12:29:53,995 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7a0e1e5542990783324e1a: 59 个实体, 46 个段落, 3 个支持事实, 用时 2.22s
+2025-09-19 12:29:53,996 - __main__ - INFO - 批次 41 完成，用时: 42.12s, 成功: 1/1
+2025-09-19 12:29:53,997 - __main__ - INFO - 进度: 41.0% | 成功率: 100.0% | 预计剩余时间: 40.6分钟
+2025-09-19 12:29:53,997 - __main__ - INFO - 处理批次 42/100 (1 个问题)
+2025-09-19 12:29:53,997 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:30:28,563 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a74106b55429979e288289e: 70 个实体, 8 个关系
+2025-09-19 12:30:30,759 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a74106b55429979e288289e: 70 个实体, 36 个段落, 2 个支持事实, 用时 2.20s
+2025-09-19 12:30:30,760 - __main__ - INFO - 批次 42 完成，用时: 36.76s, 成功: 1/1
+2025-09-19 12:30:30,760 - __main__ - INFO - 进度: 42.0% | 成功率: 100.0% | 预计剩余时间: 39.8分钟
+2025-09-19 12:30:30,760 - __main__ - INFO - 处理批次 43/100 (1 个问题)
+2025-09-19 12:30:30,760 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:31:18,211 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a79311755429970f5fffe67: 95 个实体, 2 个关系
+2025-09-19 12:31:20,547 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a79311755429970f5fffe67: 95 个实体, 55 个段落, 2 个支持事实, 用时 2.34s
+2025-09-19 12:31:20,547 - __main__ - INFO - 批次 43 完成，用时: 49.79s, 成功: 1/1
+2025-09-19 12:31:20,547 - __main__ - INFO - 进度: 43.0% | 成功率: 100.0% | 预计剩余时间: 39.3分钟
+2025-09-19 12:31:20,548 - __main__ - INFO - 处理批次 44/100 (1 个问题)
+2025-09-19 12:31:20,548 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:32:14,958 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab2d3df554299194fa9352c: 67 个实体, 35 个关系
+2025-09-19 12:32:17,369 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab2d3df554299194fa9352c: 67 个实体, 47 个段落, 2 个支持事实, 用时 2.41s
+2025-09-19 12:32:17,369 - __main__ - INFO - 批次 44 完成，用时: 56.82s, 成功: 1/1
+2025-09-19 12:32:17,370 - __main__ - INFO - 进度: 44.0% | 成功率: 100.0% | 预计剩余时间: 39.0分钟
+2025-09-19 12:32:17,370 - __main__ - INFO - 处理批次 45/100 (1 个问题)
+2025-09-19 12:32:17,370 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:33:20,919 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a760ab65542994ccc918697: 116 个实体, 3 个关系
+2025-09-19 12:33:23,256 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a760ab65542994ccc918697: 116 个实体, 72 个段落, 3 个支持事实, 用时 2.34s
+2025-09-19 12:33:23,256 - __main__ - INFO - 批次 45 完成，用时: 65.89s, 成功: 1/1
+2025-09-19 12:33:23,256 - __main__ - INFO - 进度: 45.0% | 成功率: 100.0% | 预计剩余时间: 38.8分钟
+2025-09-19 12:33:23,256 - __main__ - INFO - 处理批次 46/100 (1 个问题)
+2025-09-19 12:33:23,257 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:33:52,279 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7d54165542995f4f402256: 38 个实体, 7 个关系
+2025-09-19 12:33:54,450 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7d54165542995f4f402256: 38 个实体, 26 个段落, 4 个支持事实, 用时 2.17s
+2025-09-19 12:33:54,450 - __main__ - INFO - 批次 46 完成，用时: 31.19s, 成功: 1/1
+2025-09-19 12:33:54,450 - __main__ - INFO - 进度: 46.0% | 成功率: 100.0% | 预计剩余时间: 37.9分钟
+2025-09-19 12:33:54,450 - __main__ - INFO - 处理批次 47/100 (1 个问题)
+2025-09-19 12:33:54,451 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:34:40,216 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab859a955429934fafe6d7b: 76 个实体, 3 个关系
+2025-09-19 12:34:42,492 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab859a955429934fafe6d7b: 76 个实体, 54 个段落, 3 个支持事实, 用时 2.28s
+2025-09-19 12:34:42,492 - __main__ - INFO - 批次 47 完成，用时: 48.04s, 成功: 1/1
+2025-09-19 12:34:42,492 - __main__ - INFO - 进度: 47.0% | 成功率: 100.0% | 预计剩余时间: 37.3分钟
+2025-09-19 12:34:42,492 - __main__ - INFO - 处理批次 48/100 (1 个问题)
+2025-09-19 12:34:42,493 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:35:29,127 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5add61d65542995b365fab21: 85 个实体, 5 个关系
+2025-09-19 12:35:31,371 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5add61d65542995b365fab21: 85 个实体, 48 个段落, 2 个支持事实, 用时 2.24s
+2025-09-19 12:35:31,371 - __main__ - INFO - 批次 48 完成，用时: 48.88s, 成功: 1/1
+2025-09-19 12:35:31,371 - __main__ - INFO - 进度: 48.0% | 成功率: 100.0% | 预计剩余时间: 36.7分钟
+2025-09-19 12:35:31,371 - __main__ - INFO - 处理批次 49/100 (1 个问题)
+2025-09-19 12:35:31,372 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:36:09,605 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8e068b5542995085b37384: 49 个实体, 12 个关系
+2025-09-19 12:36:11,809 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8e068b5542995085b37384: 49 个实体, 43 个段落, 2 个支持事实, 用时 2.20s
+2025-09-19 12:36:11,809 - __main__ - INFO - 批次 49 完成，用时: 40.44s, 成功: 1/1
+2025-09-19 12:36:11,810 - __main__ - INFO - 进度: 49.0% | 成功率: 100.0% | 预计剩余时间: 35.9分钟
+2025-09-19 12:36:11,810 - __main__ - INFO - 处理批次 50/100 (1 个问题)
+2025-09-19 12:36:11,810 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:36:56,505 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5abbf698554299114383a0b5: 73 个实体, 8 个关系
+2025-09-19 12:36:58,756 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5abbf698554299114383a0b5: 73 个实体, 41 个段落, 2 个支持事实, 用时 2.25s
+2025-09-19 12:36:58,756 - __main__ - INFO - 批次 50 完成，用时: 46.95s, 成功: 1/1
+2025-09-19 12:36:58,756 - __main__ - INFO - 进度: 50.0% | 成功率: 100.0% | 预计剩余时间: 35.3分钟
+2025-09-19 12:36:58,756 - __main__ - INFO - 处理批次 51/100 (1 个问题)
+2025-09-19 12:36:58,757 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:37:39,297 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8e1027554299653c1aa15f: 38 个实体, 17 个关系
+2025-09-19 12:37:41,478 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8e1027554299653c1aa15f: 38 个实体, 37 个段落, 3 个支持事实, 用时 2.18s
+2025-09-19 12:37:41,478 - __main__ - INFO - 批次 51 完成，用时: 42.72s, 成功: 1/1
+2025-09-19 12:37:41,478 - __main__ - INFO - 进度: 51.0% | 成功率: 100.0% | 预计剩余时间: 34.6分钟
+2025-09-19 12:37:41,478 - __main__ - INFO - 处理批次 52/100 (1 个问题)
+2025-09-19 12:37:41,479 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:38:26,357 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab84bf555429916710eb01f: 70 个实体, 48 个关系
+2025-09-19 12:38:28,593 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab84bf555429916710eb01f: 70 个实体, 33 个段落, 2 个支持事实, 用时 2.24s
+2025-09-19 12:38:28,594 - __main__ - INFO - 批次 52 完成，用时: 47.12s, 成功: 1/1
+2025-09-19 12:38:28,594 - __main__ - INFO - 进度: 52.0% | 成功率: 100.0% | 预计剩余时间: 34.0分钟
+2025-09-19 12:38:28,594 - __main__ - INFO - 处理批次 53/100 (1 个问题)
+2025-09-19 12:38:28,594 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:39:03,613 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a77724455429972597f153e: 72 个实体, 5 个关系
+2025-09-19 12:39:05,832 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a77724455429972597f153e: 72 个实体, 36 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 12:39:05,832 - __main__ - INFO - 批次 53 完成，用时: 37.24s, 成功: 1/1
+2025-09-19 12:39:05,832 - __main__ - INFO - 进度: 53.0% | 成功率: 100.0% | 预计剩余时间: 33.2分钟
+2025-09-19 12:39:05,832 - __main__ - INFO - 处理批次 54/100 (1 个问题)
+2025-09-19 12:39:05,833 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:39:39,241 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a87c13f5542996e4f30890c: 71 个实体, 5 个关系
+2025-09-19 12:39:41,476 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a87c13f5542996e4f30890c: 71 个实体, 34 个段落, 2 个支持事实, 用时 2.23s
+2025-09-19 12:39:41,476 - __main__ - INFO - 批次 54 完成，用时: 35.64s, 成功: 1/1
+2025-09-19 12:39:41,476 - __main__ - INFO - 进度: 54.0% | 成功率: 100.0% | 预计剩余时间: 32.4分钟
+2025-09-19 12:39:41,477 - __main__ - INFO - 处理批次 55/100 (1 个问题)
+2025-09-19 12:39:41,477 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:40:19,722 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ab96ab755429970cfb8eacd: 63 个实体, 3 个关系
+2025-09-19 12:40:21,976 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ab96ab755429970cfb8eacd: 63 个实体, 37 个段落, 4 个支持事实, 用时 2.25s
+2025-09-19 12:40:21,977 - __main__ - INFO - 批次 55 完成，用时: 40.50s, 成功: 1/1
+2025-09-19 12:40:21,977 - __main__ - INFO - 进度: 55.0% | 成功率: 100.0% | 预计剩余时间: 31.7分钟
+2025-09-19 12:40:21,977 - __main__ - INFO - 处理批次 56/100 (1 个问题)
+2025-09-19 12:40:21,978 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:41:03,955 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8a43eb5542996c9b8d5e82: 88 个实体, 7 个关系
+2025-09-19 12:41:06,260 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8a43eb5542996c9b8d5e82: 88 个实体, 43 个段落, 4 个支持事实, 用时 2.30s
+2025-09-19 12:41:06,260 - __main__ - INFO - 批次 56 完成，用时: 44.28s, 成功: 1/1
+2025-09-19 12:41:06,260 - __main__ - INFO - 进度: 56.0% | 成功率: 100.0% | 预计剩余时间: 31.0分钟
+2025-09-19 12:41:06,260 - __main__ - INFO - 处理批次 57/100 (1 个问题)
+2025-09-19 12:41:06,261 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:41:36,037 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae73acb5542991e8301cc07: 59 个实体, 4 个关系
+2025-09-19 12:41:38,255 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae73acb5542991e8301cc07: 59 个实体, 35 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 12:41:38,255 - __main__ - INFO - 批次 57 完成，用时: 32.00s, 成功: 1/1
+2025-09-19 12:41:38,256 - __main__ - INFO - 进度: 57.0% | 成功率: 100.0% | 预计剩余时间: 30.2分钟
+2025-09-19 12:41:38,256 - __main__ - INFO - 处理批次 58/100 (1 个问题)
+2025-09-19 12:41:38,256 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:42:16,957 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7320565542991f9a20c61d: 66 个实体, 2 个关系
+2025-09-19 12:42:19,198 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7320565542991f9a20c61d: 66 个实体, 39 个段落, 2 个支持事实, 用时 2.24s
+2025-09-19 12:42:19,199 - __main__ - INFO - 批次 58 完成，用时: 40.94s, 成功: 1/1
+2025-09-19 12:42:19,199 - __main__ - INFO - 进度: 58.0% | 成功率: 100.0% | 预计剩余时间: 29.4分钟
+2025-09-19 12:42:19,199 - __main__ - INFO - 处理批次 59/100 (1 个问题)
+2025-09-19 12:42:19,199 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:43:01,260 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae32e125542991a06ce9946: 59 个实体, 36 个关系
+2025-09-19 12:43:03,548 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae32e125542991a06ce9946: 59 个实体, 37 个段落, 2 个支持事实, 用时 2.29s
+2025-09-19 12:43:03,548 - __main__ - INFO - 批次 59 完成，用时: 44.35s, 成功: 1/1
+2025-09-19 12:43:03,548 - __main__ - INFO - 进度: 59.0% | 成功率: 100.0% | 预计剩余时间: 28.8分钟
+2025-09-19 12:43:03,548 - __main__ - INFO - 处理批次 60/100 (1 个问题)
+2025-09-19 12:43:03,548 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:43:31,871 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5adc53f75542996e6852530a: 49 个实体, 18 个关系
+2025-09-19 12:43:34,049 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5adc53f75542996e6852530a: 49 个实体, 27 个段落, 2 个支持事实, 用时 2.18s
+2025-09-19 12:43:34,050 - __main__ - INFO - 批次 60 完成，用时: 30.50s, 成功: 1/1
+2025-09-19 12:43:34,050 - __main__ - INFO - 进度: 60.0% | 成功率: 100.0% | 预计剩余时间: 27.9分钟
+2025-09-19 12:43:34,050 - __main__ - INFO - 处理批次 61/100 (1 个问题)
+2025-09-19 12:43:34,050 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:44:31,059 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8b20335542996c9b8d5fb3: 62 个实体, 33 个关系
+2025-09-19 12:44:33,295 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8b20335542996c9b8d5fb3: 62 个实体, 49 个段落, 3 个支持事实, 用时 2.24s
+2025-09-19 12:44:33,295 - __main__ - INFO - 批次 61 完成，用时: 59.25s, 成功: 1/1
+2025-09-19 12:44:33,295 - __main__ - INFO - 进度: 61.0% | 成功率: 100.0% | 预计剩余时间: 27.4分钟
+2025-09-19 12:44:33,296 - __main__ - INFO - 处理批次 62/100 (1 个问题)
+2025-09-19 12:44:33,296 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:45:09,368 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a85fb085542994775f606de: 83 个实体, 3 个关系
+2025-09-19 12:45:11,642 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a85fb085542994775f606de: 83 个实体, 35 个段落, 3 个支持事实, 用时 2.27s
+2025-09-19 12:45:11,642 - __main__ - INFO - 批次 62 完成，用时: 38.35s, 成功: 1/1
+2025-09-19 12:45:11,642 - __main__ - INFO - 进度: 62.0% | 成功率: 100.0% | 预计剩余时间: 26.7分钟
+2025-09-19 12:45:11,642 - __main__ - INFO - 处理批次 63/100 (1 个问题)
+2025-09-19 12:45:11,643 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:49:07,521 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "Jane Marcus",
+            "target": "Virginia Woolf",
+            "relation": "RELATED_TO",
+            "confidence": 0.9,
+            "descriptio
+2025-09-19 12:49:07,522 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7be2595542997c3ec972ac: 56 个实体, 0 个关系
+2025-09-19 12:49:09,802 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7be2595542997c3ec972ac: 56 个实体, 33 个段落, 2 个支持事实, 用时 2.28s
+2025-09-19 12:49:09,802 - __main__ - INFO - 批次 63 完成，用时: 238.16s, 成功: 1/1
+2025-09-19 12:49:09,802 - __main__ - INFO - 进度: 63.0% | 成功率: 100.0% | 预计剩余时间: 27.9分钟
+2025-09-19 12:49:09,803 - __main__ - INFO - 处理批次 64/100 (1 个问题)
+2025-09-19 12:49:09,803 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:49:31,230 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a77152355429966f1a36c2e: 36 个实体, 15 个关系
+2025-09-19 12:49:33,409 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a77152355429966f1a36c2e: 36 个实体, 20 个段落, 3 个支持事实, 用时 2.18s
+2025-09-19 12:49:33,409 - __main__ - INFO - 批次 64 完成，用时: 23.61s, 成功: 1/1
+2025-09-19 12:49:33,410 - __main__ - INFO - 进度: 64.0% | 成功率: 100.0% | 预计剩余时间: 26.9分钟
+2025-09-19 12:49:33,410 - __main__ - INFO - 处理批次 65/100 (1 个问题)
+2025-09-19 12:49:33,410 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:50:08,165 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8f4c8d554299458435d5a3: 49 个实体, 22 个关系
+2025-09-19 12:50:10,426 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8f4c8d554299458435d5a3: 49 个实体, 35 个段落, 2 个支持事实, 用时 2.26s
+2025-09-19 12:50:10,426 - __main__ - INFO - 批次 65 完成，用时: 37.02s, 成功: 1/1
+2025-09-19 12:50:10,426 - __main__ - INFO - 进度: 65.0% | 成功率: 100.0% | 预计剩余时间: 26.1分钟
+2025-09-19 12:50:10,427 - __main__ - INFO - 处理批次 66/100 (1 个问题)
+2025-09-19 12:50:10,427 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:50:53,876 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a80840f554299485f59863b: 56 个实体, 38 个关系
+2025-09-19 12:50:56,135 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a80840f554299485f59863b: 56 个实体, 38 个段落, 3 个支持事实, 用时 2.26s
+2025-09-19 12:50:56,135 - __main__ - INFO - 批次 66 完成，用时: 45.71s, 成功: 1/1
+2025-09-19 12:50:56,135 - __main__ - INFO - 进度: 66.0% | 成功率: 100.0% | 预计剩余时间: 25.4分钟
+2025-09-19 12:50:56,135 - __main__ - INFO - 处理批次 67/100 (1 个问题)
+2025-09-19 12:50:56,136 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:51:24,360 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8361b65542992ef85e22a0: 69 个实体, 3 个关系
+2025-09-19 12:51:26,604 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8361b65542992ef85e22a0: 69 个实体, 26 个段落, 2 个支持事实, 用时 2.24s
+2025-09-19 12:51:26,605 - __main__ - INFO - 批次 67 完成，用时: 30.47s, 成功: 1/1
+2025-09-19 12:51:26,605 - __main__ - INFO - 进度: 67.0% | 成功率: 100.0% | 预计剩余时间: 24.5分钟
+2025-09-19 12:51:26,605 - __main__ - INFO - 处理批次 68/100 (1 个问题)
+2025-09-19 12:51:26,605 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:52:12,025 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae7ba7a5542993210983f12: 97 个实体, 5 个关系
+2025-09-19 12:52:14,335 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae7ba7a5542993210983f12: 97 个实体, 50 个段落, 2 个支持事实, 用时 2.31s
+2025-09-19 12:52:14,335 - __main__ - INFO - 批次 68 完成，用时: 47.73s, 成功: 1/1
+2025-09-19 12:52:14,335 - __main__ - INFO - 进度: 68.0% | 成功率: 100.0% | 预计剩余时间: 23.8分钟
+2025-09-19 12:52:14,335 - __main__ - INFO - 处理批次 69/100 (1 个问题)
+2025-09-19 12:52:14,336 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:52:50,025 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ac2acff55429921a00ab02b: 101 个实体, 3 个关系
+2025-09-19 12:52:52,431 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ac2acff55429921a00ab02b: 101 个实体, 33 个段落, 2 个支持事实, 用时 2.41s
+2025-09-19 12:52:52,431 - __main__ - INFO - 批次 69 完成，用时: 38.10s, 成功: 1/1
+2025-09-19 12:52:52,431 - __main__ - INFO - 进度: 69.0% | 成功率: 100.0% | 预计剩余时间: 23.0分钟
+2025-09-19 12:52:52,431 - __main__ - INFO - 处理批次 70/100 (1 个问题)
+2025-09-19 12:52:52,432 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:53:31,469 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5aba7cfe554299232ef4a2fd: 32 个实体, 25 个关系
+2025-09-19 12:53:33,661 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5aba7cfe554299232ef4a2fd: 32 个实体, 28 个段落, 2 个支持事实, 用时 2.19s
+2025-09-19 12:53:33,661 - __main__ - INFO - 批次 70 完成，用时: 41.23s, 成功: 1/1
+2025-09-19 12:53:33,661 - __main__ - INFO - 进度: 70.0% | 成功率: 100.0% | 预计剩余时间: 22.2分钟
+2025-09-19 12:53:33,661 - __main__ - INFO - 处理批次 71/100 (1 个问题)
+2025-09-19 12:53:33,662 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:54:19,795 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae5aba0554299546bf82f17: 52 个实体, 42 个关系
+2025-09-19 12:54:22,038 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae5aba0554299546bf82f17: 52 个实体, 37 个段落, 2 个支持事实, 用时 2.24s
+2025-09-19 12:54:22,038 - __main__ - INFO - 批次 71 完成，用时: 48.38s, 成功: 1/1
+2025-09-19 12:54:22,038 - __main__ - INFO - 进度: 71.0% | 成功率: 100.0% | 预计剩余时间: 21.5分钟
+2025-09-19 12:54:22,038 - __main__ - INFO - 处理批次 72/100 (1 个问题)
+2025-09-19 12:54:22,039 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:54:43,819 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae1f4cb554299234fd0436d: 47 个实体, 7 个关系
+2025-09-19 12:54:46,030 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae1f4cb554299234fd0436d: 47 个实体, 21 个段落, 2 个支持事实, 用时 2.21s
+2025-09-19 12:54:46,030 - __main__ - INFO - 批次 72 完成，用时: 23.99s, 成功: 1/1
+2025-09-19 12:54:46,030 - __main__ - INFO - 进度: 72.0% | 成功率: 100.0% | 预计剩余时间: 20.7分钟
+2025-09-19 12:54:46,030 - __main__ - INFO - 处理批次 73/100 (1 个问题)
+2025-09-19 12:54:46,031 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:55:22,357 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae7e1fc55429952e35ea9cc: 52 个实体, 28 个关系
+2025-09-19 12:55:24,594 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae7e1fc55429952e35ea9cc: 52 个实体, 35 个段落, 2 个支持事实, 用时 2.24s
+2025-09-19 12:55:24,595 - __main__ - INFO - 批次 73 完成，用时: 38.56s, 成功: 1/1
+2025-09-19 12:55:24,595 - __main__ - INFO - 进度: 73.0% | 成功率: 100.0% | 预计剩余时间: 19.9分钟
+2025-09-19 12:55:24,595 - __main__ - INFO - 处理批次 74/100 (1 个问题)
+2025-09-19 12:55:24,595 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:56:02,154 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae37c765542992f92d822d4: 64 个实体, 4 个关系
+2025-09-19 12:56:04,415 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae37c765542992f92d822d4: 64 个实体, 38 个段落, 2 个支持事实, 用时 2.26s
+2025-09-19 12:56:04,415 - __main__ - INFO - 批次 74 完成，用时: 39.82s, 成功: 1/1
+2025-09-19 12:56:04,416 - __main__ - INFO - 进度: 74.0% | 成功率: 100.0% | 预计剩余时间: 19.1分钟
+2025-09-19 12:56:04,416 - __main__ - INFO - 处理批次 75/100 (1 个问题)
+2025-09-19 12:56:04,416 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:56:32,140 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae33c4d5542992f92d82262: 39 个实体, 13 个关系
+2025-09-19 12:56:34,324 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae33c4d5542992f92d82262: 39 个实体, 27 个段落, 3 个支持事实, 用时 2.18s
+2025-09-19 12:56:34,325 - __main__ - INFO - 批次 75 完成，用时: 29.91s, 成功: 1/1
+2025-09-19 12:56:34,325 - __main__ - INFO - 进度: 75.0% | 成功率: 100.0% | 预计剩余时间: 18.3分钟
+2025-09-19 12:56:34,325 - __main__ - INFO - 处理批次 76/100 (1 个问题)
+2025-09-19 12:56:34,325 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:56:55,751 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a77cb335542997042120b3a: 38 个实体, 11 个关系
+2025-09-19 12:56:57,912 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a77cb335542997042120b3a: 38 个实体, 18 个段落, 4 个支持事实, 用时 2.16s
+2025-09-19 12:56:57,912 - __main__ - INFO - 批次 76 完成，用时: 23.59s, 成功: 1/1
+2025-09-19 12:56:57,912 - __main__ - INFO - 进度: 76.0% | 成功率: 100.0% | 预计剩余时间: 17.5分钟
+2025-09-19 12:56:57,912 - __main__ - INFO - 处理批次 77/100 (1 个问题)
+2025-09-19 12:56:57,913 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:57:26,648 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8979f4554299669944a52e: 45 个实体, 26 个关系
+2025-09-19 12:57:28,872 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8979f4554299669944a52e: 45 个实体, 29 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 12:57:28,873 - __main__ - INFO - 批次 77 完成，用时: 30.96s, 成功: 1/1
+2025-09-19 12:57:28,873 - __main__ - INFO - 进度: 77.0% | 成功率: 100.0% | 预计剩余时间: 16.7分钟
+2025-09-19 12:57:28,873 - __main__ - INFO - 处理批次 78/100 (1 个问题)
+2025-09-19 12:57:28,873 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:58:05,471 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a713ea95542994082a3e6e4: 61 个实体, 2 个关系
+2025-09-19 12:58:07,681 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a713ea95542994082a3e6e4: 61 个实体, 42 个段落, 3 个支持事实, 用时 2.21s
+2025-09-19 12:58:07,681 - __main__ - INFO - 批次 78 完成，用时: 38.81s, 成功: 1/1
+2025-09-19 12:58:07,681 - __main__ - INFO - 进度: 78.0% | 成功率: 100.0% | 预计剩余时间: 15.9分钟
+2025-09-19 12:58:07,681 - __main__ - INFO - 处理批次 79/100 (1 个问题)
+2025-09-19 12:58:07,682 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:58:42,303 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a78bd9b554299078472774a: 69 个实体, 2 个关系
+2025-09-19 12:58:44,512 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a78bd9b554299078472774a: 69 个实体, 36 个段落, 2 个支持事实, 用时 2.21s
+2025-09-19 12:58:44,513 - __main__ - INFO - 批次 79 完成，用时: 36.83s, 成功: 1/1
+2025-09-19 12:58:44,513 - __main__ - INFO - 进度: 79.0% | 成功率: 100.0% | 预计剩余时间: 15.2分钟
+2025-09-19 12:58:44,513 - __main__ - INFO - 处理批次 80/100 (1 个问题)
+2025-09-19 12:58:44,513 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:59:20,305 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7625e8554299109176e66a: 37 个实体, 32 个关系
+2025-09-19 12:59:22,490 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7625e8554299109176e66a: 37 个实体, 29 个段落, 2 个支持事实, 用时 2.19s
+2025-09-19 12:59:22,490 - __main__ - INFO - 批次 80 完成，用时: 37.98s, 成功: 1/1
+2025-09-19 12:59:22,490 - __main__ - INFO - 进度: 80.0% | 成功率: 100.0% | 预计剩余时间: 14.4分钟
+2025-09-19 12:59:22,491 - __main__ - INFO - 处理批次 81/100 (1 个问题)
+2025-09-19 12:59:22,491 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 12:59:58,012 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae2dd2055429928c423950d: 62 个实体, 3 个关系
+2025-09-19 13:00:00,232 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae2dd2055429928c423950d: 62 个实体, 35 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 13:00:00,232 - __main__ - INFO - 批次 81 完成，用时: 37.74s, 成功: 1/1
+2025-09-19 13:00:00,232 - __main__ - INFO - 进度: 81.0% | 成功率: 100.0% | 预计剩余时间: 13.7分钟
+2025-09-19 13:00:00,233 - __main__ - INFO - 处理批次 82/100 (1 个问题)
+2025-09-19 13:00:00,233 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:00:35,837 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5abdf12255429976d4830a2f: 67 个实体, 8 个关系
+2025-09-19 13:00:38,054 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5abdf12255429976d4830a2f: 67 个实体, 37 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 13:00:38,054 - __main__ - INFO - 批次 82 完成，用时: 37.82s, 成功: 1/1
+2025-09-19 13:00:38,054 - __main__ - INFO - 进度: 82.0% | 成功率: 100.0% | 预计剩余时间: 12.9分钟
+2025-09-19 13:00:38,055 - __main__ - INFO - 处理批次 83/100 (1 个问题)
+2025-09-19 13:00:38,055 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:01:20,853 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a88658955429938390d3f47: 72 个实体, 7 个关系
+2025-09-19 13:01:23,101 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a88658955429938390d3f47: 72 个实体, 46 个段落, 3 个支持事实, 用时 2.25s
+2025-09-19 13:01:23,101 - __main__ - INFO - 批次 83 完成，用时: 45.05s, 成功: 1/1
+2025-09-19 13:01:23,101 - __main__ - INFO - 进度: 83.0% | 成功率: 100.0% | 预计剩余时间: 12.2分钟
+2025-09-19 13:01:23,102 - __main__ - INFO - 处理批次 84/100 (1 个问题)
+2025-09-19 13:01:23,102 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:01:53,765 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a86ebac55429960ec39b6d6: 58 个实体, 10 个关系
+2025-09-19 13:01:58,038 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a86ebac55429960ec39b6d6: 58 个实体, 31 个段落, 2 个支持事实, 用时 4.27s
+2025-09-19 13:01:58,038 - __main__ - INFO - 批次 84 完成，用时: 34.94s, 成功: 1/1
+2025-09-19 13:01:58,038 - __main__ - INFO - 进度: 84.0% | 成功率: 100.0% | 预计剩余时间: 11.5分钟
+2025-09-19 13:01:58,038 - __main__ - INFO - 处理批次 85/100 (1 个问题)
+2025-09-19 13:01:58,039 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:02:58,680 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "Monica Lewinsky",
+            "target": "Clinton Machine", 
+            "relation": "RELATED_TO",
+            "confidence": 0.9,
+            "desc
+2025-09-19 13:02:58,680 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5aba5d2e55429901930fa799: 84 个实体, 0 个关系
+2025-09-19 13:03:00,938 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5aba5d2e55429901930fa799: 84 个实体, 46 个段落, 3 个支持事实, 用时 2.26s
+2025-09-19 13:03:00,938 - __main__ - INFO - 批次 85 完成，用时: 62.90s, 成功: 1/1
+2025-09-19 13:03:00,938 - __main__ - INFO - 进度: 85.0% | 成功率: 100.0% | 预计剩余时间: 10.8分钟
+2025-09-19 13:03:00,938 - __main__ - INFO - 处理批次 86/100 (1 个问题)
+2025-09-19 13:03:00,939 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:03:43,817 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae5736e5542990ba0bbb2b3: 59 个实体, 22 个关系
+2025-09-19 13:03:46,059 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae5736e5542990ba0bbb2b3: 59 个实体, 45 个段落, 2 个支持事实, 用时 2.24s
+2025-09-19 13:03:46,060 - __main__ - INFO - 批次 86 完成，用时: 45.12s, 成功: 1/1
+2025-09-19 13:03:46,060 - __main__ - INFO - 进度: 86.0% | 成功率: 100.0% | 预计剩余时间: 10.1分钟
+2025-09-19 13:03:46,060 - __main__ - INFO - 处理批次 87/100 (1 个问题)
+2025-09-19 13:03:46,060 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:04:11,505 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae005b555429942ec259bec: 71 个实体, 3 个关系
+2025-09-19 13:04:13,768 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae005b555429942ec259bec: 71 个实体, 26 个段落, 2 个支持事实, 用时 2.26s
+2025-09-19 13:04:13,768 - __main__ - INFO - 批次 87 完成，用时: 27.71s, 成功: 1/1
+2025-09-19 13:04:13,768 - __main__ - INFO - 进度: 87.0% | 成功率: 100.0% | 预计剩余时间: 9.3分钟
+2025-09-19 13:04:13,768 - __main__ - INFO - 处理批次 88/100 (1 个问题)
+2025-09-19 13:04:13,769 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:04:41,731 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7759fc5542993569682d60: 50 个实体, 7 个关系
+2025-09-19 13:04:43,938 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7759fc5542993569682d60: 50 个实体, 27 个段落, 2 个支持事实, 用时 2.21s
+2025-09-19 13:04:43,938 - __main__ - INFO - 批次 88 完成，用时: 30.17s, 成功: 1/1
+2025-09-19 13:04:43,939 - __main__ - INFO - 进度: 88.0% | 成功率: 100.0% | 预计剩余时间: 8.6分钟
+2025-09-19 13:04:43,939 - __main__ - INFO - 处理批次 89/100 (1 个问题)
+2025-09-19 13:04:43,939 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:05:07,552 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a835478554299123d8c20ed: 38 个实体, 9 个关系
+2025-09-19 13:05:09,768 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a835478554299123d8c20ed: 38 个实体, 23 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 13:05:09,769 - __main__ - INFO - 批次 89 完成，用时: 25.83s, 成功: 1/1
+2025-09-19 13:05:09,769 - __main__ - INFO - 进度: 89.0% | 成功率: 100.0% | 预计剩余时间: 7.8分钟
+2025-09-19 13:05:09,769 - __main__ - INFO - 处理批次 90/100 (1 个问题)
+2025-09-19 13:05:09,769 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:05:31,863 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5aba749055429901930fa7d8: 55 个实体, 4 个关系
+2025-09-19 13:05:34,083 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5aba749055429901930fa7d8: 55 个实体, 19 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 13:05:34,083 - __main__ - INFO - 批次 90 完成，用时: 24.31s, 成功: 1/1
+2025-09-19 13:05:34,083 - __main__ - INFO - 进度: 90.0% | 成功率: 100.0% | 预计剩余时间: 7.1分钟
+2025-09-19 13:05:34,083 - __main__ - INFO - 处理批次 91/100 (1 个问题)
+2025-09-19 13:05:34,084 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:06:00,556 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "Andrew Jaspan",
+            "target": "The Conversation",
+            "relation": "WORKS_FOR",
+            "confidence": 0.9,
+            "descrip
+2025-09-19 13:06:00,556 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5abfb3425542990832d3a1c0: 45 个实体, 0 个关系
+2025-09-19 13:06:02,746 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5abfb3425542990832d3a1c0: 45 个实体, 31 个段落, 2 个支持事实, 用时 2.19s
+2025-09-19 13:06:02,746 - __main__ - INFO - 批次 91 完成，用时: 28.66s, 成功: 1/1
+2025-09-19 13:06:02,746 - __main__ - INFO - 进度: 91.0% | 成功率: 100.0% | 预计剩余时间: 6.4分钟
+2025-09-19 13:06:02,747 - __main__ - INFO - 处理批次 92/100 (1 个问题)
+2025-09-19 13:06:02,747 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:06:28,469 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ac3165c5542995ef918c10a: 51 个实体, 4 个关系
+2025-09-19 13:06:30,667 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ac3165c5542995ef918c10a: 51 个实体, 28 个段落, 3 个支持事实, 用时 2.20s
+2025-09-19 13:06:30,667 - __main__ - INFO - 批次 92 完成，用时: 27.92s, 成功: 1/1
+2025-09-19 13:06:30,667 - __main__ - INFO - 进度: 92.0% | 成功率: 100.0% | 预计剩余时间: 5.6分钟
+2025-09-19 13:06:30,667 - __main__ - INFO - 处理批次 93/100 (1 个问题)
+2025-09-19 13:06:30,668 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:06:51,462 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae53b545542990ba0bbb23c: 33 个实体, 3 个关系
+2025-09-19 13:06:53,700 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae53b545542990ba0bbb23c: 33 个实体, 23 个段落, 4 个支持事实, 用时 2.24s
+2025-09-19 13:06:53,700 - __main__ - INFO - 批次 93 完成，用时: 23.03s, 成功: 1/1
+2025-09-19 13:06:53,700 - __main__ - INFO - 进度: 93.0% | 成功率: 100.0% | 预计剩余时间: 4.9分钟
+2025-09-19 13:06:53,700 - __main__ - INFO - 处理批次 94/100 (1 个问题)
+2025-09-19 13:06:53,701 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:07:34,030 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "Gibson",
+            "target": "Zurracapote",
+            "relation": "RELATED_TO",
+            "confidence": 0.8,
+            "description": ""
+ 
+2025-09-19 13:07:34,031 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae224da554299234fd043ee: 33 个实体, 0 个关系
+2025-09-19 13:07:36,220 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae224da554299234fd043ee: 33 个实体, 30 个段落, 2 个支持事实, 用时 2.19s
+2025-09-19 13:07:36,220 - __main__ - INFO - 批次 94 完成，用时: 42.52s, 成功: 1/1
+2025-09-19 13:07:36,220 - __main__ - INFO - 进度: 94.0% | 成功率: 100.0% | 预计剩余时间: 4.2分钟
+2025-09-19 13:07:36,221 - __main__ - INFO - 处理批次 95/100 (1 个问题)
+2025-09-19 13:07:36,221 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:08:04,574 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae2b770554299495565db0f: 61 个实体, 5 个关系
+2025-09-19 13:08:06,809 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae2b770554299495565db0f: 61 个实体, 29 个段落, 4 个支持事实, 用时 2.23s
+2025-09-19 13:08:06,809 - __main__ - INFO - 批次 95 完成，用时: 30.59s, 成功: 1/1
+2025-09-19 13:08:06,809 - __main__ - INFO - 进度: 95.0% | 成功率: 100.0% | 预计剩余时间: 3.5分钟
+2025-09-19 13:08:06,809 - __main__ - INFO - 处理批次 96/100 (1 个问题)
+2025-09-19 13:08:06,809 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:08:41,117 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "Tysons Galleria",
+            "target": "West McLean, Virginia",
+            "relation": "LOCATED_IN",
+            "confidence": 0.99,
+           
+2025-09-19 13:08:41,117 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a80b3a9554299485f5986cc: 48 个实体, 0 个关系
+2025-09-19 13:08:43,335 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a80b3a9554299485f5986cc: 48 个实体, 35 个段落, 2 个支持事实, 用时 2.22s
+2025-09-19 13:08:43,335 - __main__ - INFO - 批次 96 完成，用时: 36.53s, 成功: 1/1
+2025-09-19 13:08:43,336 - __main__ - INFO - 进度: 96.0% | 成功率: 100.0% | 预计剩余时间: 2.8分钟
+2025-09-19 13:08:43,336 - __main__ - INFO - 处理批次 97/100 (1 个问题)
+2025-09-19 13:08:43,337 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:09:27,027 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8e0a005542995085b373a1: 65 个实体, 8 个关系
+2025-09-19 13:09:29,301 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8e0a005542995085b373a1: 65 个实体, 52 个段落, 2 个支持事实, 用时 2.27s
+2025-09-19 13:09:29,301 - __main__ - INFO - 批次 97 完成，用时: 45.97s, 成功: 1/1
+2025-09-19 13:09:29,302 - __main__ - INFO - 进度: 97.0% | 成功率: 100.0% | 预计剩余时间: 2.1分钟
+2025-09-19 13:09:29,302 - __main__ - INFO - 处理批次 98/100 (1 个问题)
+2025-09-19 13:09:29,303 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:10:09,264 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ac1b8ee5542994d76dccedc: 84 个实体, 3 个关系
+2025-09-19 13:10:11,587 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ac1b8ee5542994d76dccedc: 84 个实体, 47 个段落, 2 个支持事实, 用时 2.32s
+2025-09-19 13:10:11,588 - __main__ - INFO - 批次 98 完成，用时: 42.29s, 成功: 1/1
+2025-09-19 13:10:11,588 - __main__ - INFO - 进度: 98.0% | 成功率: 100.0% | 预计剩余时间: 1.4分钟
+2025-09-19 13:10:11,588 - __main__ - INFO - 处理批次 99/100 (1 个问题)
+2025-09-19 13:10:11,589 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:10:44,367 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5adccd795542990d50227d2c: 57 个实体, 4 个关系
+2025-09-19 13:10:46,646 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5adccd795542990d50227d2c: 57 个实体, 29 个段落, 3 个支持事实, 用时 2.28s
+2025-09-19 13:10:46,646 - __main__ - INFO - 批次 99 完成，用时: 35.06s, 成功: 1/1
+2025-09-19 13:10:46,646 - __main__ - INFO - 进度: 99.0% | 成功率: 100.0% | 预计剩余时间: 0.7分钟
+2025-09-19 13:10:46,646 - __main__ - INFO - 处理批次 100/100 (1 个问题)
+2025-09-19 13:10:46,646 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:11:10,087 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a84c4135542994c784dda31: 42 个实体, 2 个关系
+2025-09-19 13:11:12,277 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a84c4135542994c784dda31: 42 个实体, 19 个段落, 2 个支持事实, 用时 2.19s
+2025-09-19 13:11:12,278 - __main__ - INFO - 批次 100 完成，用时: 25.63s, 成功: 1/1
+2025-09-19 13:11:12,278 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0% | 预计剩余时间: 0.0分钟
+2025-09-19 13:11:12,278 - __main__ - INFO - 优化图结构...
+2025-09-19 13:11:14,763 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5279}
+2025-09-19 13:11:16,860 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 4177.24s
+2025-09-19 13:11:16,861 - __main__ - INFO - 成功导入: 100/100 个问题
+2025-09-19 13:11:16,861 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 13:13:02,494 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 13:13:02,494 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 13:13:02,494 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 13:13:06,600 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 13:13:08,649 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 13:13:08,650 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 13:13:08,650 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 13:13:08,660 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 13:13:08,660 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 13:13:08,660 - __main__ - INFO - 开始导入HotpotQA数据集 - 第3-3条
+2025-09-19 13:13:08,661 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 13:13:08,661 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-19 13:13:08,661 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-19 13:13:08,662 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:13:56,993 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "Animorphs",
+            "target": "Katherine Applegate",
+            "relation": "WRITTEN_BY",
+            "confidence": 0.9,
+            "descrip
+2025-09-19 13:13:56,993 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a85ea095542994775f606a8: 61 个实体, 0 个关系
+2025-09-19 13:13:59,306 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a85ea095542994775f606a8: 61 个实体, 42 个段落, 5 个支持事实, 用时 2.31s
+2025-09-19 13:13:59,306 - __main__ - INFO - 批次 1 完成，用时: 50.65s, 成功: 1/1
+2025-09-19 13:13:59,306 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 13:13:59,307 - __main__ - INFO - 优化图结构...
+2025-09-19 13:14:01,461 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5282}
+2025-09-19 13:14:03,531 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 54.87s
+2025-09-19 13:14:03,531 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-19 13:14:03,531 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 13:14:10,107 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 13:14:10,107 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 13:14:10,107 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 13:14:14,252 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 13:14:16,303 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 13:14:16,303 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 13:14:16,304 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 13:14:16,312 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 13:14:16,312 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 13:14:16,313 - __main__ - INFO - 开始导入HotpotQA数据集 - 第3-3条
+2025-09-19 13:14:16,313 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 13:14:16,313 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-19 13:14:16,313 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-19 13:14:16,314 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:14:52,910 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a85ea095542994775f606a8: 62 个实体, 10 个关系
+2025-09-19 13:14:55,217 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a85ea095542994775f606a8: 62 个实体, 42 个段落, 5 个支持事实, 用时 2.31s
+2025-09-19 13:14:55,218 - __main__ - INFO - 批次 1 完成，用时: 38.90s, 成功: 1/1
+2025-09-19 13:14:55,218 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 13:14:55,218 - __main__ - INFO - 优化图结构...
+2025-09-19 13:14:57,362 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5285}
+2025-09-19 13:14:59,410 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 43.10s
+2025-09-19 13:14:59,410 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-19 13:14:59,410 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 13:16:21,384 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 13:16:21,385 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 13:16:21,385 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 13:16:25,489 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 13:16:27,537 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 13:16:27,537 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 13:16:27,538 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 13:16:27,546 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 13:16:27,547 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 13:16:27,547 - __main__ - INFO - 开始导入HotpotQA数据集 - 第11-11条
+2025-09-19 13:16:27,547 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 13:16:27,548 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-19 13:16:27,548 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-19 13:16:27,548 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:17:21,661 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7166395542994082a3e814: 66 个实体, 42 个关系
+2025-09-19 13:17:23,960 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7166395542994082a3e814: 66 个实体, 47 个段落, 3 个支持事实, 用时 2.30s
+2025-09-19 13:17:23,960 - __main__ - INFO - 批次 1 完成，用时: 56.41s, 成功: 1/1
+2025-09-19 13:17:23,960 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 13:17:23,960 - __main__ - INFO - 优化图结构...
+2025-09-19 13:17:26,098 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5289}
+2025-09-19 13:17:28,145 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 60.60s
+2025-09-19 13:17:28,145 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-19 13:17:28,145 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 13:19:00,687 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 13:19:00,687 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 13:19:00,687 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 13:19:04,796 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 13:19:06,849 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 13:19:06,849 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 13:19:06,849 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 13:19:06,857 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 13:19:06,857 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 13:19:06,858 - __main__ - INFO - 开始导入HotpotQA数据集 - 第35-35条
+2025-09-19 13:19:06,858 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 13:19:06,858 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-19 13:19:06,858 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-19 13:19:06,859 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:19:43,577 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7cc50e554299452d57ba3e: 58 个实体, 11 个关系
+2025-09-19 13:19:45,802 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7cc50e554299452d57ba3e: 58 个实体, 37 个段落, 4 个支持事实, 用时 2.22s
+2025-09-19 13:19:45,802 - __main__ - INFO - 批次 1 完成，用时: 38.94s, 成功: 1/1
+2025-09-19 13:19:45,802 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 13:19:45,802 - __main__ - INFO - 优化图结构...
+2025-09-19 13:19:47,953 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5289}
+2025-09-19 13:19:49,997 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 43.14s
+2025-09-19 13:19:49,998 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-19 13:19:49,998 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 13:26:49,577 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 13:26:49,578 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 13:26:49,578 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 13:27:00,367 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 13:27:00,368 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 13:27:00,368 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 13:27:04,500 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 13:27:06,565 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 13:27:06,565 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 13:27:06,566 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 13:27:06,575 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 13:27:06,575 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 13:27:06,575 - __main__ - INFO - 开始导入HotpotQA数据集 - 第63-63条
+2025-09-19 13:27:06,576 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 13:27:06,576 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-19 13:27:06,576 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-19 13:27:06,577 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:27:38,237 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a7be2595542997c3ec972ac: 57 个实体, 3 个关系
+2025-09-19 13:27:40,528 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a7be2595542997c3ec972ac: 57 个实体, 33 个段落, 2 个支持事实, 用时 2.29s
+2025-09-19 13:27:40,529 - __main__ - INFO - 批次 1 完成，用时: 33.95s, 成功: 1/1
+2025-09-19 13:27:40,529 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 13:27:40,529 - __main__ - INFO - 优化图结构...
+2025-09-19 13:27:42,666 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5293}
+2025-09-19 13:27:44,713 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 38.14s
+2025-09-19 13:27:44,713 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-19 13:27:44,713 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 13:34:10,436 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 13:34:10,437 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 13:34:10,437 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 13:34:14,562 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 13:34:16,610 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 13:34:16,610 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 13:34:16,610 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 13:34:16,621 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 13:34:16,621 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 13:34:16,622 - __main__ - INFO - 开始导入HotpotQA数据集 - 第85-85条
+2025-09-19 13:34:16,622 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 13:34:16,622 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-19 13:34:16,622 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-19 13:34:16,623 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:35:15,347 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5aba5d2e55429901930fa799: 77 个实体, 64 个关系
+2025-09-19 13:35:17,684 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5aba5d2e55429901930fa799: 77 个实体, 46 个段落, 3 个支持事实, 用时 2.34s
+2025-09-19 13:35:17,684 - __main__ - INFO - 批次 1 完成，用时: 61.06s, 成功: 1/1
+2025-09-19 13:35:17,684 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 13:35:17,684 - __main__ - INFO - 优化图结构...
+2025-09-19 13:35:19,831 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5298}
+2025-09-19 13:35:21,883 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 65.26s
+2025-09-19 13:35:21,883 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-19 13:35:21,883 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 13:45:37,130 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 13:45:37,130 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 13:45:37,131 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 13:45:41,221 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 13:45:43,270 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 13:45:43,271 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 13:45:43,271 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 13:45:43,282 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 13:45:43,282 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 13:45:43,282 - __main__ - INFO - 开始导入HotpotQA数据集 - 第91-91条
+2025-09-19 13:45:43,282 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 13:45:43,282 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-19 13:45:43,282 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-19 13:45:43,283 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 13:46:15,176 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5abfb3425542990832d3a1c0: 47 个实体, 6 个关系
+2025-09-19 13:46:17,458 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5abfb3425542990832d3a1c0: 47 个实体, 31 个段落, 2 个支持事实, 用时 2.28s
+2025-09-19 13:46:17,458 - __main__ - INFO - 批次 1 完成，用时: 34.18s, 成功: 1/1
+2025-09-19 13:46:17,458 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 13:46:17,459 - __main__ - INFO - 优化图结构...
+2025-09-19 13:46:19,605 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5302}
+2025-09-19 13:46:21,666 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 38.38s
+2025-09-19 13:46:21,666 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-19 13:46:21,667 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 14:00:26,920 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 14:00:26,920 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 14:00:26,921 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 14:00:31,010 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 14:00:33,058 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 14:00:33,058 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 14:00:33,058 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 14:00:33,067 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 14:00:33,067 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 14:00:33,068 - __main__ - INFO - 开始导入HotpotQA数据集 - 第94-94条
+2025-09-19 14:00:33,068 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 14:00:33,068 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-19 14:00:33,068 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-19 14:00:33,069 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 14:01:13,680 - scripts.hotpotqa_processor.entity_extractor - WARNING - 解析关系响应JSON失败: {
+    "relations": [
+        {
+            "source": "Rubicon Drinks Ltd",
+            "target": "1908",
+            "relation": "RELATED_TO",
+            "confidence": 0.9,
+            "description":
+2025-09-19 14:01:13,680 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae224da554299234fd043ee: 31 个实体, 0 个关系
+2025-09-19 14:01:15,879 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae224da554299234fd043ee: 31 个实体, 30 个段落, 2 个支持事实, 用时 2.20s
+2025-09-19 14:01:15,879 - __main__ - INFO - 批次 1 完成，用时: 42.81s, 成功: 1/1
+2025-09-19 14:01:15,879 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 14:01:15,879 - __main__ - INFO - 优化图结构...
+2025-09-19 14:01:18,027 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5305}
+2025-09-19 14:01:20,087 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 47.02s
+2025-09-19 14:01:20,087 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-19 14:01:20,088 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 14:03:36,879 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 14:03:36,879 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 14:03:36,879 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 14:03:40,991 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 14:03:43,042 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 14:03:43,042 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 14:03:43,042 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 14:03:43,050 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 14:03:43,050 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 14:03:43,051 - __main__ - INFO - 开始导入HotpotQA数据集 - 第94-94条
+2025-09-19 14:03:43,051 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 14:03:43,051 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-19 14:03:43,051 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-19 14:03:43,052 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 14:04:07,036 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5ae224da554299234fd043ee: 33 个实体, 9 个关系
+2025-09-19 14:04:09,246 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5ae224da554299234fd043ee: 33 个实体, 30 个段落, 2 个支持事实, 用时 2.21s
+2025-09-19 14:04:09,246 - __main__ - INFO - 批次 1 完成，用时: 26.19s, 成功: 1/1
+2025-09-19 14:04:09,246 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 14:04:09,246 - __main__ - INFO - 优化图结构...
+2025-09-19 14:04:11,395 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5306}
+2025-09-19 14:04:13,452 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 30.40s
+2025-09-19 14:04:13,452 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-19 14:04:13,452 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-19 14:04:22,945 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-19 14:04:22,945 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-19 14:04:22,945 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-19 14:04:27,055 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-19 14:04:29,107 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-19 14:04:29,108 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-19 14:04:29,108 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-19 14:04:29,116 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-19 14:04:29,116 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-19 14:04:29,117 - __main__ - INFO - 开始导入HotpotQA数据集 - 第96-96条
+2025-09-19 14:04:29,117 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-19 14:04:29,117 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-19 14:04:29,117 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-19 14:04:29,118 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-19 14:05:04,506 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a80b3a9554299485f5986cc: 53 个实体, 4 个关系
+2025-09-19 14:05:06,735 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a80b3a9554299485f5986cc: 53 个实体, 35 个段落, 2 个支持事实, 用时 2.23s
+2025-09-19 14:05:06,735 - __main__ - INFO - 批次 1 完成，用时: 37.62s, 成功: 1/1
+2025-09-19 14:05:06,735 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-19 14:05:06,735 - __main__ - INFO - 优化图结构...
+2025-09-19 14:05:08,941 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5311}
+2025-09-19 14:05:11,038 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 41.92s
+2025-09-19 14:05:11,039 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-19 14:05:11,039 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-20 11:15:42,801 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-20 11:15:42,804 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-20 11:15:42,804 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-20 11:15:46,894 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-20 11:15:48,983 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-20 11:15:48,983 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-20 11:15:48,983 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-20 11:15:48,992 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-20 11:15:48,992 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-20 11:15:48,994 - __main__ - INFO - 开始导入HotpotQA数据集 - 第1-1条
+2025-09-20 11:15:48,995 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-20 11:15:48,995 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-20 11:15:48,995 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-20 11:15:48,995 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-20 11:16:26,917 - scripts.hotpotqa_processor.entity_extractor - INFO - 成功提取问题 5a8b57f25542995d1e6f1371: 80 个实体, 5 个关系
+2025-09-20 11:16:30,277 - scripts.hotpotqa_processor.graph_builder - INFO - 成功构建问题图谱 5a8b57f25542995d1e6f1371: 80 个实体, 31 个段落, 2 个支持事实, 用时 3.36s
+2025-09-20 11:16:30,277 - __main__ - INFO - 批次 1 完成，用时: 41.28s, 成功: 1/1
+2025-09-20 11:16:30,277 - __main__ - INFO - 进度: 100.0% | 成功率: 100.0%
+2025-09-20 11:16:30,277 - __main__ - INFO - 优化图结构...
+2025-09-20 11:16:32,620 - scripts.hotpotqa_processor.graph_builder - INFO - 图结构优化完成: {'orphan_entities_removed': 0, 'importance_scores_updated': 5312}
+2025-09-20 11:16:34,742 - __main__ - INFO - HotpotQA数据集导入完成，总用时: 45.75s
+2025-09-20 11:16:34,742 - __main__ - INFO - 成功导入: 1/1 个问题
+2025-09-20 11:16:34,742 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
+2025-09-21 13:35:34,394 - scripts.hotpotqa_processor.entity_extractor - INFO - 使用Ollama服务: http://120.232.79.82:11434, 模型: llama3.2:latest
+2025-09-21 13:35:34,395 - scripts.hotpotqa_processor.entity_extractor - INFO - HotpotQA实体提取器初始化完成，使用Ollama服务: http://120.232.79.82:11434
+2025-09-21 13:35:34,395 - scripts.hotpotqa_processor.graph_builder - INFO - 尝试连接Neo4j: neo4j://localhost:7687, 用户: neo4j
+2025-09-21 13:35:38,607 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接成功
+2025-09-21 13:35:40,764 - scripts.hotpotqa_processor.graph_builder - INFO - 数据库索引创建完成
+2025-09-21 13:35:40,764 - __main__ - INFO - HotpotQA导入器初始化完成 - 批次大小: 1
+2025-09-21 13:35:40,764 - scripts.hotpotqa_processor.preprocessor - INFO - 开始加载HotpotQA数据集: database/hotpot_dev_fullwiki_v1.json
+2025-09-21 13:35:40,773 - scripts.hotpotqa_processor.preprocessor - INFO - 从本地文件加载了 200 个样本
+2025-09-21 13:35:40,773 - scripts.hotpotqa_processor.preprocessor - INFO - 成功加载 200 个问题
+2025-09-21 13:35:40,774 - __main__ - INFO - 开始导入HotpotQA数据集 - 第1-1条
+2025-09-21 13:35:40,774 - __main__ - INFO - 原始数据集: 200 个样本
+2025-09-21 13:35:40,774 - __main__ - INFO - 过滤后数据集: 1 个样本
+2025-09-21 13:35:40,775 - __main__ - INFO - 处理批次 1/1 (1 个问题)
+2025-09-21 13:35:40,775 - scripts.hotpotqa_processor.preprocessor - INFO - 批量预处理完成: 1/1 个问题有效
+2025-09-21 13:39:52,608 - scripts.hotpotqa_processor.graph_builder - INFO - Neo4j连接已关闭
